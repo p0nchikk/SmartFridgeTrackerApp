@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SmartFridgeTracker.Views.RegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ScrollView>
+        <VerticalStackLayout StyleClass="Container">
+            <Grid
+                Padding="10"
+                BackgroundColor="White"
+                ColumnSpacing="10"
+                RowDefinitions="auto,*,auto"
+                RowSpacing="10" />
+
+            <!--  HEADER  -->
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource HeaderLabelStyle}"
+                Text="Welcome to Register Page"
+                VerticalOptions="Center" />
+
+            <!--  MAIN CONTENT  -->
+            <VerticalStackLayout
+                Grid.Row="1"
+                Margin="20"
+                BackgroundColor="White"
+                Spacing="15">
+
+                <!--  USERNAME  -->
+
+                <Frame
+                    Margin="10"
+                    Padding="10"
+                    BackgroundColor="White"
+                    CornerRadius="18"
+                    HasShadow="True">
+                    <Entry
+                        Placeholder="Username"
+                        StyleClass="EntryFields"
+                        Text="{Binding Username}"
+                        TextColor="Black" />
+                </Frame>
+
+                <Label
+                    x:Name="LblErrorName"
+                    FontSize="10"
+                    Text=""
+                    TextColor="Red" />
+
+                <!--  EMAIL  -->
+                <Frame
+                    Margin="10"
+                    Padding="10"
+                    BackgroundColor="White"
+                    CornerRadius="18"
+                    HasShadow="True">
+                    <Entry
+                        Placeholder="Email"
+                        StyleClass="EntryFields"
+                        Text="{Binding Email}"
+                        TextColor="Black" />
+                </Frame>
+
+                <Label
+                    x:Name="LblErrorUserEmail"
+                    FontSize="10"
+                    Text=""
+                    TextColor="Red" />
+
+                <!--  PASSWORD  -->
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Frame
+                        Margin="10"
+                        Padding="10"
+                        BackgroundColor="White"
+                        CornerRadius="18"
+                        HasShadow="True">
+                        <Entry
+                            IsPassword="True"
+                            Placeholder="Password"
+                            StyleClass="EntryFields"
+                            Text="{Binding Password}"
+                            TextColor="Black" />
+                    </Frame>
+                    <Button
+                        x:Name="ButtonTogglePass1"
+                        Grid.Column="1"
+                        HeightRequest="50"
+                        ImageSource="hide.png"
+                        WidthRequest="50" />
+                </Grid>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Frame
+                        Margin="10"
+                        Padding="10"
+                        BackgroundColor="White"
+                        CornerRadius="18"
+                        HasShadow="True">
+                        <Entry
+                            IsPassword="True"
+                            Placeholder="Verify Password"
+                            Text="{Binding VerifyPassword}"
+                            TextColor="Black" />
+                    </Frame>
+                    <Button
+                        x:Name="ButtonTogglePass2"
+                        Grid.Column="1"
+                        HeightRequest="50"
+                        ImageSource="hide.png"
+                        WidthRequest="50" />
+                </Grid>
+
+                <Label
+                    x:Name="LblErrorPassword"
+                    FontSize="10"
+                    Text=""
+                    TextColor="Red" />
+
+            </VerticalStackLayout>
+
+            <!--  FOOTER  -->
+
+            <Grid
+                x:Name="Footer"
+                Grid.Row="2"
+                RowDefinitions="*,*">
+
+                <Button
+                    HorizontalOptions="Fill"
+                    Text="Register"
+                    VerticalOptions="Center" />
+
+                <!--<Label
+                    Grid.Row="1"
+                    Padding="0,12,0,0"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center">
+
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Have an account alredy?   " TextColor="Black" />
+                            <Span
+                                Text="Sign Ip"
+                                TextColor="Purple"
+                                TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ButtonGoToLogin_Clicked" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
+
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

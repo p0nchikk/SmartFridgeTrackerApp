@@ -13,6 +13,10 @@ namespace SmartFridgeTracker
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("DMSans-Regular.ttf", "DMSansRegular");
+                    fonts.AddFont("DMSans-ExtraBold.ttf", "DMSansExtraBold");
+                    fonts.AddFont("AlanSans-Regular.ttf", "AlanSansRegular");
+                    fonts.AddFont("AlanSans-ExtraBold.ttf", "AlanSansExtraBold");
                 });
 
 #if DEBUG
