@@ -9,8 +9,7 @@ public partial class StartPage : ContentPage
     }
     private async void StartSplashAsync()
     {
-        await Task.Delay(4000);
-        //Application.Current.MainPage = new LoginPage();
-        await Navigation.PushAsync(new LoginPage());
+        await Task.Delay(2000);
+        await Shell.Current.GoToAsync("//LoginPage");
     }
 }

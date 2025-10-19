@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView
+<ContentPage
     x:Class="SmartFridgeTracker.Views.RegisterPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="RegisterPage">
     <ScrollView>
         <VerticalStackLayout StyleClass="Container">
             <Grid
@@ -118,6 +119,11 @@
                     Text=""
                     TextColor="Red" />
 
+                <!--  MESSAGE ( TEMP )  -->
+                <Label
+                    FontSize="15"
+                    Text="{Binding Message}"
+                    TextColor="Red" />
             </VerticalStackLayout>
 
             <!--  FOOTER  -->
@@ -128,33 +134,40 @@
                 RowDefinitions="*,*">
 
                 <Button
+                    Command="{Binding RegisterUser}"
                     HorizontalOptions="Fill"
                     Text="Register"
                     VerticalOptions="Center" />
 
                 <!--<Label
-                    Grid.Row="1"
-                    Padding="0,12,0,0"
-                    FontSize="14"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center">
+                Grid.Row="1"
+                Padding="0,12,0,0"
+                FontSize="14"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center">
 
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Have an account alredy?   " TextColor="Black" />
-                            <Span
-                                Text="Sign Ip"
-                                TextColor="Purple"
-                                TextDecorations="Underline">
-                                <Span.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ButtonGoToLogin_Clicked" />
-                                </Span.GestureRecognizers>
-                            </Span>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>-->
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Have an account alredy?   " TextColor="Black" />
+                        <Span
+                            Text="Sign Ip"
+                            TextColor="Purple"
+                            TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ButtonGoToLogin_Clicked" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>-->
+                <Button
+                    Grid.Row="1"
+                    BackgroundColor="Transparent"
+                    Command="{Binding GoToLogin}"
+                    Text="Go To Login"
+                    TextColor="{StaticResource Secondary}" />
 
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
-</ContentView>
+</ContentPage>

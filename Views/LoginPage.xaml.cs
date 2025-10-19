@@ -8,4 +8,8 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
         BindingContext = new LoginViewModel();
     }
+    private async void ButtonGoToRegister_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new RegisterPage());
+    }
 }

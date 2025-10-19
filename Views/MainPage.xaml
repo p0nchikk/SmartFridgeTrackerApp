@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartFridgeTracker.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="MainPage"
+    BackgroundColor="White">
+    <VerticalStackLayout>
+        <Grid Padding="10" RowDefinitions="Auto, *, Auto">
+
+            <!--  Upper Block  -->
+            <Grid
+                Padding="10"
+                ColumnDefinitions="Auto, *, Auto"
+                Row="0"
+                VerticalOptions="Center">
+                <!--  Profile  -->
+                <Image
+                    Aspect="AspectFill"
+                    HeightRequest="40"
+                    Source="profile_placeholder.png"
+                    WidthRequest="40" />
+
+                <!--  Name  -->
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Text="My Fridge"
+                    TextColor="Green"
+                    VerticalOptions="Center" />
+
+                <!--  Menu  -->
+                <Button
+                    Grid.Column="2"
+                    BackgroundColor="Transparent"
+                    FontSize="24"
+                    HorizontalOptions="End"
+                    Text="☰"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <!--  Product List  -->
+            <CollectionView
+                Grid.Row="1"
+                Margin="0,10,0,10"
+                ItemsSource="{Binding Products}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5" ColumnDefinitions="60, *, 50">
+                            <!--  Product Image  -->
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="50"
+                                Source="{Binding Image}"
+                                WidthRequest="50" />
+
+                            <!--  Product Name  -->
+                            <Label
+                                Margin="10,0,0,0"
+                                Text="{Binding Name}"
+                                VerticalOptions="Center" />
+
+                            <!--  Quantity  -->
+                            <Label
+                                HorizontalOptions="End"
+                                Text="{Binding Quantity}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--  Button ADD  -->
+            <Button
+                Grid.Row="2"
+                BackgroundColor="Tomato"
+                CornerRadius="25"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                Text="ADD"
+                TextColor="White" />
+
+        </Grid>
+    </VerticalStackLayout>
+
+</ContentPage>

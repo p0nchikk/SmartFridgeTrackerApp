@@ -77,9 +77,8 @@
 
             <!--  MESSAGE ( TEMP )  -->
             <Label
-                x:Name="LblMessage"
                 FontSize="15"
-                Text=""
+                Text="{Binding Message}"
                 TextColor="Red" />
 
         </VerticalStackLayout>
@@ -92,31 +91,39 @@
             RowDefinitions="*,*">
 
             <Button
+                Command="{Binding LoginUser}"
                 HorizontalOptions="Fill"
                 Text="Login"
                 VerticalOptions="Center" />
 
-            <Label
+            <!--<Label
                 Grid.Row="1"
                 Padding="0,12,0,0"
                 FontSize="14"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center">
 
-                <!--<Label.FormattedText>
+                <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Don't have an account?   " TextColor="Black" />
                         <Span
-                         Text="Sign Up"
-                         TextColor="Purple"
-                         TextDecorations="Underline">
+                            Text="Sign Up"
+                            TextColor="Purple"
+                            TextDecorations="Underline">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ButtonGoToRegister_Clicked" />
                             </Span.GestureRecognizers>
                         </Span>
                     </FormattedString>
-                </Label.FormattedText>-->
-            </Label>
+                </Label.FormattedText>
+            </Label>-->
+
+            <Button
+                Grid.Row="1"
+                BackgroundColor="Transparent"
+                Command="{Binding GoToRegister}"
+                Text="Go To Register"
+                TextColor="{StaticResource Secondary}" />
 
         </Grid>
     </VerticalStackLayout>

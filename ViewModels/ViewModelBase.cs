@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmartFridgeTracker.ViewModels
 {
-    internal class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChange([CallerMemberName] string? propertytName = null)

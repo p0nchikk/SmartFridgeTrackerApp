@@ -7,7 +7,7 @@ namespace SmartFridgeTracker
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new StartPage());
+            MainPage = new AppShell();
         }
     }
 }

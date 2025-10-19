@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartFridgeTracker.Views.MyProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="MyProfilePage"
+    BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="25"
+            Spacing="20"
+            VerticalOptions="Center">
+
+            <!--  Header  -->
+            <Grid Padding="20,0" ColumnDefinitions="Auto,*">
+                <Image
+                    HeightRequest="50"
+                    Source="profile_placeholder.png"
+                    WidthRequest="50" />
+
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="28"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="My Profile"
+                    FontFamily=""
+                    TextColor="#333"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <!--  Profile Card  -->
+            <Frame
+                Padding="20"
+                BackgroundColor="White"
+                CornerRadius="20"
+                HasShadow="True">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <!--  Username  -->
+                    <HorizontalStackLayout Spacing="15">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Username:"
+                            TextColor="{StaticResource SecondaryDarkText}" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding Username}"
+                            TextColor="#222" />
+                    </HorizontalStackLayout>
+
+                    <!--  Email  -->
+                    <HorizontalStackLayout Spacing="15">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Email:"
+                            TextColor="{StaticResource SecondaryDarkText}" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding Email}"
+                            TextColor="#222" />
+                    </HorizontalStackLayout>
+
+                    <!--  Fridge Name  -->
+                    <HorizontalStackLayout Spacing="15">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Fridge name:"
+                            TextColor="{StaticResource SecondaryDarkText}" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding FridgeName}"
+                            TextColor="#222" />
+                    </HorizontalStackLayout>
+
+                    <!--  Product Count  -->
+                    <HorizontalStackLayout Spacing="15">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Product count:"
+                            TextColor="{StaticResource SecondaryDarkText}" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding ProductCount}"
+                            TextColor="#222" />
+                    </HorizontalStackLayout>
+
+                    <!--  Registration Date  -->
+
+                    <HorizontalStackLayout Spacing="15">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Registration Date:"
+                            TextColor="{StaticResource SecondaryDarkText}" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding RegDate}"
+                            TextColor="#222" />
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!--  Optional: Edit or Logout Buttons  -->
+            <Button
+                BackgroundColor="#6C63FF"
+                CornerRadius="25"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="Edit Profile"
+                TextColor="White" />
+
+            <Button
+                BackgroundColor="#FF4E4E"
+                CornerRadius="25"
+                HeightRequest="50"
+                Text="Logout"
+                TextColor="White" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
