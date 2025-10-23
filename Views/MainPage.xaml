@@ -17,9 +17,9 @@
                 VerticalOptions="Center">
                 <!--  Profile  -->
                 <Image
-                    Aspect="AspectFill"
-                    HeightRequest="40"
                     Source="profile_placeholder.png"
+                    Aspect="AspectFill"
+                    HeightRequest="40"                   
                     WidthRequest="40" />
 
                 <!--  Name  -->
@@ -36,18 +36,18 @@
                 <Button
                     Grid.Column="2"
                     BackgroundColor="Transparent"
-                    FontSize="24"
                     HorizontalOptions="End"
-                    Text="☰"
-                    VerticalOptions="Center" />
+                    ImageSource="menu.png"
+                    HeightRequest="40"                   
+                    WidthRequest="40" />
             </Grid>
 
             <!--  Product List  -->
             <CollectionView
-    Grid.Row="1"
-    Margin="0,10,0,10"
-    VerticalOptions="Fill"
-    ItemsSource="{Binding Products}">
+                Grid.Row="1"
+                Margin="0,10,0,10"
+                VerticalOptions="Fill"
+                ItemsSource="{Binding Products}">
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
