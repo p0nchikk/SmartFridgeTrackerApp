@@ -12,10 +12,13 @@ using System.Text.RegularExpressions;
 
 namespace SmartFridgeTracker.ViewModels
 {
+    #region Variables Declaration
     public class RegisterViewModel : ViewModelBase
     {
-        private string message;
-        public string Message
+        //Message
+
+        private string? message;
+        public string? Message
         {
             get { return message; }
             set
@@ -24,8 +27,11 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange();
             }
         }
-        private string username;
-        public string Username
+
+        //Username
+
+        private string? username;
+        public string? Username
         {
             get { return username; }
             set
@@ -34,20 +40,45 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange();
             }
         }
-        private string password;
 
-        public string Password
+        //Password
+
+        private string? password;
+        public string? Password
         {
             get { return password; }
             set
             {
                 password = value;
-                OnPropertyChange(nameof(Password));
+                OnPropertyChange();
             }
         }
-        private string verifyPassword;
 
-        public string VerifyPassword
+        private bool isPassword = true;
+        public bool IsPassword
+        {
+            get { return isPassword; }  
+            set {
+                isPassword = value;
+                OnPropertyChange();
+            }
+        }
+
+        private string viewPassIcon = "hide.png";
+        public string ViewPassIcon
+        {
+            get { return viewPassIcon; }
+            set {
+                if ( value != null )
+                viewPassIcon = value;
+                OnPropertyChange();
+            }
+        }
+
+        //Password Verification
+
+        private string? verifyPassword;
+        public string? VerifyPassword
         {
             get { return verifyPassword; }
             set
@@ -56,9 +87,34 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(nameof(VerifyPassword));
             }
         }
-        private string email;
 
-        public string Email
+        private bool isVerifyPassword = true;
+        public bool IsVerifyPassword
+        {
+            get { return isVerifyPassword; }
+            set
+            {
+                isVerifyPassword = value;
+                OnPropertyChange();
+            }
+        }
+
+        private string viewVerifyPassIcon = "hide.png";
+        public string ViewVerifyPassIcon
+        {
+            get { return viewVerifyPassIcon; }
+            set
+            {
+                if (value != null)
+                    viewVerifyPassIcon = value;
+                OnPropertyChange();
+            }
+        }
+
+        //Email
+
+        private string? email;
+        public string? Email
         {
             get { return email; }
             set
@@ -68,46 +124,65 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-        public ICommand RegisterUser { get; }
+        #endregion
 
-        public ICommand GoToLogin { get; }
+    #region Commands
+        public ICommand CommandRegisterUser { get; }
+        public ICommand CommandGoToLogin { get; }
+        public ICommand CommandViewPass { get; }
+        public ICommand CommandViewVerifyPass { get; }
+        #endregion
 
+    #region Constructor
         public RegisterViewModel()
         {
-            RegisterUser = new RegisterUserCommand(this);
-            GoToLogin = new GoToLoginCommand();
+            CommandRegisterUser = new Command(RegisterUser);
+            CommandGoToLogin = new Command(GoToLogin);
+            CommandViewPass = new Command(ViewPass);
+            CommandViewVerifyPass = new Command(ViewVerifyPass);
         }
-    }
+        #endregion
 
-    public class GoToLoginCommand : CommandBase
-    {
-        public override void Execute(object parameter)
+    #region Functions
+        public void GoToLogin()
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await Shell.Current.GoToAsync("//LoginPage");
             });
         }
-    }
-
-    public class RegisterUserCommand : CommandBase
-    {
-        private readonly RegisterViewModel _vm;
-
-        public RegisterUserCommand(RegisterViewModel vm)
+        public void ViewPass()
         {
-            _vm = vm;
+            IsPassword = !IsPassword;
+            if (!IsPassword)
+            {
+                ViewPassIcon = "view.png";
+            }
+            else
+            {
+                ViewPassIcon = "hide.png";
+            }
         }
-
-        public override void Execute(object parameter)
+        public void ViewVerifyPass()
+        {
+            IsVerifyPassword = !IsVerifyPassword;
+            if (!IsVerifyPassword)
+            {
+                ViewVerifyPassIcon = "view.png";
+            }
+            else
+            {
+                ViewVerifyPassIcon = "hide.png";
+            }
+        }
+        public void RegisterUser()
         {
             bool isValid = true;
-            string message = "";
 
             // Username validation
-            if (string.IsNullOrWhiteSpace(_vm.Username) || _vm.Username.Length < 5)
+            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 5)
             {
-                message += "Username too short, must be at least 5 chars.\n";
+                Message += "Username too short, must be at least 5 chars.\n";
                 isValid = false;
             }
 
@@ -130,9 +205,9 @@ namespace SmartFridgeTracker.ViewModels
             //}
 
             // Password confirmation
-            if (_vm.Password != _vm.VerifyPassword)
+            if (Password != VerifyPassword)
             {
-                message += "Passwords do not match.\n";
+                Message += "Passwords do not match.\n";
                 isValid = false;
             }
 
@@ -141,22 +216,23 @@ namespace SmartFridgeTracker.ViewModels
                 // Create user and save to service
                 User user = new User()
                 {
-                    UserName = _vm.Username,
-                    Password = _vm.Password,
-                    Email = _vm.Email,
-                    RegDate = DateTime.Now
+                    UserName = Username,
+                    Password = Password,
+                    Email = Email,
+                    RegDate = DateTime.Now,
+                    Fridge = new Fridge()
                 };
 
-                LocalDataService.GetInstance().AddUser(user);
+                LocalDataService.SetInstance().AddUser(user);
 
-                message = "Registration successful!";
+                Message = "Registration successful!";
+
                 // Optionally navigate to Login page here
 
             }
-
-            // Update ViewModel with validation messages
-            _vm.Message = message;
         }
+        #endregion
+
     }
 
 }

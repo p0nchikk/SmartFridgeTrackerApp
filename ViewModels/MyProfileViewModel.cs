@@ -47,20 +47,18 @@ namespace SmartFridgeTracker.ViewModels
 
         public MyProfileViewModel()
         {
-            User user = LocalDataService.GetInstance().GetUser();
-            Username = user.UserName ?? "Name is absent";
-            Email = user.Email ?? "Email is absent";
-            if (user.MyFridge != null)
+            if ( LocalDataService.GetInstance() != null)
             {
-                FridgeName = user.MyFridge.Name ?? "Fridge Name is absent";
-                ProductCount = user.MyFridge.ProductsCount;
-            }           
-            RegDate = user.RegDate;
-            //Username = "Polina";
-            //Email = "polina@example.com";
-            //FridgeName = "Main Kitchen Fridge";
-            //ProductCount = 24;
-            //RegDate = DateTime.Now;
+                User user = LocalDataService.GetInstance().GetUser();
+                Username = user.UserName ?? "Name is absent";
+                Email = user.Email ?? "Email is absent";
+                if (user.Fridge != null)
+                {
+                    FridgeName = user.Fridge.Name ?? "Fridge Name is absent";
+                    ProductCount = user.Fridge.ProductsCount;
+                }
+                RegDate = user.RegDate;
+            }
         }
     }
 }

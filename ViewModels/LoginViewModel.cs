@@ -11,9 +11,11 @@ namespace SmartFridgeTracker.ViewModels
 {
     internal class LoginViewModel : ViewModelBase
     {
-        private string message;
+        #region Variables Declaration 
+        //Message
 
-        public string Message
+        private string? message;
+        public string? Message
         {
             get { return message; }
             set
@@ -22,10 +24,10 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(nameof(Message));
             }
         }
+        //Username
 
-        private string username;
-
-        public string Username
+        private string? username;
+        public string? Username
         {
             get { return username; }
             set
@@ -34,9 +36,10 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange();
             }
         }
-        private string password;
+        //Password
 
-        public string Password
+        private string? password;
+        public string? Password
         {
             get { return password; }
             set
@@ -46,69 +49,103 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-        public ICommand LoginUser { get; }
-        public ICommand GoToRegister { get; }
+        private bool isPassword = true;
+        public bool IsPassword
+        {
+            get { return isPassword; }
+            set { isPassword = value;
+                OnPropertyChange();
+            }
+        }
 
+        private string? viewPassIcon = "hide.png";
+        public string? ViewPassIcon
+        {
+            get { return viewPassIcon; }
+            set {
+                if (value != null)
+                    viewPassIcon = value;
+                OnPropertyChange();
+            }
+        }
+
+        #endregion
+
+        #region Commands
+        public ICommand CommandLoginUser { get; }
+        public ICommand CommandGoToRegister { get; }
+        public ICommand CommandViewPass { get; }
+        #endregion
+
+        #region Constructor
         public LoginViewModel()
         {
-            LoginUser = new LoginUserCommand(this);
-            GoToRegister = new GoToRegisterCommand();
+            CommandLoginUser = new Command(LoginUser);
+            CommandGoToRegister = new Command(GoToRegister);
+            CommandViewPass = new Command(ViewPass);
+        }
+        #endregion
+
+        #region Fuctions
+        public void GoToRegister()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//RegisterPage");
+            });
+        }
+        public void ViewPass()
+        {
+            IsPassword = !IsPassword;
+            if (!IsPassword) {
+                ViewPassIcon = "view.png";
+            }
+            else
+            {
+                ViewPassIcon = "hide.png";
+            }
+
         }
 
-        public class GoToRegisterCommand : CommandBase
+        public void LoginUser()
         {
-            public override void Execute(object parameter)
+            var instance = LocalDataService.GetInstance();
+
+            if (instance == null)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Shell.Current.GoToAsync("//RegisterPage");
-                });
+                Message = "User isn't registered yet";
+                return;
             }
-        }
-
-        public class LoginUserCommand : CommandBase
-        {
-            private readonly LoginViewModel _vm;
-
-            public LoginUserCommand(LoginViewModel vm)
+            else
             {
-                _vm = vm;
-            }
-
-            public override void Execute(object parameter)
-            {
-                var user = LocalDataService.GetInstance().GetUser();
-                
-                if (!LocalDataService.IsInstanceAdded())
+                if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
                 {
-                    _vm.Message = "User isn't registered yet";
+                    Message = "Fill both the username and password";
                     return;
                 }
-
-                if (string.IsNullOrEmpty(_vm.Username) || string.IsNullOrEmpty(_vm.Password))
+                else
                 {
-                    _vm.Message = "Fill both the username and password";
-                    return;
-                }
-
-                if (_vm.Username == user.UserName && _vm.Password == user.Password)
-                {
-                    _vm.Message = $"{_vm.Username}, welcome!";
-                    // Navigation to the MainPage.xaml
-                    MainThread.BeginInvokeOnMainThread(async () =>
+                    if (Username == instance.GetUser().UserName && Password == instance.GetUser().Password)
                     {
-                        await Shell.Current.GoToAsync("//MainPage");
-                    });
+                        Message = $"{Username}, welcome!";
+                        // Navigation to the MainPage.xaml
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            await Shell.Current.GoToAsync("//MainPage");
+                        });
+                    }
+                    else if (Username != instance.GetUser().UserName)
+                    {
+                        Message = "Wrong username";
+                    }
+                    else // password is wrong
+                    {
+                        Message = "Wrong password";
+                    }
                 }
-                else if (_vm.Username != user.UserName)
-                {
-                    _vm.Message = "Wrong username";
-                }
-                else // password is wrong
-                {
-                    _vm.Message = "Wrong password";
-                }
-            }
+            }       
         }
+        #endregion
+
     }
 }

@@ -9,28 +9,27 @@ namespace SmartFridgeTracker.Services
 {
     internal class LocalDataService
     {
-        private static LocalDataService instance;
-        private User user;
-        public static bool IsInstanceAdded()
+        private static LocalDataService? instance;
+        private User? user;
+
+        public static LocalDataService SetInstance()
         {
-            if (instance != null) return true;
-            return false;
-        }
-        public static LocalDataService GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new LocalDataService();
-                instance.user = new User();
-            }
+            instance = new LocalDataService();
+            instance.user = new User();
             return instance;
         }
+
+        public static LocalDataService? GetInstance()
+        {
+            return instance;
+        }
+
         public bool AddUser(User user)
         {
             this.user = user;
             return true;
         }
-        public User GetUser()
+        public User? GetUser()
         {
             return this.user;
         }

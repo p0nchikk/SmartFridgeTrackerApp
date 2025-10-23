@@ -14,7 +14,7 @@ namespace SmartFridgeTracker.Models
 
         public DateTime RegDate { get; set; }   //Registraton Date ( to change to static )
 
-        public Fridge? MyFridge { get; set; }    
+        public Fridge? Fridge { get; set; }    
 
     }
 }
