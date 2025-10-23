@@ -43,12 +43,6 @@
                         TextColor="Black" />
                 </Frame>
 
-                <Label
-                    x:Name="LblErrorName"
-                    FontSize="10"
-                    Text=""
-                    TextColor="Red" />
-
                 <!--  EMAIL  -->
                 <Frame
                     Margin="10"
@@ -62,12 +56,6 @@
                         Text="{Binding Email}"
                         TextColor="Black" />
                 </Frame>
-
-                <Label
-                    x:Name="LblErrorUserEmail"
-                    FontSize="10"
-                    Text=""
-                    TextColor="Red" />
 
                 <!--  PASSWORD  -->
 
@@ -113,12 +101,6 @@
                         WidthRequest="50" />
                 </Grid>
 
-                <Label
-                    x:Name="LblErrorPassword"
-                    FontSize="10"
-                    Text=""
-                    TextColor="Red" />
-
                 <!--  MESSAGE ( TEMP )  -->
                 <Label
                     FontSize="15"
@@ -139,27 +121,6 @@
                     Text="Register"
                     VerticalOptions="Center" />
 
-                <!--<Label
-                Grid.Row="1"
-                Padding="0,12,0,0"
-                FontSize="14"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center">
-
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Have an account alredy?   " TextColor="Black" />
-                        <Span
-                            Text="Sign Ip"
-                            TextColor="Purple"
-                            TextDecorations="Underline">
-                            <Span.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ButtonGoToLogin_Clicked" />
-                            </Span.GestureRecognizers>
-                        </Span>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>-->
                 <Button
                     Grid.Row="1"
                     BackgroundColor="Transparent"

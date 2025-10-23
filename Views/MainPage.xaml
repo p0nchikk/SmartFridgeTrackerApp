@@ -5,13 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="MainPage"
     BackgroundColor="White">
-    <VerticalStackLayout>
-        <Grid Padding="10" RowDefinitions="Auto, *, Auto">
+    
+    <Grid Padding="10" RowDefinitions="Auto, *, Auto">
 
             <!--  Upper Block  -->
             <Grid
                 Padding="10"
                 ColumnDefinitions="Auto, *, Auto"
+                RowDefinitions="Auto"
                 Row="0"
                 VerticalOptions="Center">
                 <!--  Profile  -->
@@ -43,9 +44,11 @@
 
             <!--  Product List  -->
             <CollectionView
-                Grid.Row="1"
-                Margin="0,10,0,10"
-                ItemsSource="{Binding Products}">
+    Grid.Row="1"
+    Margin="0,10,0,10"
+    VerticalOptions="Fill"
+    ItemsSource="{Binding Products}">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="5" ColumnDefinitions="60, *, 50">
@@ -84,6 +87,5 @@
                 TextColor="White" />
 
         </Grid>
-    </VerticalStackLayout>
 
 </ContentPage>
