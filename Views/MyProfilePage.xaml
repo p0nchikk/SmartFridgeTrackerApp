@@ -22,10 +22,10 @@
                 <Label
                     Grid.Column="1"
                     FontAttributes="Bold"
+                    FontFamily=""
                     FontSize="28"
                     HorizontalOptions="CenterAndExpand"
                     Text="My Profile"
-                    FontFamily=""
                     TextColor="#333"
                     VerticalOptions="Center" />
             </Grid>
