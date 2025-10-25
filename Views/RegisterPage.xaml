@@ -3,134 +3,135 @@
     x:Class="SmartFridgeTracker.Views.RegisterPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="RegisterPage">
+    BackgroundColor="#FAFCFA">
+
     <ScrollView>
-        <VerticalStackLayout StyleClass="Container">
-            <Grid
-                Padding="10"
-                BackgroundColor="White"
-                ColumnSpacing="10"
-                RowDefinitions="auto,*,auto"
-                RowSpacing="10" />
+        <VerticalStackLayout Spacing="20" Style="{StaticResource ContainerStyle}">
 
-            <!--  HEADER  -->
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Style="{StaticResource HeaderLabelStyle}"
-                Text="Welcome to Register Page"
-                VerticalOptions="Center" />
-
-            <!--  MAIN CONTENT  -->
-            <VerticalStackLayout
-                Grid.Row="1"
-                Margin="20"
-                BackgroundColor="White"
-                Spacing="15">
-
-                <!--  USERNAME  -->
-
-                <Frame
-                    Margin="10"
-                    Padding="10"
-                    BackgroundColor="White"
-                    CornerRadius="18"
-                    HasShadow="True">
-                    <Entry
-                        Placeholder="Username"
-                        StyleClass="EntryFields"
-                        Text="{Binding Username}"
-                        TextColor="Black" />
-                </Frame>
-
-                <!--  EMAIL  -->
-                <Frame
-                    Margin="10"
-                    Padding="10"
-                    BackgroundColor="White"
-                    CornerRadius="18"
-                    HasShadow="True">
-                    <Entry
-                        Placeholder="Email"
-                        StyleClass="EntryFields"
-                        Text="{Binding Email}"
-                        TextColor="Black" />
-                </Frame>
-
-                <!--  PASSWORD  -->
-
-                <Grid ColumnDefinitions="*,Auto">
-                    <Frame
-                        Margin="10"
-                        Padding="10"
-                        BackgroundColor="White"
-                        CornerRadius="18"
-                        HasShadow="True">
-                        <Entry
-                            IsPassword="{Binding IsPassword}"
-                            Placeholder="Password"
-                            StyleClass="EntryFields"
-                            Text="{Binding Password}"
-                            TextColor="Black" />
-                    </Frame>
-                    <Button
-                       Command="{Binding CommandViewPass}"
-                        Grid.Column="1"
-                        HeightRequest="50"
-                        ImageSource="{Binding ViewPassIcon}"
-                        WidthRequest="50" />
-                </Grid>
-                
-                <!--  VERIFY PASSWORD  -->
-                
-                <Grid ColumnDefinitions="*,Auto">
-                    <Frame
-                        Margin="10"
-                        Padding="10"
-                        BackgroundColor="White"
-                        CornerRadius="18"
-                        HasShadow="True">
-                        <Entry
-                            IsPassword="{Binding IsVerifyPassword}"
-                            Placeholder="Verify Password"
-                            Text="{Binding VerifyPassword}"
-                            TextColor="Black" />
-                    </Frame>
-                    <Button 
-                        Command="{Binding CommandViewVerifyPass}"
-                        Grid.Column="1"
-                        HeightRequest="50"
-                        ImageSource="{Binding ViewVerifyPassIcon}"
-                        WidthRequest="50" />
-                </Grid>
-
-                <!--  MESSAGE ( TEMP )  -->
-                <Label
-                    FontSize="15"
-                    Text="{Binding Message}"
-                    TextColor="Red" />
-            </VerticalStackLayout>
-
-            <!--  FOOTER  -->
-
-            <Grid
-                Grid.Row="2"
-                RowDefinitions="*,*">
-
-                <Button
-                    Command="{Binding CommandRegisterUser}"
-                    HorizontalOptions="Fill"
-                    Text="Register"
-                    VerticalOptions="Center" />
-
-                <Button
-                    Grid.Row="1"
-                    BackgroundColor="Transparent"
-                    Command="{Binding CommandGoToLogin}"
-                    Text="Go To Login"
-                    TextColor="{StaticResource Secondary}" />
-
+            <!--  Header  -->
+            <Grid ColumnDefinitions="*,auto">
+                <VerticalStackLayout Spacing="10">
+                    <Label Style="{StaticResource HeaderLabelStyle}" Text="Create Account" />
+                    <Label Style="{StaticResource SubheaderLabelStyle}" Text="Sign up to manage your fridge" />
+                </VerticalStackLayout>
+                <Image
+                    Grid.Column="1"
+                    Source="fridge.png"
+                    Style="{StaticResource FridgeIconStyle}" />
             </Grid>
+
+            <!--  Username  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="14"
+                Text="Username"
+                TextColor="#333" />
+            <Frame Style="{StaticResource EntryFrameStyle}">
+                <Entry
+                    Placeholder="Username"
+                    Style="{StaticResource EntryFieldsStyle}"
+                    Text="{Binding Username}" />
+            </Frame>
+
+            <!--  Email  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="14"
+                Text="Email"
+                TextColor="#333" />
+            <Frame Style="{StaticResource EntryFrameStyle}">
+                <Entry
+                    Placeholder="Email"
+                    Style="{StaticResource EntryFieldsStyle}"
+                    Text="{Binding Email}" />
+            </Frame>
+
+            <!--  Password  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="14"
+                Text="Password"
+                TextColor="#333" />
+            <Frame Style="{StaticResource EntryFrameStyle}">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                    <Entry
+                        IsPassword="{Binding IsPassword}"
+                        Placeholder="••••••••"
+                        Style="{StaticResource EntryFieldsStyle}"
+                        Text="{Binding Password}" />
+                    <Button
+                        BackgroundColor="Transparent"
+                        Command="{Binding CommandViewPass}"
+                        HeightRequest="40"
+                        HorizontalOptions="End"
+                        ImageSource="{Binding ViewPassIcon}"
+                        WidthRequest="40" />
+                </Grid>
+            </Frame>
+
+            <!--  Verify Password  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="14"
+                Text="Verify Password"
+                TextColor="#333" />
+            <Frame Style="{StaticResource EntryFrameStyle}">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                    <Entry
+                        IsPassword="{Binding IsVerifyPassword}"
+                        Placeholder="••••••••"
+                        Style="{StaticResource EntryFieldsStyle}"
+                        Text="{Binding VerifyPassword}" />
+                    <Button
+                        BackgroundColor="Transparent"
+                        Command="{Binding CommandViewVerifyPass}"
+                        HeightRequest="40"
+                        HorizontalOptions="End"
+                        ImageSource="{Binding ViewVerifyPassIcon}"
+                        WidthRequest="40" />
+                </Grid>
+            </Frame>
+
+            <!--  Message  -->
+            <Label Style="{StaticResource MessageStyle}" Text="{Binding Message}" />
+
+            <!--  Register Button  -->
+            <Button
+                Margin="0,10,0,0"
+                Command="{Binding CommandRegisterUser}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="Register" />
+
+            <!--  Divider  -->
+            <Grid Margin="0,15">
+                <BoxView
+                    BackgroundColor="#E0E0E0"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Padding="10,0"
+                    BackgroundColor="#FAFCFA"
+                    HorizontalOptions="Center"
+                    Text="or"
+                    TextColor="#666" />
+            </Grid>
+
+            <!--  Go to Login  -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                <Label
+                    FontSize="14"
+                    Text="Already have an account?"
+                    TextColor="#444" />
+                <Label
+                    FontSize="14"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    Text="Sign in">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CommandGoToLogin}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

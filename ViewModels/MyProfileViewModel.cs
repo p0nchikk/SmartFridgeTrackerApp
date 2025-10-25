@@ -35,36 +35,37 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public MyProfileViewModel()
         {
-            //if ( LocalDataService.GetInstance().GetUser() != null)
-            //{
-            //    User user = LocalDataService.GetInstance().GetUser();
+            if (LocalDataService.GetInstance()?.GetUser() != null) //If user is logged already
+            {
+                User user = LocalDataService.GetInstance().GetUser();
 
-            //    Username = user.UserName ?? "No username";
-            //    Email = user.Email ?? "No email";
-            //    RegDate = user.RegDate;
+                Username = user.UserName ?? "No username";
+                Email = user.Email ?? "No email";
+                RegDate = user.RegDate;
 
-            //    FridgeName = user.Fridge?.Name ?? "No Fridge";
-            //    if ( user.Fridge != null)
-            //    {
-            //        ProductCount = user.Fridge.ProductsCount;
-            //        ExpiringSoonCount = user.Fridge?.ProductsList.Count(p => !p.IsSpoiled && p.ExpirationDate <= DateTime.Now.AddDays(3)) ?? 0;
-            //        SpoiledCount = user.Fridge?.ProductsList.Count(p => p.IsSpoiled) ?? 0;
-            //    }
+                FridgeName = user.Fridge?.Name ?? "No Fridge";
+                if (user.Fridge != null)
+                {
+                    ProductCount = user.Fridge.ProductsCount;
+                    ExpiringSoonCount = user.Fridge?.ProductsList.Count(p => !p.IsSpoiled && p.ExpirationDate <= DateTime.Now.AddDays(3)) ?? 0;
+                    SpoiledCount = user.Fridge?.ProductsList.Count(p => p.IsSpoiled) ?? 0;
+                }
 
-
-            //    LastUpdated = DateTime.Now; // Example, should be from last fridge update
-            //    WeeklyUsage = 0; // Example, can be calculated from history
-            //}
-
-            Username = "Polina";
-            Email = "polina@gmail.com";
-            RegDate = DateTime.Now;
-            FridgeName = "Num-num";
-            ProductCount = 10;
-            ExpiringSoonCount = 2;
-            SpoiledCount = 3;
-            LastUpdated = DateTime.Now;
-            WeeklyUsage = 4;
+                LastUpdated = DateTime.Now; // Example, should be from last fridge update
+                WeeklyUsage = 0; // Example, can be calculated from history
+            }
+            else //If user isn't logged yet
+            {
+                Username = "Polina";
+                Email = "polina@gmail.com";
+                RegDate = DateTime.Now;
+                FridgeName = "Num-num";
+                ProductCount = 10;
+                ExpiringSoonCount = 2;
+                SpoiledCount = 3;
+                LastUpdated = DateTime.Now;
+                WeeklyUsage = 4;
+            }            
         }
         #endregion
 
