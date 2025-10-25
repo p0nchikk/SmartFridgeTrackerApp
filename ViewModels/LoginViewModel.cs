@@ -72,17 +72,17 @@ namespace SmartFridgeTracker.ViewModels
         #endregion
 
         #region Commands
-        public ICommand CommandLoginUser { get; }
-        public ICommand CommandGoToRegister { get; }
-        public ICommand CommandViewPass { get; }
+        public ICommand LoginUserCommand { get; }
+        public ICommand GoToRegisterCommand { get; }
+        public ICommand ViewPassCommand { get; }
         #endregion
 
         #region Constructor
         public LoginViewModel()
         {
-            CommandLoginUser = new Command(LoginUser);
-            CommandGoToRegister = new Command(GoToRegister);
-            CommandViewPass = new Command(ViewPass);
+            LoginUserCommand = new Command(LoginUser);
+            GoToRegisterCommand = new Command(GoToRegister);
+            ViewPassCommand = new Command(ViewPass);
         }
         #endregion
 

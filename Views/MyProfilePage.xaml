@@ -5,14 +5,191 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="MyProfilePage"
     BackgroundColor="White">
-
     <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="25">
+
+            <!--  Header  -->
+            <Grid Padding="10,0" ColumnDefinitions="Auto,*">
+                <Image
+                    HeightRequest="50"
+                    Source="profile_placeholder.png"
+                    WidthRequest="50" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="28"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="My Profile"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <!--  Identity Section  -->
+            <Frame
+                Padding="20"
+                BackgroundColor="White"
+                BorderColor="Gray"
+                CornerRadius="20"
+                HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Identity" />
+                    <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto,Auto">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Username:" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Username}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Email:" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Email}" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Registration Date:" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding RegDate, StringFormat='{0:dd MMM yyyy}'}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!--  Fridge Summary Section  -->
+            <Frame
+                Padding="20"
+                BackgroundColor="White"
+                BorderColor="Gray"
+                CornerRadius="20"
+                HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Fridge Summary" />
+                    <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto,Auto,Auto">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Fridge Name:" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding FridgeName}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Product Count:" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding ProductCount}" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Expiring Soon:" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding ExpiringSoonCount}" />
+
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Spoiled:" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding SpoiledCount}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!--  Activity Section  -->
+            <Frame
+                Padding="20"
+                BackgroundColor="White"
+                BorderColor="Gray"
+                CornerRadius="20"
+                HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Activity &amp; Insights" />
+                    <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Last Updated:" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding LastUpdated, StringFormat='{0:dd MMM yyyy HH:mm}'}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Weekly Usage:" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding WeeklyUsage}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!--  Actions  -->
+            <HorizontalStackLayout Spacing="15">
+                <Button
+                    BackgroundColor="#6C63FF"
+                    Command="{Binding EditProfileCommand}"
+                    CornerRadius="25"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Edit Profile"
+                    TextColor="White" />
+                <Button
+                    BackgroundColor="#FF4E4E"
+                    Command="{Binding LogoutCommand}"
+                    CornerRadius="25"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Logout"
+                    TextColor="White" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+    <!--<ScrollView>
         <VerticalStackLayout
             Padding="25"
             Spacing="20"
             VerticalOptions="Center">
 
-            <!--  Header  -->
+    -->
+    <!--  Header  -->
+    <!--
             <Grid Padding="20,0" ColumnDefinitions="Auto,*">
                 <Image
                     HeightRequest="50"
@@ -30,7 +207,9 @@
                     VerticalOptions="Center" />
             </Grid>
 
-            <!--  Profile Card  -->
+    -->
+    <!--  Profile Card  -->
+    <!--
             <Frame
                 Padding="20"
                 BackgroundColor="White"
@@ -39,7 +218,9 @@
 
                 <VerticalStackLayout Spacing="15">
 
-                    <!--  Username  -->
+    -->
+    <!--  Username  -->
+    <!--
                     <HorizontalStackLayout Spacing="15">
                         <Label
                             FontAttributes="Bold"
@@ -53,7 +234,9 @@
                             TextColor="#222" />
                     </HorizontalStackLayout>
 
-                    <!--  Email  -->
+    -->
+    <!--  Email  -->
+    <!--
                     <HorizontalStackLayout Spacing="15">
                         <Label
                             FontAttributes="Bold"
@@ -67,7 +250,9 @@
                             TextColor="#222" />
                     </HorizontalStackLayout>
 
-                    <!--  Fridge Name  -->
+    -->
+    <!--  Fridge Name  -->
+    <!--
                     <HorizontalStackLayout Spacing="15">
                         <Label
                             FontAttributes="Bold"
@@ -81,7 +266,9 @@
                             TextColor="#222" />
                     </HorizontalStackLayout>
 
-                    <!--  Product Count  -->
+    -->
+    <!--  Product Count  -->
+    <!--
                     <HorizontalStackLayout Spacing="15">
                         <Label
                             FontAttributes="Bold"
@@ -95,7 +282,9 @@
                             TextColor="#222" />
                     </HorizontalStackLayout>
 
-                    <!--  Registration Date  -->
+    -->
+    <!--  Registration Date  -->
+    <!--
 
                     <HorizontalStackLayout Spacing="15">
                         <Label
@@ -113,7 +302,9 @@
                 </VerticalStackLayout>
             </Frame>
 
-            <!--  Optional: Edit or Logout Buttons  -->
+    -->
+    <!--  Optional: Edit or Logout Buttons  -->
+    <!--
             <Button
                 BackgroundColor="#6C63FF"
                 CornerRadius="25"
@@ -130,5 +321,5 @@
                 TextColor="White" />
 
         </VerticalStackLayout>
-    </ScrollView>
+    </ScrollView>-->
 </ContentPage>

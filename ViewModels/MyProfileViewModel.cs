@@ -8,57 +8,67 @@ using System.Threading.Tasks;
 
 namespace SmartFridgeTracker.ViewModels
 {
-    internal class MyProfileViewModel : ViewModelBase
+    public class MyProfileViewModel : ViewModelBase
     {
-        private string username;
-        public string Username
-        {
-            get => username;
-            set { username = value; OnPropertyChange(); }
-        }
+        #region Variables Declaration
 
-        private string email;
-        public string Email
-        {
-            get => email;
-            set { email = value; OnPropertyChange(); }
-        }
+        // Identity
+        public string? Username { get; set; }
+        public string? Email { get; set; }
+        public DateTime RegDate { get; set; }
 
-        private string fridgeName;
-        public string FridgeName
-        {
-            get => fridgeName;
-            set { fridgeName = value; OnPropertyChange(); }
-        }
+        // Fridge Summary
+        public string? FridgeName { get; set; }
+        public int ProductCount { get; set; }
+        public int ExpiringSoonCount { get; set; }
+        public int SpoiledCount { get; set; }
 
-        private int productCount;
-        public int ProductCount
-        {
-            get => productCount;
-            set { productCount = value; OnPropertyChange(); }
-        }
-        private DateTime regDate;
-            
-        public DateTime RegDate
-        {
-            get { return regDate; }
-            set { regDate = value; }
-        }
+        // Activity/Insights
+        public DateTime LastUpdated { get; set; }
+        public int WeeklyUsage { get; set; }
 
+        #endregion
+
+        #region Commands
+        #endregion
+
+        #region Constructor
         public MyProfileViewModel()
         {
-            if ( LocalDataService.GetInstance() != null)
-            {
-                User user = LocalDataService.GetInstance().GetUser();
-                Username = user.UserName ?? "Name is absent";
-                Email = user.Email ?? "Email is absent";
-                if (user.Fridge != null)
-                {
-                    FridgeName = user.Fridge.Name ?? "Fridge Name is absent";
-                    ProductCount = user.Fridge.ProductsCount;
-                }
-                RegDate = user.RegDate;
-            }
+            //if ( LocalDataService.GetInstance().GetUser() != null)
+            //{
+            //    User user = LocalDataService.GetInstance().GetUser();
+
+            //    Username = user.UserName ?? "No username";
+            //    Email = user.Email ?? "No email";
+            //    RegDate = user.RegDate;
+
+            //    FridgeName = user.Fridge?.Name ?? "No Fridge";
+            //    if ( user.Fridge != null)
+            //    {
+            //        ProductCount = user.Fridge.ProductsCount;
+            //        ExpiringSoonCount = user.Fridge?.ProductsList.Count(p => !p.IsSpoiled && p.ExpirationDate <= DateTime.Now.AddDays(3)) ?? 0;
+            //        SpoiledCount = user.Fridge?.ProductsList.Count(p => p.IsSpoiled) ?? 0;
+            //    }
+
+
+            //    LastUpdated = DateTime.Now; // Example, should be from last fridge update
+            //    WeeklyUsage = 0; // Example, can be calculated from history
+            //}
+
+            Username = "Polina";
+            Email = "polina@gmail.com";
+            RegDate = DateTime.Now;
+            FridgeName = "Num-num";
+            ProductCount = 10;
+            ExpiringSoonCount = 2;
+            SpoiledCount = 3;
+            LastUpdated = DateTime.Now;
+            WeeklyUsage = 4;
         }
+        #endregion
+
+        #region Functions
+        #endregion
     }
 }

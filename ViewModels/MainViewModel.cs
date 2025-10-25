@@ -27,7 +27,7 @@ namespace SmartFridgeTracker.ViewModels
         #endregion
 
         #region Commands
-
+        public ICommand ProfileImageTappedCommand { get; }
         #endregion
 
         #region Constructor
@@ -62,13 +62,21 @@ namespace SmartFridgeTracker.ViewModels
             Products = new ObservableCollection<ProductViewModel>(
                 demoProducts.Select(p => new ProductViewModel(p))
             );
+
+            ProfileImageTappedCommand = new Command(ProfileImageTapped);
         }
 
 
         #endregion
 
         #region Functions
-
+        private void ProfileImageTapped()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//MyProfilePage");
+            });
+        }
         #endregion
     }
 }

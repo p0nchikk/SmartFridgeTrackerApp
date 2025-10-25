@@ -16,8 +16,10 @@
             RowDefinitions="Auto"
             VerticalOptions="Center">
             <!--  Profile  -->
-            <Image
+            <ImageButton
                 Aspect="AspectFill"
+                BackgroundColor="Transparent"
+                Command="{Binding ProfileImageTappedCommand}"
                 HeightRequest="40"
                 Source="profile_placeholder.png"
                 WidthRequest="40" />
@@ -54,6 +56,7 @@
                         ColumnDefinitions="60,*,60, 60"
                         VerticalOptions="Center">
                         <!--  Product Image  -->
+
                         <Image
                             Aspect="AspectFill"
                             HeightRequest="60"

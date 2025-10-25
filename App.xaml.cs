@@ -6,9 +6,9 @@ namespace SmartFridgeTracker
         public App()
         {
             InitializeComponent();
-
+            App.Current.UserAppTheme = AppTheme.Light;
             // MainPage = new AppShell();
-            MainPage = new MainPage();
+            MainPage = new AppShell();
         }
     }
 }

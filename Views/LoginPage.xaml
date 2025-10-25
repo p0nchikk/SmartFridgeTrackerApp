@@ -58,8 +58,8 @@
                         TextColor="Black" />
                 </Frame>
                 <Button
-                    Command="{Binding CommandViewPass}"
                     Grid.Column="1"
+                    Command="{Binding ViewPassCommand}"
                     HeightRequest="50"
                     ImageSource="{Binding ViewPassIcon}"
                     WidthRequest="50" />
@@ -81,7 +81,7 @@
             RowDefinitions="*,*">
 
             <Button
-                Command="{Binding CommandLoginUser}"
+                Command="{Binding LoginUserCommand}"
                 HorizontalOptions="Fill"
                 Text="Login"
                 VerticalOptions="Center" />
@@ -89,7 +89,7 @@
             <Button
                 Grid.Row="1"
                 BackgroundColor="Transparent"
-                Command="{Binding CommandGoToRegister}"
+                Command="{Binding GoToRegisterCommand}"
                 Text="Go To Register"
                 TextColor="{StaticResource Secondary}" />
 
