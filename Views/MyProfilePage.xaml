@@ -6,14 +6,11 @@
     Title="MyProfilePage"
     BackgroundColor="White">
     <ScrollView>
-        <VerticalStackLayout Padding="25" Spacing="25">
+        <VerticalStackLayout Padding="25" Spacing="25" BackgroundColor="#e8faed">
 
             <!--  Header  -->
             <Grid Padding="10,0" ColumnDefinitions="Auto,*">
-                <Image
-                    HeightRequest="50"
-                    Source="profile_placeholder.png"
-                    WidthRequest="50" />
+                
                 <Label
                     Grid.Column="1"
                     FontAttributes="Bold"
@@ -27,10 +24,41 @@
             <Frame
                 Padding="20"
                 BackgroundColor="White"
-                BorderColor="Gray"
+                BorderColor="{StaticResource Primary}"
                 CornerRadius="20"
                 HasShadow="True">
-                <VerticalStackLayout Spacing="10">
+                <VerticalStackLayout>
+                    <Grid ColumnDefinitions="auto,*,auto"  ColumnSpacing="10" RowSpacing="10">
+                        <Image                      
+                            HeightRequest="60"
+                            Source="profile_placeholder.png"
+                            WidthRequest="60"
+                            HorizontalOptions="Start"/>
+                        <Grid Grid.Column="1" RowDefinitions="auto,auto,auto" HorizontalOptions="Start" HeightRequest="60">
+                            <Label Text="Username" FontSize="20" TextColor="#333"/>
+                            <Label Text="Email" Grid.Row="1" FontSize="13" TextColor="DarkGray"/>
+                            <Label Text="Registration date" Grid.Row="2" FontSize="13" TextColor="DarkGray"/>
+                        </Grid>
+                        <Button
+                            Grid.Column="2"
+                            BackgroundColor="Transparent"
+                            Text="Edit"
+                            HorizontalOptions="End"
+                            TextColor="{StaticResource PrimaryDark}"/>
+                    </Grid>
+                    <BoxView HeightRequest="1" BackgroundColor="{StaticResource Primary}" Margin="0,20,0,20"/>
+                    <Grid ColumnDefinitions="auto, auto" RowDefinitions="*,*">
+                        <!-- FULL NAME -->
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" RowSpacing="10" ColumnSpacing="10">
+                            <Label Text="Icon" Grid.RowSpan="2" BackgroundColor="Orange" />
+                            <Label Text="Full Name" Grid.Column="1"/>
+                            <Label Text="..." Grid.Column="1" Grid.Row="1"/>
+                        </Grid>
+                        <!-- FULL NAME -->
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!--<VerticalStackLayout Spacing="10">
                     <Label
                         FontAttributes="Bold"
                         FontSize="20"
@@ -66,7 +94,7 @@
                             Grid.Column="1"
                             Text="{Binding RegDate, StringFormat='{0:dd MMM yyyy}'}" />
                     </Grid>
-                </VerticalStackLayout>
+                </VerticalStackLayout>-->
             </Frame>
 
             <!--  Fridge Summary Section  -->
