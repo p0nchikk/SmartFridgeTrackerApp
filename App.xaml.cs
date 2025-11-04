@@ -7,8 +7,10 @@ namespace SmartFridgeTracker
         {
             InitializeComponent();
             App.Current.UserAppTheme = AppTheme.Light;
-            // MainPage = new AppShell();
-            MainPage = new AppShell();
+        }
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            return new Window(new AppShell());
         }
     }
 }
