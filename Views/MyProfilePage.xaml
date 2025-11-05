@@ -47,14 +47,44 @@
                             TextColor="{StaticResource PrimaryDark}"/>
                     </Grid>
                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource Primary}" Margin="0,20,0,20"/>
+
+                    <!-- USER DETAILS SECTION -->
                     <Grid ColumnDefinitions="auto, auto" RowDefinitions="*,*">
+
                         <!-- FULL NAME -->
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" RowSpacing="10" ColumnSpacing="10">
-                            <Label Text="Icon" Grid.RowSpan="2" BackgroundColor="Orange" />
-                            <Label Text="Full Name" Grid.Column="1"/>
-                            <Label Text="..." Grid.Column="1" Grid.Row="1"/>
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" RowSpacing="5" ColumnSpacing="5">
+
+                            <Frame BackgroundColor="{StaticResource Primary}" Grid.RowSpan="2"  HeightRequest="40" WidthRequest="40">
+                                <Image Source="https://cdn-icons-png.flaticon.com/128/1077/1077063.png" />
+                            </Frame>
+                            
+                            <Label Text="Full Name" 
+                                   FontSize="15"
+                                   Grid.Column="1"
+                                   TextColor="DarkGray"/>
+                            <Label Text="Polina" 
+                                   FontSize="13"
+                                   Grid.Column="1" 
+                                   Grid.Row="1"
+                                   TextColor="#333"/>
                         </Grid>
-                        <!-- FULL NAME -->
+                             <!-- JOIN DATE -->
+                        <Grid Grid.Column="1" HorizontalOptions="End" ColumnDefinitions="*,*" RowDefinitions="*,*" RowSpacing="5" ColumnSpacing="5">
+
+                            <Frame BackgroundColor="{StaticResource Secondary}" Grid.RowSpan="2"  HeightRequest="40" WidthRequest="40">
+                                <Image Source="https://cdn-icons-png.flaticon.com/128/2838/2838779.png" />
+                            </Frame>
+
+                            <Label Text="Join Date" 
+                                   FontSize="15"
+                                   Grid.Column="1"
+                                   TextColor="DarkGray"/>
+                            <Label Text="15/05/2025" 
+                                   FontSize="13"
+                                   Grid.Column="1" 
+                                   Grid.Row="1"
+                                   TextColor="#333"/>
+                        </Grid>
                     </Grid>
                 </VerticalStackLayout>
 
