@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using ZXing.Net.Maui.Controls;
 
 namespace SmartFridgeTracker
 {
@@ -17,7 +18,8 @@ namespace SmartFridgeTracker
                     fonts.AddFont("DMSans-ExtraBold.ttf", "DMSansExtraBold");
                     fonts.AddFont("AlanSans-Regular.ttf", "AlanSansRegular");
                     fonts.AddFont("AlanSans-ExtraBold.ttf", "AlanSansExtraBold");
-                });
+                })
+            .UseBarcodeReader();
 
 #if DEBUG
     		builder.Logging.AddDebug();

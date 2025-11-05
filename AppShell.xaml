@@ -5,13 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:SmartFridgeTracker.Views"
     Title="SmartFridgeTracker"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Locked">
 
     <ShellContent  Title="My Profile" ContentTemplate="{DataTemplate views:MyProfilePage}" Route="MyProfilePage" />
     <ShellContent Title="Start Page" ContentTemplate="{DataTemplate views:StartPage}" Route="StartPage" />
     <ShellContent  Title="Login" ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" />
     <ShellContent  Title="Register" ContentTemplate="{DataTemplate views:RegisterPage}" Route="RegisterPage" />
     <ShellContent  Title="Main" ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
+    <ShellContent  Title="Scan Item" ContentTemplate="{DataTemplate views:ScanItemPage}" Route="ScanItemPage" />
     
 
 </Shell>
