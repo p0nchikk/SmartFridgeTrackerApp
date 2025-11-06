@@ -3,7 +3,6 @@
     x:Class="SmartFridgeTracker.Views.MyProfilePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="MyProfilePage"
     BackgroundColor="White">
     <ScrollView>
         <VerticalStackLayout Padding="25" Spacing="25" BackgroundColor="#e8faed">
