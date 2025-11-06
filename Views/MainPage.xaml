@@ -4,18 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BackgroundColor="White">
-    <VerticalStackLayout>
+    <VerticalStackLayout BackgroundColor="{StaticResource Background}">
 
         <Grid Padding="10" RowDefinitions="Auto, *, Auto">
             <!--  Upper Block  -->
-        <Grid
+            <Grid
         Padding="10"
-        ColumnDefinitions="Auto, *, Auto"
-        Row="0"
-        RowDefinitions="Auto"
+        ColumnDefinitions="auto, *, auto"
+        Grid.Row="0"
+        RowDefinitions="Auto, *"
         VerticalOptions="Center">
-            <!--  Profile  -->
-            <ImageButton
+                <!--  Profile  -->
+                <ImageButton
             Aspect="AspectFill"
             BackgroundColor="Transparent"
             Command="{Binding ProfileImageTappedCommand}"
@@ -23,33 +23,36 @@
             Source="profile_placeholder.png"
             WidthRequest="40" />
 
-            <!--  Name  -->
-            <Label
+                <!--  Name  -->
+                <Label
             Grid.Column="1"
             FontAttributes="Bold"
-            FontSize="20"
+            FontSize="25"
             HorizontalOptions="Center"
             Text="My Fridge"
-            TextColor="Green"
+            TextColor="{StaticResource PrimaryDark}"
             VerticalOptions="Center" />
 
-            <!--  Menu  -->
-            <Button
+                <!--  Menu  -->
+                <Button
             Grid.Column="2"
             BackgroundColor="Transparent"
             HeightRequest="40"
             HorizontalOptions="End"
             ImageSource="menu.png"
             WidthRequest="40" />
-        </Grid>
+                <BoxView HeightRequest="2" BackgroundColor="{StaticResource Gray300}" Margin="0,20,0,10" Grid.Row="1" Grid.ColumnSpan="3"/>
+            </Grid>
 
-        <!--  Product List  -->
-        <CollectionView
-        Grid.Row="1"
-        Margin="0,10,0,10"
-        ItemsSource="{Binding Products}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
+
+            <!--  Product List  -->
+            <CollectionView
+                HeightRequest="500"
+                Grid.Row="1"
+                Margin="0,10,0,10"
+                ItemsSource="{Binding Products}">   
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
                     <Grid
                     Padding="10"
                     ColumnDefinitions="60,*,60, 60"
@@ -71,18 +74,18 @@
                         FontSize="22"
                         HorizontalOptions="Start"
                         Text="{Binding Name}"
-                        TextColor="Black"
+                        TextColor="{StaticResource Gray900}"
                         VerticalOptions="Center" />
 
                         <!--  Warning Sign  -->
                         <Image
                         Grid.Column="2"
                         Aspect="AspectFill"
-                        HeightRequest="25"
+                        HeightRequest="20"
                         HorizontalOptions="End"
                         Source="{Binding StateIcon}"
                         VerticalOptions="Center"
-                        WidthRequest="25" />
+                        WidthRequest="20" />
 
                         <!--  Quantity  -->
                         <Label
@@ -90,7 +93,7 @@
                         FontSize="22"
                         HorizontalOptions="End"
                         Text="{Binding Quantity}"
-                        TextColor="Black"
+                        TextColor="{StaticResource Gray800}"
                         VerticalOptions="Center" />
                     </Grid>
                 </DataTemplate>
