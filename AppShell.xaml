@@ -7,8 +7,8 @@
     Title="SmartFridgeTracker"
     Shell.FlyoutBehavior="Locked">
 
-    <FlyoutItem Title="Home" Icon="https://cdn-icons-png.flaticon.com/128/1946/1946488.png">
-        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
+    <!--<FlyoutItem Title="Home" Icon="https://cdn-icons-png.flaticon.com/128/1946/1946488.png">
+        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
     </FlyoutItem>
 
     <FlyoutItem Title="My profile" Icon="https://cdn-icons-png.flaticon.com/128/456/456283.png">
@@ -21,7 +21,7 @@
 
     <FlyoutItem Title="Statistics" Icon="https://cdn-icons-png.flaticon.com/128/17105/17105689.png">
         <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" />
-    </FlyoutItem>
+    </FlyoutItem>-->
 
 
     <ShellContent Title="Start Page" ContentTemplate="{DataTemplate views:StartPage}" Route="StartPage" />

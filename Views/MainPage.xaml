@@ -10,7 +10,7 @@
             <!--  Upper Block  -->
             <Grid
         Padding="10"
-        ColumnDefinitions="auto, *, auto"
+        ColumnDefinitions="Auto, *, Auto"
         Grid.Row="0"
         RowDefinitions="Auto, *"
         VerticalOptions="Center">
@@ -81,11 +81,11 @@
                         <Image
                         Grid.Column="2"
                         Aspect="AspectFill"
-                        HeightRequest="20"
+                        HeightRequest="30"
                         HorizontalOptions="End"
                         Source="{Binding StateIcon}"
                         VerticalOptions="Center"
-                        WidthRequest="20" />
+                        WidthRequest="30" />
 
                         <!--  Quantity  -->
                         <Label
