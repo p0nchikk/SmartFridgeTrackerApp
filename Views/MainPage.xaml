@@ -12,7 +12,7 @@
         Padding="10"
         ColumnDefinitions="Auto, *, Auto"
         Grid.Row="0"
-        RowDefinitions="Auto, *"
+        RowDefinitions="Auto, *, Auto"
         VerticalOptions="Center">
                 <!--  Profile  -->
                 <ImageButton
@@ -46,12 +46,24 @@
 
 
             <!--  Product List  -->
-            <CollectionView
-                HeightRequest="500"
+            <CollectionView               
                 Grid.Row="1"
                 Margin="0,10,0,10"
-                ItemsSource="{Binding Products}">   
+                ItemsSource="{Binding Products}">
+                <!-- EMPTY LIST -->
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout>
+                        <Label
+                            HorizontalOptions="Center"
+                             Text="You have no products yet"
+                             FontSize="20"
+                             TextColor="{StaticResource Gray600}"                           
+                             />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <!-- FILLED LIST-->
                 <CollectionView.ItemTemplate>
+                    
                     <DataTemplate>
                     <Grid
                     Padding="10"
@@ -103,13 +115,14 @@
         <!--  Button ADD  -->
         <Button
         Grid.Row="2"
+        Grid.ColumnSpan="3"
         BackgroundColor="Tomato"
         CornerRadius="25"
         FontAttributes="Bold"
         HeightRequest="50"
-        HorizontalOptions="FillAndExpand"
         Text="ADD"
-        TextColor="White" />
+        TextColor="White"
+        Command="{Binding GoToScanItemPageCommand}"/>
 
         </Grid>
     </VerticalStackLayout>

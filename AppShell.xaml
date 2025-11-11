@@ -30,6 +30,7 @@
     <ShellContent  Title="My Profile" ContentTemplate="{DataTemplate views:MyProfilePage}" Route="MyProfilePage" />
     <ShellContent  Title="Main" ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
     <ShellContent  Title="Scan Item" ContentTemplate="{DataTemplate views:ScanItemPage}" Route="ScanItemPage" />
-    
+
+
 
 </Shell>
