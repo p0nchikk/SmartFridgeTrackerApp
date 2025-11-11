@@ -29,7 +29,7 @@ namespace SmartFridgeTracker.ViewModels
             {
                 if (IsSpoiled) return "warning_sign.png";
                 // "Soon to expire" if 2 days or less left
-                else if ((ExpirationDate - DateTime.Now).TotalDays <= 2) return "exclamation.png";
+                else if ((ExpirationDate - DateTime.Now).TotalDays <= 3) return "exclamation.png";
                 else return string.Empty;
             }
         }

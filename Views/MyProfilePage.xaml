@@ -36,9 +36,8 @@
                             HorizontalOptions="Start"/>
                         <!-- BASIC PROFILE INFO -->
                         <Grid Grid.Column="1" RowDefinitions="auto,auto,auto" HorizontalOptions="Start" HeightRequest="60">
-                            <Label Text="Username" FontSize="20" TextColor="{StaticResource Gray600}"/>
-                            <Label Text="Email" Grid.Row="1" FontSize="13" TextColor="{StaticResource Gray400}"/>
-                            <Label Text="Registration date" Grid.Row="2" FontSize="13" TextColor="{StaticResource Gray400}"/>
+                            <Label Text="{Binding Username}" FontSize="20" TextColor="{StaticResource Gray600}"/>
+                            <Label Text="{Binding Email}" Grid.Row="1" FontSize="13" TextColor="{StaticResource Gray400}"/>
                         </Grid>
                         <!-- BUTTON EDIT PROFILE -->
                         <Button
@@ -52,10 +51,10 @@
                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource Primary}" Margin="0,20,0,20"/>
 
                     <!-- USER DETAILS SECTION -->
-                    <Grid ColumnDefinitions="auto, 100, auto" RowDefinitions="*,*">
+                    <Grid ColumnDefinitions="auto, 100, auto" RowDefinitions="*,*" RowSpacing="10">
 
                         <!-- FULL NAME -->
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" RowSpacing="5" ColumnSpacing="15" HeightRequest="50">
+                        <Grid HorizontalOptions="Start" ColumnDefinitions="*,*" RowDefinitions="*,*" RowSpacing="5" ColumnSpacing="15" HeightRequest="50">
 
                             <Image Source="user_icon.png" HeightRequest="40" Grid.RowSpan="2"/>
 
@@ -64,14 +63,14 @@
                                    Grid.Column="1"
                                    TextColor="{StaticResource Gray400}"/>
 
-                            <Label Text="Polina" 
+                            <Label Text="Empty" 
                                        FontSize="13"
                                        Grid.Column="1" 
                                        Grid.Row="1"
                                        TextColor="{StaticResource Gray600}"/>
                         </Grid>
                         <!-- JOIN DATE -->
-                        <Grid Grid.Row="1" ColumnDefinitions="*,*" RowDefinitions="*,*" RowSpacing="5" ColumnSpacing="15" HeightRequest="50">
+                        <Grid Grid.Row="1" HorizontalOptions="Start" ColumnDefinitions="*,*" RowDefinitions="*,*" RowSpacing="5" ColumnSpacing="15" HeightRequest="50">
 
                             <Image Source="calendar_icon.png" HeightRequest="40"  Grid.RowSpan="2"/>
 
@@ -79,7 +78,7 @@
                                    FontSize="15"
                                    Grid.Column="1"
                                    TextColor="{StaticResource Gray400}"/>
-                            <Label Text="15/05/2025" 
+                            <Label Text="{Binding RegDate, StringFormat='{0:dd MMM yyyy HH:mm}'}" 
                                    FontSize="13"
                                    Grid.Column="1" 
                                    Grid.Row="1"
@@ -94,7 +93,7 @@
                                    FontSize="15"
                                    Grid.Column="1"
                                    TextColor="{StaticResource Gray400}"/>
-                            <Label Text="yourEmail@gmail.com" 
+                            <Label Text="{Binding Email}" 
                                    FontSize="13"
                                    Grid.Column="1" 
                                    Grid.Row="1"
@@ -109,7 +108,7 @@
                                     FontSize="15"
                                     Grid.Column="1"
                                     TextColor="{StaticResource Gray400}"/>
-                            <Label Text="My Fridge" 
+                            <Label Text="{Binding FridgeName}" 
                                     FontSize="13"
                                     Grid.Column="1" 
                                     Grid.Row="1"
@@ -152,7 +151,7 @@
                             Grid.Row="1"
                             Grid.Column="1"
                              TextColor="{StaticResource Gray600}"
-                            Text="{Binding ProductCount}" />
+                            Text="{Binding ProductsCount}" />
 
                         <Label
                             Grid.Row="2"

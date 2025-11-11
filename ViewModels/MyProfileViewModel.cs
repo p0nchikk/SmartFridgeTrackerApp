@@ -43,16 +43,18 @@ namespace SmartFridgeTracker.ViewModels
                 Email = user.Email ?? "No email";
                 RegDate = user.RegDate;
 
-                FridgeName = user.Fridge?.Name ?? "No Fridge";
+                Fridge? fridge = user.Fridge;
+                
                 if (user.Fridge != null)
                 {
-                    ProductCount = user.Fridge.ProductsCount;
-                    ExpiringSoonCount = user.Fridge?.ProductsList.Count(p => !p.IsSpoiled && p.ExpirationDate <= DateTime.Now.AddDays(3)) ?? 0;
-                    SpoiledCount = user.Fridge?.ProductsList.Count(p => p.IsSpoiled) ?? 0;
+                    FridgeName = fridge.Name ?? "No Fridge";
+                    ProductCount = fridge.ProductsCount;
+                    ExpiringSoonCount = fridge?.ProductsList.Count(p => !p.IsSpoiled && p.ExpirationDate <= DateTime.Now.AddDays(3)) ?? 0;
+                    SpoiledCount = fridge?.ProductsList.Count(p => p.IsSpoiled) ?? 0;
                 }
-
                 LastUpdated = DateTime.Now; // Example, should be from last fridge update
                 WeeklyUsage = 0; // Example, can be calculated from history
+
             }
             else //If user isn't logged yet
             {
