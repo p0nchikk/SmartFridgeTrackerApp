@@ -4,109 +4,106 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BackgroundColor="White">
-    <VerticalStackLayout BackgroundColor="{StaticResource Background}">
+    <!--<VerticalStackLayout BackgroundColor="{StaticResource Background}">-->
 
-        <Grid Padding="10" RowDefinitions="Auto, *, Auto">
-            <!--  Upper Block  -->
+    <Grid Padding="10" RowDefinitions="Auto,*,Auto" BackgroundColor="{StaticResource Background}">
+        <!--  Upper Block  -->
+        <VerticalStackLayout Grid.Row="0" VerticalOptions="Center">
             <Grid
-        Padding="10"
-        ColumnDefinitions="Auto, *, Auto"
-        Grid.Row="0"
-        RowDefinitions="Auto, *, Auto"
-        VerticalOptions="Center">
+                Padding="10"
+                ColumnDefinitions="Auto, *, Auto">
                 <!--  Profile  -->
                 <ImageButton
-            Aspect="AspectFill"
-            BackgroundColor="Transparent"
-            Command="{Binding ProfileImageTappedCommand}"
-            HeightRequest="40"
-            Source="profile_placeholder.png"
-            WidthRequest="40" />
+                    Aspect="AspectFill"
+                    BackgroundColor="Transparent"
+                    Command="{Binding ProfileImageTappedCommand}"
+                    HeightRequest="40"
+                    Source="profile_placeholder.png"
+                    WidthRequest="40" />
 
                 <!--  Name  -->
                 <Label
-            Grid.Column="1"
-            FontAttributes="Bold"
-            FontSize="25"
-            HorizontalOptions="Center"
-            Text="My Fridge"
-            TextColor="{StaticResource PrimaryDark}"
-            VerticalOptions="Center" />
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="25"
+                    HorizontalOptions="Center"
+                    Text="My Fridge"
+                    TextColor="{StaticResource PrimaryDark}"
+                    VerticalOptions="Center" />
 
                 <!--  Menu  -->
                 <Button
-            Grid.Column="2"
-            BackgroundColor="Transparent"
-            HeightRequest="40"
-            HorizontalOptions="End"
-            ImageSource="menu.png"
-            WidthRequest="40" />
-                <BoxView HeightRequest="2" BackgroundColor="{StaticResource Gray300}" Margin="0,20,0,10" Grid.Row="1" Grid.ColumnSpan="3"/>
+                    Grid.Column="2"
+                    BackgroundColor="Transparent"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    ImageSource="menu.png"
+                    WidthRequest="40" />
             </Grid>
+            <BoxView HeightRequest="2" BackgroundColor="{StaticResource Gray300}" Margin="0,20,0,10"/>
+        </VerticalStackLayout>
 
+        <!--  Product List  -->
+        <CollectionView  
+            ItemsSource="{Binding Products}"             
+            Grid.Row="1"
+            Margin="0,10,0,10">
+            <!-- EMPTY LIST -->
+            <CollectionView.EmptyView>
+                <VerticalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                            Text="You have no products yet"
+                            FontSize="20"
+                            TextColor="{StaticResource Gray600}"                           
+                            />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+            <!-- FILLED LIST-->
+            <CollectionView.ItemTemplate>
 
-            <!--  Product List  -->
-            <CollectionView               
-                Grid.Row="1"
-                Margin="0,10,0,10"
-                ItemsSource="{Binding Products}">
-                <!-- EMPTY LIST -->
-                <CollectionView.EmptyView>
-                    <VerticalStackLayout>
-                        <Label
-                            HorizontalOptions="Center"
-                             Text="You have no products yet"
-                             FontSize="20"
-                             TextColor="{StaticResource Gray600}"                           
-                             />
-                    </VerticalStackLayout>
-                </CollectionView.EmptyView>
-                <!-- FILLED LIST-->
-                <CollectionView.ItemTemplate>
-                    
-                    <DataTemplate>
+                <DataTemplate>
                     <Grid
-                    Padding="10"
-                    ColumnDefinitions="60,*,60, 60"
-                    VerticalOptions="Center">
+                        Padding="10"
+                        ColumnDefinitions="Auto,*,Auto,60"
+                        VerticalOptions="Center">
                         <!--  Product Image  -->
 
                         <Image
-                        Aspect="AspectFill"
-                        HeightRequest="60"
-                        HorizontalOptions="Start"
-                        Source="{Binding Image}"
-                        VerticalOptions="Center"
-                        WidthRequest="60" />
+                            Aspect="AspectFill"
+                            HorizontalOptions="Start"
+                            Source="{Binding Image}"
+                            VerticalOptions="Center" 
+                            WidthRequest="60" />
 
                         <!--  Product Name  -->
                         <Label
-                        Grid.Column="1"
-                        Margin="10,0,0,0"
-                        FontSize="22"
-                        HorizontalOptions="Start"
-                        Text="{Binding Name}"
-                        TextColor="{StaticResource Gray900}"
-                        VerticalOptions="Center" />
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            FontSize="22"
+                            HorizontalOptions="Start"
+                            Text="{Binding Name}"
+                            TextColor="{StaticResource Gray900}"
+                            VerticalOptions="Center" />
 
                         <!--  Warning Sign  -->
                         <Image
-                        Grid.Column="2"
-                        Aspect="AspectFill"
-                        HeightRequest="30"
-                        HorizontalOptions="End"
-                        Source="{Binding StateIcon}"
-                        VerticalOptions="Center"
-                        WidthRequest="30" />
+                            Grid.Column="2"
+                            Aspect="AspectFill"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            Source="{Binding StateIcon}"
+                            VerticalOptions="Center"
+                            WidthRequest="30" />
 
                         <!--  Quantity  -->
                         <Label
-                        Grid.Column="3"
-                        FontSize="22"
-                        HorizontalOptions="End"
-                        Text="{Binding Quantity}"
-                        TextColor="{StaticResource Gray800}"
-                        VerticalOptions="Center" />
+                            Grid.Column="3"
+                            FontSize="22"
+                            HorizontalOptions="Center"
+                            Text="{Binding Quantity}"
+                            TextColor="{StaticResource Gray800}"
+                            VerticalOptions="Center" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -114,17 +111,16 @@
 
         <!--  Button ADD  -->
         <Button
-        Grid.Row="2"
-        Grid.ColumnSpan="3"
-        BackgroundColor="Tomato"
-        CornerRadius="25"
-        FontAttributes="Bold"
-        HeightRequest="50"
-        Text="ADD"
-        TextColor="White"
-        Command="{Binding GoToScanItemPageCommand}"/>
+            Grid.Row="2"
+            BackgroundColor="Tomato"
+            CornerRadius="25"
+            FontAttributes="Bold"
+            HeightRequest="50"
+            Text="ADD"
+            TextColor="White"
+            Command="{Binding GoToScanItemPageCommand}"/>
 
-        </Grid>
-    </VerticalStackLayout>
+    </Grid>
+    <!--</VerticalStackLayout>-->
 
 </ContentPage>

@@ -7,7 +7,10 @@ namespace SmartFridgeTracker
         {
             InitializeComponent();
             App.Current.UserAppTheme = AppTheme.Light;
-            MainPage = new AppShell();
+            MainPage = new AppShell()
+            {
+                FlowDirection = FlowDirection.LeftToRight,
+            };
         }
         //protected override Window CreateWindow(IActivationState? activationState)
         //{

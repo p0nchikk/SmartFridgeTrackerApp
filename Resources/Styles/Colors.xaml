@@ -12,6 +12,12 @@
     <Color x:Key="Background">#FCFFFC</Color>
     <Color x:Key="Tertiary">#0b5e2d</Color>
 
+    <Color x:Key="PrimaryGreenBright">#65B741</Color>
+    <Color x:Key="PrimaryGreenLight">#C1F2B0</Color>
+    <Color x:Key="BackgroundGrayLight">#FBF6EE</Color>
+    <Color x:Key="SecondaryOrange">#FFB534</Color>
+
+
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
     <Color x:Key="Magenta">#D600AA</Color>
