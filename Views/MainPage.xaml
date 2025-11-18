@@ -11,34 +11,23 @@
         <VerticalStackLayout Grid.Row="0" VerticalOptions="Center">
             <Grid
                 Padding="10"
-                ColumnDefinitions="Auto, *, Auto">
+                ColumnSpacing="20"
+                ColumnDefinitions="Auto, *">
                 <!--  Profile  -->
                 <ImageButton
-                    Aspect="AspectFill"
-                    BackgroundColor="Transparent"
+                    Style="{StaticResource ImageButton}"
                     Command="{Binding ProfileImageTappedCommand}"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
                     HeightRequest="40"
                     Source="profile_placeholder.png"
                     WidthRequest="40" />
 
-                <!--  Name  -->
-                <Label
-                    Grid.Column="1"
-                    FontAttributes="Bold"
-                    FontSize="25"
-                    HorizontalOptions="Center"
+                <!--  Fridge Name  -->
+                <Label                 
+                    Style="{StaticResource HeaderLabel}"
                     Text="My Fridge"
-                    TextColor="{StaticResource PrimaryDark}"
                     VerticalOptions="Center" />
-
-                <!--  Menu  -->
-                <Button
-                    Grid.Column="2"
-                    BackgroundColor="Transparent"
-                    HeightRequest="40"
-                    HorizontalOptions="End"
-                    ImageSource="menu.png"
-                    WidthRequest="40" />
             </Grid>
             <BoxView HeightRequest="2" BackgroundColor="{StaticResource Gray300}" Margin="0,20,0,10"/>
         </VerticalStackLayout>

@@ -64,10 +64,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Resources\Styles\CustomStyle.xaml">
+	  <MauiXaml Update="Resources\Styles\LoginRegisterStyle.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\LoginRegisterStyle.xaml">
+	  <MauiXaml Update="Resources\Styles\MyCustomStyle.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginPage.xaml">

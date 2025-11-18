@@ -68,7 +68,7 @@
             <Button
                 Margin="0,10,0,0"
                 Command="{Binding LoginUserCommand}"
-                Style="{StaticResource PrimaryButtonStyle}"
+                Style="{StaticResource ButtonStyle}"
                 Text="Sign In" />
 
             <!--  Divider  -->
@@ -98,8 +98,9 @@
 
                 <Label
                     FontSize="14"
-                    Style="{StaticResource SecondaryButtonStyle}"
+                    Style="{StaticResource NavigationButtonStyle}"
                     Text="Sign up">
+                    
                 <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToRegisterCommand}" />
                     </Label.GestureRecognizers>
