@@ -99,9 +99,8 @@
                 <Label
                     FontSize="14"
                     Style="{StaticResource SecondaryButtonStyle}"
-                    Text="Sign up"
-                    TextColor="{StaticResource PrimaryDark}">
-                    <Label.GestureRecognizers>
+                    Text="Sign up">
+                <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToRegisterCommand}" />
                     </Label.GestureRecognizers>
                 </Label>

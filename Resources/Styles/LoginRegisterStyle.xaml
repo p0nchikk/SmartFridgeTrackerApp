@@ -8,15 +8,14 @@
     <Style x:Key="ContainerStyle" TargetType="VerticalStackLayout">
         <Setter Property="Padding" Value="30,60,30,30" />
         <Setter Property="Spacing" Value="15" />
-        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGrayLight}" />
-        <Setter Property="WidthRequest" Value="500" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
     </Style>
 
     <!--  Header  -->
     <Style x:Key="HeaderLabelStyle" TargetType="Label">
         <Setter Property="FontSize" Value="40" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="TextColor" Value="{StaticResource PrimaryGreenBright}" />
+        <Setter Property="TextColor" Value="{StaticResource PrimaryDark}" />
         <!--  green  -->
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
@@ -24,7 +23,7 @@
     <!--  Subheader  -->
     <Style x:Key="SubheaderLabelStyle" TargetType="Label">
         <Setter Property="FontSize" Value="16" />
-        <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+        <Setter Property="TextColor" Value="{StaticResource Gray500}" />
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
     
@@ -41,20 +40,21 @@
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="HasShadow" Value="False" />
-        <Setter Property="BorderColor" Value="{StaticResource PrimaryGreenBright}" />
+        <Setter Property="BorderColor" Value="{StaticResource PrimaryDark}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource White}"/>
     </Style>
 
     <!--  Entry Field  -->
     <Style x:Key="EntryFieldsStyle" TargetType="Entry">
         <Setter Property="FontSize" Value="16" />
         <Setter Property="PlaceholderColor" Value="{StaticResource Gray900}" />
-        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="TextColor" Value="{StaticResource Gray900}" />
     </Style>
 
     <!--  State Message  -->
     <Style x:Key="MessageStyle" TargetType="Label">
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="TextColor" Value="{StaticResource SecondaryOrange}" />
+        <Setter Property="TextColor" Value="{StaticResource SecondaryBright}" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
@@ -62,7 +62,7 @@
 
     <!--  Main Sign-In/Sign-Up Button  -->
     <Style x:Key="PrimaryButtonStyle" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryGreenBright}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDark}" />
         <Setter Property="TextColor" Value="White" />
         <Setter Property="CornerRadius" Value="12" />
         <Setter Property="FontAttributes" Value="Bold" />
@@ -73,7 +73,7 @@
     <!--  Navigation Button  -->
     <Style x:Key="SecondaryButtonStyle" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="TextColor" Value="{StaticResource PrimaryGreenBright}" />
+        <Setter Property="TextColor" Value="{StaticResource PrimaryBright}" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
