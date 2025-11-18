@@ -6,7 +6,7 @@
     BackgroundColor="#FAFCFA">
 
     <ScrollView>
-        <VerticalStackLayout Style="{StaticResource ContainerStyle}">
+        <VerticalStackLayout Style="{StaticResource VerticalContainerStyle}">
 
             <!--  Header  -->
             <Grid ColumnDefinitions="*,auto">
@@ -100,8 +100,8 @@
                     FontSize="14"
                     Style="{StaticResource NavigationButtonStyle}"
                     Text="Sign up">
-                    
-                <Label.GestureRecognizers>
+
+                    <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToRegisterCommand}" />
                     </Label.GestureRecognizers>
                 </Label>

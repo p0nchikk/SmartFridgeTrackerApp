@@ -19,6 +19,7 @@
     <Color x:Key="BackgroundLight">#FFFDF5</Color>
     <Color x:Key="SecondaryBright">#FAA300</Color> 
     <Color x:Key="SecondaryLight">#FFB534</Color>
+    <Color x:Key="RedBright">#de281b</Color>
     
     <!-- SECOND OPTION-->
     

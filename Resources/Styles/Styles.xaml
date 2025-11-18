@@ -22,7 +22,8 @@
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource PrimaryDark}, Dark={StaticResource PrimaryLight}}" /> <!-- to check afterwards -->
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource PrimaryDark}, Dark={StaticResource PrimaryLight}}" />
+        <!--  to check afterwards  -->
         <Setter Property="FontFamily" Value="AlanSansRegular" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="BorderWidth" Value="0" />

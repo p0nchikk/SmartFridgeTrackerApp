@@ -9,7 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-                <!--<ResourceDictionary Source="Resources/Styles/LoginRegisterStyle.xaml" />-->           
+                <!--<ResourceDictionary Source="Resources/Styles/LoginRegisterStyle.xaml" />-->
                 <ResourceDictionary Source="Resources/Styles/MyCustomStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

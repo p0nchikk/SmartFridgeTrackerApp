@@ -6,7 +6,7 @@
     BackgroundColor="#FAFCFA">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="20" Style="{StaticResource ContainerStyle}">
+        <VerticalStackLayout Style="{StaticResource VerticalContainerStyle}">
 
             <!--  Header  -->
             <Grid ColumnDefinitions="*,auto">
@@ -124,7 +124,7 @@
                     TextColor="#444" />
                 <Label
                     FontSize="14"
-                    Style="{StaticResource SecondaryButtonStyle}"
+                    Style="{StaticResource NavigationButtonStyle}"
                     Text="Sign in">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding CommandGoToLogin}" />
