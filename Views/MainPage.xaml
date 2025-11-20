@@ -20,15 +20,12 @@
                         FontSize="25"
                         Style="{StaticResource HeaderLabelStyle}"
                         Text="My Fridge" />
-                    <!--  Profile  -->
+                    <!--  Profile Button  -->
                     <ImageButton
                         Grid.Column="2"
                         Command="{Binding ProfileImageTappedCommand}"
-                        HeightRequest="40"
                         HorizontalOptions="End"
-                        Source="profile_placeholder.png"
-                        Style="{StaticResource ImageButtonStyle}"
-                        WidthRequest="40" />
+                        Style="{StaticResource ProfileImageButtonStyle}"/>
                 </Grid>
 
                 <BoxView Style="{StaticResource HorizontalLineStyle}" />

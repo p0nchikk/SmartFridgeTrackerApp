@@ -17,7 +17,13 @@
         <Setter Property="RowDefinitions" Value="Auto,*,Auto" />
         <Setter Property="RowSpacing" Value="10" />
     </Style>
-
+    
+    <!--  3 Columns Grid Container  -->
+    <Style x:Key="ThreeColumnGridContainerStyle" TargetType="Grid">
+        <Setter Property="ColumnDefinitions" Value="Auto,*,Auto" />
+        <Setter Property="ColumnSpacing" Value="20" />
+    </Style>
+    
     <!--  Horizontal Line  -->
     <Style x:Key="HorizontalLineStyle" TargetType="BoxView">
         <Setter Property="Margin" Value="0,20,0,10" />
@@ -40,7 +46,8 @@
         <Setter Property="TextColor" Value="{StaticResource Gray500}" />
         <Setter Property="HorizontalOptions" Value="Center" />
     </Style>
-
+    
+    <!--  Regular text -->
     <Style x:Key="RegularLabelStyle" TargetType="Label">
         <Setter Property="FontSize" Value="20" />
         <Setter Property="TextColor" Value="{StaticResource Gray600}" />
@@ -52,6 +59,7 @@
     <Style x:Key="FridgeIconStyle" TargetType="Image">
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="Source" Value="fridge.png"/>
     </Style>
 
     <!--  Entry Frame  -->
@@ -95,6 +103,15 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="HeightRequest" Value="40" />
         <Setter Property="WidthRequest" Value="40" />
+    </Style>
+    
+    <!--  Profile Image Button  -->
+    <Style x:Key="ProfileImageButtonStyle" TargetType="ImageButton">
+        <Setter Property="Aspect" Value="AspectFill" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="Source" Value="profile_placeholder.png"/>
     </Style>
 
     <!--  Navigation Button  -->

@@ -16,7 +16,6 @@
                 </VerticalStackLayout>
                 <Image
                     Grid.Column="1"
-                    Source="fridge.png"
                     Style="{StaticResource FridgeIconStyle}" />
             </Grid>
 
@@ -70,6 +69,7 @@
                 Command="{Binding LoginUserCommand}"
                 Style="{StaticResource ButtonStyle}"
                 Text="Sign In" />
+            
 
             <!--  Divider  -->
             <Grid Margin="0,20">
