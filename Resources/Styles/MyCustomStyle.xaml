@@ -59,7 +59,7 @@
     <Style x:Key="FridgeIconStyle" TargetType="Image">
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="WidthRequest" Value="100" />
-        <Setter Property="Source" Value="fridge.png"/>
+        <Setter Property="Source" Value="logo_carrot.png"/>
     </Style>
 
     <!--  Entry Frame  -->
@@ -132,7 +132,7 @@
     <!--  Product Name  -->
     <Style x:Key="ProductNameStyle" TargetType="Label">
         <Setter Property="FontSize" Value="22" />
-        <Setter Property="TextColor" Value="{StaticResource Gray900}" />
+        <Setter Property="TextColor" Value="{StaticResource Gray600}" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="Margin" Value="10,0,0,0" />
