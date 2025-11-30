@@ -7,7 +7,7 @@
         <Image
             HeightRequest="500"
             HorizontalOptions="Center"
-            Source="white_logo.png"
+            Source="logo_carrot.png"
             VerticalOptions="Center"
             WidthRequest="500" />
     </VerticalStackLayout>

@@ -18,8 +18,8 @@
             <zxing:CameraBarcodeReaderView
                 Grid.Row="1"
                 BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected"
-                HeightRequest="200"
-                WidthRequest="200" />
+                HeightRequest="100"
+                WidthRequest="100" />
             <!--  FREQUENT PRODUCTS BUTTON  -->
             <Button
                 Grid.Row="2"

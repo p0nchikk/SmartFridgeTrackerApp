@@ -30,6 +30,8 @@ namespace SmartFridgeTracker.ViewModels
         public ICommand? ProfileImageTappedCommand { get; set; }
 
         public ICommand? GoToScanItemPageCommand { get; set; }
+
+        public ICommand? RemoveItemCommand { get; set; }
         #endregion
 
         #region Constructor
@@ -65,9 +67,8 @@ namespace SmartFridgeTracker.ViewModels
 
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
             GoToScanItemPageCommand = new Command(GoToScanItemPage);
+            RemoveItemCommand = new Command(RemoveItem);
         }
-
-
 
         #endregion
 
@@ -85,6 +86,14 @@ namespace SmartFridgeTracker.ViewModels
             {
                 await Shell.Current.GoToAsync("//ScanItemPage");
             });
+        }
+        private void RemoveItem(object objProduct)
+        {
+            Product product = objProduct as Product;
+            if (product != null) 
+            {
+                Products.Remove(product);
+            }
         }
 
         #endregion

@@ -6,7 +6,6 @@ namespace SmartFridgeTracker
         public App()
         {
             InitializeComponent();
-            App.Current.UserAppTheme = AppTheme.Light;
             MainPage = new AppShell()
             {
                 FlowDirection = FlowDirection.LeftToRight,
@@ -14,7 +13,7 @@ namespace SmartFridgeTracker
         }
         //protected override Window CreateWindow(IActivationState? activationState)
         //{
-        //    return new Window(new AppShell());
+        //    return new Window(new NavigationPage(new MainPage()));
         //}
     }
 }

@@ -2,95 +2,103 @@
 <ContentPage
     x:Class="SmartFridgeTracker.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:viewmodels="clr-namespace:SmartFridgeTracker.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <!--  Container Grid  -->
+    <Grid Style="{StaticResource ThreeRowGridContainerStyle}" BackgroundColor="{StaticResource Background}" Padding="20" Margin="20">
 
-    <VerticalStackLayout Style="{StaticResource VerticalContainerStyle}">
-        <!--  Container Grid  -->
-        <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
-
-            <!--  Upper Block  -->
-            <VerticalStackLayout Grid.Row="0">
-                <Grid
+        <!--  Upper Block  -->
+        <VerticalStackLayout Grid.Row="0">
+            <Grid
                     Margin="10"
                     ColumnDefinitions="auto,*,auto"
                     ColumnSpacing="20">
-                    <!--  Fridge Name  -->
-                    <Label
+                <!--  Fridge Name  -->
+                <Label
                         Grid.Column="1"
                         FontSize="25"
                         Style="{StaticResource HeaderLabelStyle}"
                         Text="My Fridge" />
-                    <!--  Profile Button  -->
-                    <ImageButton
+                <!--  Profile Button  -->
+                <ImageButton
                         Grid.Column="2"
                         Command="{Binding ProfileImageTappedCommand}"
                         HorizontalOptions="End"
-                        Style="{StaticResource ProfileImageButtonStyle}"/>
-                </Grid>
+                        Style="{StaticResource ProfileImageButtonStyle}" />
+            </Grid>
 
-                <BoxView Style="{StaticResource HorizontalLineStyle}" />
+            <BoxView Style="{StaticResource HorizontalLineStyle}" />
 
-            </VerticalStackLayout>
+        </VerticalStackLayout>
 
-            <!--  Product List  -->
-            <CollectionView
+        <!--  Product List  -->
+
+        <CollectionView
                 Grid.Row="1"
                 Margin="0,10,0,10"
                 ItemsSource="{Binding Products}">
-                <!--  EMPTY LIST  -->
-                <CollectionView.EmptyView>
-                    <VerticalStackLayout>
-                        <Label
+            <!--  EMPTY LIST  -->
+            <CollectionView.EmptyView>
+                <VerticalStackLayout>
+                    <Label
                             FontSize="20"
                             HorizontalOptions="Center"
                             Text="You have no products yet"
                             TextColor="{StaticResource Gray600}" />
-                    </VerticalStackLayout>
-                </CollectionView.EmptyView>
-                <!--  FILLED LIST  -->
-                <CollectionView.ItemTemplate>
-
-                    <DataTemplate>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+            <!--  FILLED LIST  -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItem
+                                    BackgroundColor="{StaticResource RedBright}"
+                                    Command="{Binding RemoveItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Remove" />
+                        </SwipeView.RightItems>
                         <Grid
-                            Padding="10"
-                            ColumnDefinitions="Auto,*,Auto,60"
-                            VerticalOptions="Center">
+                                Padding="10"
+                                ColumnDefinitions="Auto,*,Auto,60"
+                                VerticalOptions="Center">
 
                             <!--  Product Image  -->
                             <Image Source="{Binding Image}" Style="{StaticResource ProductImageStyle}" />
 
                             <!--  Product Name  -->
                             <Label
-                                Grid.Column="1"
-                                Style="{StaticResource ProductNameStyle}"
-                                Text="{Binding Name}" />
+                                    Grid.Column="1"
+                                    Style="{StaticResource ProductNameStyle}"
+                                    Text="{Binding Name}" />
 
                             <!--  Warning Sign  -->
                             <Image
-                                Grid.Column="2"
-                                Source="{Binding StateIcon}"
-                                Style="{StaticResource WarningSignStyle}" />
+                                    Grid.Column="2"
+                                    Source="{Binding StateIcon}"
+                                    Style="{StaticResource WarningSignStyle}" />
 
                             <!--  Quantity  -->
                             <Label
-                                Grid.Column="3"
-                                Style="{StaticResource ProductQuantityStyle}"
-                                Text="{Binding Quantity}" />
+                                    Grid.Column="3"
+                                    Style="{StaticResource ProductQuantityStyle}"
+                                    Text="{Binding Quantity}" />
                         </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
-            <!--  Button ADD  -->
-            <Button
+        <!--  Button ADD  -->
+        <Button
                 Grid.Row="2"
                 BackgroundColor="{StaticResource PrimaryDark}"
                 Command="{Binding GoToScanItemPageCommand}"
                 Style="{StaticResource ButtonStyle}"
                 Text="ADD" />
 
-            <!--  To recheck constructor  -->
+        <!--  To recheck constructor  -->
 
-        </Grid>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

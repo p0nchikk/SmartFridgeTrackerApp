@@ -98,7 +98,7 @@
             <Button
                 Margin="0,10,0,0"
                 Command="{Binding CommandRegisterUser}"
-                Style="{StaticResource PrimaryButtonStyle}"
+                Style="{StaticResource ButtonStyle}"
                 Text="Register" />
 
             <!--  Divider  -->
