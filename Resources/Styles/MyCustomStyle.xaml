@@ -100,7 +100,7 @@
 
     <!--  Image Button  -->
     <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
-        <Setter Property="Aspect" Value="AspectFill" />
+        <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="HeightRequest" Value="25" />
         <Setter Property="WidthRequest" Value="25" />
@@ -108,7 +108,7 @@
 
     <!--  Profile Image Button  -->
     <Style x:Key="ProfileImageButtonStyle" TargetType="ImageButton">
-        <Setter Property="Aspect" Value="AspectFill" />
+        <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="HeightRequest" Value="25" />
         <Setter Property="WidthRequest" Value="25" />

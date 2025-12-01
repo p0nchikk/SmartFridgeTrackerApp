@@ -73,7 +73,7 @@
                         RowDefinitions="*,*"
                         RowSpacing="10">
 
-                        <!--  FULL NAME  -->
+                        <!--  ACHIVEMENTS  -->
                         <Grid
                             ColumnDefinitions="*,*"
                             ColumnSpacing="15"
@@ -84,19 +84,30 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                Source="user_icon.png"
+                                Source="star_badge_icon.png"
                                 Style="{StaticResource ImageIconStyle}" />
 
                             <Label
                                 Grid.Column="1"
                                 Style="{StaticResource LabelPropertyStyle}"
-                                Text="Full Name" />
+                                Text="Achivements" />
 
-                            <Label
+                            <Grid
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Style="{StaticResource LabelCharacteristicStyle}"
-                                Text="Empty" />
+                                ColumnDefinitions="Auto,Auto"
+                                ColumnSpacing="5">
+                                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="Empty" />
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="12"
+                                    Source="more_icon.png"
+                                    WidthRequest="12">
+                                    <!--<Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding MoreTappedCommand}" />
+                                    </Image.GestureRecognizers>-->
+                                </Image>
+                            </Grid>
                         </Grid>
                         <!--  JOIN DATE  -->
                         <Grid
