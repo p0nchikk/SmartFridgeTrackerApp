@@ -16,6 +16,9 @@
     <Style x:Key="ThreeRowGridContainerStyle" TargetType="Grid">
         <Setter Property="RowDefinitions" Value="Auto,*,Auto" />
         <Setter Property="RowSpacing" Value="10" />
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
     </Style>
     
     <!--  3 Columns Grid Container  -->
@@ -80,7 +83,7 @@
     </Style>
 
     <!--  Message  -->
-    <Style x:Key="MessageStyleStyle" TargetType="Label">
+    <Style x:Key="MessageStyle" TargetType="Label">
         <Setter Property="FontSize" Value="14" />
         <Setter Property="TextColor" Value="{StaticResource SecondaryBright}" />
         <Setter Property="HorizontalOptions" Value="Center" />

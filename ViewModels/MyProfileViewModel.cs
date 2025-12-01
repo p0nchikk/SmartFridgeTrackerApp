@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SmartFridgeTracker.ViewModels
 {
@@ -30,6 +31,7 @@ namespace SmartFridgeTracker.ViewModels
         #endregion
 
         #region Commands
+        public ICommand? GoBackCommand { get; set; }
         #endregion
 
         #region Constructor
@@ -67,11 +69,19 @@ namespace SmartFridgeTracker.ViewModels
                 SpoiledCount = 3;
                 LastUpdated = DateTime.Now;
                 WeeklyUsage = 4;
-            }            
+            }         
+            GoBackCommand = new Command(GoBack);
         }
         #endregion
 
         #region Functions
+        private void GoBack()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//MainPage");
+            });
+        }
         #endregion
     }
 }

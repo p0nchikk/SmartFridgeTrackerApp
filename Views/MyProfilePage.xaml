@@ -12,6 +12,7 @@
 
             <!--  Header  -->
             <Grid Padding="10,0" ColumnDefinitions="Auto,*">
+                <ImageButton Source="back_arrow.png" Style="{StaticResource ImageButtonStyle}" Command="{Binding GoBackCommand}" />
                 <Label
                     Grid.Column="1"
                     HorizontalOptions="CenterAndExpand"

@@ -6,7 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     
     <!--  Container Grid  -->
-    <Grid Style="{StaticResource ThreeRowGridContainerStyle}" BackgroundColor="{StaticResource Background}" Padding="20" Margin="20">
+    <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
 
         <!--  Upper Block  -->
         <VerticalStackLayout Grid.Row="0">
