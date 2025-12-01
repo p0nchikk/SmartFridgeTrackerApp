@@ -12,7 +12,10 @@
 
             <!--  Header  -->
             <Grid Padding="10,0" ColumnDefinitions="Auto,*">
-                <ImageButton Source="back_arrow.png" Style="{StaticResource ImageButtonStyle}" Command="{Binding GoBackCommand}" />
+                <ImageButton
+                    Command="{Binding GoBackCommand}"
+                    Source="back_arrow.png"
+                    Style="{StaticResource ImageButtonStyle}" />
                 <Label
                     Grid.Column="1"
                     HorizontalOptions="CenterAndExpand"
@@ -30,37 +33,34 @@
                 <VerticalStackLayout>
                     <Grid
                         ColumnDefinitions="auto,*,auto"
-                        ColumnSpacing="10"
-                        RowSpacing="10">
+                        ColumnSpacing="15"
+                        RowDefinitions="*,*">
                         <!--  PROFILE IMAGE  -->
                         <Image
+                            Grid.RowSpan="2"
                             HeightRequest="60"
                             HorizontalOptions="Start"
                             Source="profile_placeholder.png"
                             WidthRequest="60" />
                         <!--  BASIC PROFILE INFO  -->
-                        <Grid
+                        <Label
                             Grid.Column="1"
-                            HeightRequest="60"
-                            HorizontalOptions="Start"
-                            RowDefinitions="auto,auto,auto">
-                            <Label
-                                FontSize="20"
-                                Text="{Binding Username}"
-                                TextColor="{StaticResource Gray600}" />
-                            <Label
-                                Grid.Row="1"
-                                FontSize="13"
-                                Text="{Binding Email}"
-                                TextColor="{StaticResource Gray400}" />
-                        </Grid>
+                            FontSize="20"
+                            Style="{StaticResource LabelPropertyStyle}"
+                            Text="{Binding Username}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="13"
+                            Text="{Binding Email}"
+                            TextColor="{StaticResource Gray400}" />
                         <!--  BUTTON EDIT PROFILE  -->
-                        <Button
+                        <ImageButton
+                            Grid.RowSpan="2"
                             Grid.Column="2"
-                            BackgroundColor="Transparent"
                             HorizontalOptions="End"
-                            Text="Edit"
-                            TextColor="{StaticResource PrimaryDark}" />
+                            Source="edit_icon.png"
+                            Style="{StaticResource ImageButtonStyle}" />
                     </Grid>
                     <!--  HORIZONTAL LINE  -->
                     <BoxView
@@ -85,21 +85,19 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                HeightRequest="40"
+                                Style="{StaticResource ImageIconStyle}"
                                 Source="user_icon.png" />
 
                             <Label
                                 Grid.Column="1"
-                                FontSize="15"
-                                Text="Full Name"
-                                TextColor="{StaticResource Gray400}" />
+                                Style="{StaticResource LabelPropertyStyle}"
+                                Text="Full Name" />
 
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="13"
-                                Text="Empty"
-                                TextColor="{StaticResource Gray600}" />
+                                Style="{StaticResource LabelCharacteristicStyle}"
+                                Text="Empty" />
                         </Grid>
                         <!--  JOIN DATE  -->
                         <Grid
@@ -113,20 +111,18 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                HeightRequest="40"
+                                Style="{StaticResource ImageIconStyle}"
                                 Source="calendar_icon.png" />
 
                             <Label
                                 Grid.Column="1"
-                                FontSize="15"
-                                Text="Join Date"
-                                TextColor="{StaticResource Gray400}" />
+                                Style="{StaticResource LabelPropertyStyle}"
+                                Text="Join Date" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="13"
-                                Text="{Binding RegDate, StringFormat='{0:dd MMM yyyy HH:mm}'}"
-                                TextColor="{StaticResource Gray600}" />
+                                Style="{StaticResource LabelCharacteristicStyle}"
+                                Text="{Binding RegDate, StringFormat='{0:dd MMM yyyy HH:mm}'}" />
                         </Grid>
                         <!--  EMAIL  -->
                         <Grid
@@ -140,20 +136,18 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                HeightRequest="40"
+                                Style="{StaticResource ImageIconStyle}"
                                 Source="email_icon.png" />
 
                             <Label
                                 Grid.Column="1"
-                                FontSize="15"
-                                Text="Email"
-                                TextColor="{StaticResource Gray400}" />
+                                Style="{StaticResource LabelPropertyStyle}"
+                                Text="Email" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="13"
-                                Text="{Binding Email}"
-                                TextColor="{StaticResource Gray600}" />
+                                Style="{StaticResource LabelCharacteristicStyle}"
+                                Text="{Binding Email}" />
                         </Grid>
                         <!--  FRIDGE NAME  -->
                         <Grid
@@ -168,20 +162,18 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                HeightRequest="40"
+                                Style="{StaticResource ImageIconStyle}"
                                 Source="fridge_icon.png" />
 
                             <Label
                                 Grid.Column="1"
-                                FontSize="15"
-                                Text="Fridge Name"
-                                TextColor="{StaticResource Gray400}" />
+                                Style="{StaticResource LabelPropertyStyle}"
+                                Text="Fridge Name" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="13"
-                                Text="{Binding FridgeName}"
-                                TextColor="{StaticResource Gray600}" />
+                                Style="{StaticResource LabelCharacteristicStyle}"
+                                Text="{Binding FridgeName}" />
                         </Grid>
                     </Grid>
                 </VerticalStackLayout>
@@ -201,47 +193,40 @@
                         Text="Fridge Summary"
                         TextColor="{StaticResource Gray600}" />
                     <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto,Auto,Auto">
-                        <Label
-                            FontAttributes="Bold"
-                            Text="Fridge Name:"
-                            TextColor="{StaticResource Gray400}" />
+                        <Label Style="{StaticResource LabelPropertyStyle}" Text="Fridge Name:" />
                         <Label
                             Grid.Column="1"
-                            Text="{Binding FridgeName}"
-                            TextColor="{StaticResource Gray600}" />
-
+                            Style="{StaticResource LabelCharacteristicStyle}"
+                            Text="{Binding FridgeName}" />
                         <Label
                             Grid.Row="1"
-                            FontAttributes="Bold"
-                            Text="Product Count:"
-                            TextColor="{StaticResource Gray400}" />
+                            Style="{StaticResource LabelPropertyStyle}"
+                            Text="Product Count:" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
-                            Text="{Binding ProductsCount}"
-                            TextColor="{StaticResource Gray600}" />
+                            Style="{StaticResource LabelCharacteristicStyle}"
+                            Text="{Binding ProductsCount}" />
 
                         <Label
                             Grid.Row="2"
-                            FontAttributes="Bold"
-                            Text="Expiring Soon:"
-                            TextColor="{StaticResource Gray400}" />
+                            Style="{StaticResource LabelPropertyStyle}"
+                            Text="Expiring Soon:" />
                         <Label
                             Grid.Row="2"
                             Grid.Column="1"
-                            Text="{Binding ExpiringSoonCount}"
-                            TextColor="{StaticResource Gray600}" />
+                            Style="{StaticResource LabelCharacteristicStyle}"
+                            Text="{Binding ExpiringSoonCount}" />
 
                         <Label
                             Grid.Row="3"
-                            FontAttributes="Bold"
-                            Text="Spoiled:"
-                            TextColor="{StaticResource Gray400}" />
+                            Style="{StaticResource LabelPropertyStyle}"
+                            Text="Spoiled:" />
                         <Label
                             Grid.Row="3"
                             Grid.Column="1"
-                            Text="{Binding SpoiledCount}"
-                            TextColor="{StaticResource Gray600}" />
+                            Style="{StaticResource LabelCharacteristicStyle}"
+                            Text="{Binding SpoiledCount}" />
                     </Grid>
                 </VerticalStackLayout>
             </Frame>
@@ -257,28 +242,25 @@
                     <Label
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Activity &amp; Insights"
-                        TextColor="{StaticResource Gray600}" />
+                        Style="{StaticResource LabelPropertyStyle}"
+                        Text="Activity &amp; Insights" />
                     <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto">
-                        <Label
-                            FontAttributes="Bold"
-                            Text="Last Updated:"
-                            TextColor="{StaticResource Gray400}" />
+                        <Label 
+                            Style="{StaticResource LabelPropertyStyle}" 
+                            Text="Last Updated:" />
                         <Label
                             Grid.Column="1"
                             Text="{Binding LastUpdated, StringFormat='{0:dd MMM yyyy HH:mm}'}"
-                            TextColor="{StaticResource Gray600}" />
-
+                            Style="{StaticResource LabelCharacteristicStyle}" />
                         <Label
                             Grid.Row="1"
-                            FontAttributes="Bold"
                             Text="Weekly Usage:"
-                            TextColor="{StaticResource Gray400}" />
+                            Style="{StaticResource LabelPropertyStyle}"/>
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
                             Text="{Binding WeeklyUsage}"
-                            TextColor="{StaticResource Gray600}" />
+                            Style="{StaticResource LabelCharacteristicStyle}"/>
                     </Grid>
                 </VerticalStackLayout>
             </Frame>

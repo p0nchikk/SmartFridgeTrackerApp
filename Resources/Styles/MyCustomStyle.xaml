@@ -34,7 +34,7 @@
         <Setter Property="HeightRequest" Value="2" />
     </Style>
 
-    <!--  Header  -->
+    <!--  Header 1  -->
     <Style x:Key="HeaderLabelStyle" TargetType="Label">
         <Setter Property="FontSize" Value="40" />
         <Setter Property="FontAttributes" Value="Bold" />
@@ -104,16 +104,16 @@
     <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
         <Setter Property="Aspect" Value="AspectFill" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="HeightRequest" Value="40" />
-        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="25" />
+        <Setter Property="WidthRequest" Value="25" />
     </Style>
-    
+
     <!--  Profile Image Button  -->
     <Style x:Key="ProfileImageButtonStyle" TargetType="ImageButton">
         <Setter Property="Aspect" Value="AspectFill" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="HeightRequest" Value="40" />
-        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="25" />
+        <Setter Property="WidthRequest" Value="25" />
         <Setter Property="Source" Value="profile_placeholder.png"/>
     </Style>
 
@@ -140,6 +140,13 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="Margin" Value="10,0,0,0" />
     </Style>
+    
+    <!-- Icon Style -->
+    <Style x:Key="ImageIconStyle" TargetType="Image">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="40" />
+    </Style>
 
     <!--  Product Quantity  -->
     <Style x:Key="ProductQuantityStyle" TargetType="Label">
@@ -158,5 +165,18 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
+    
+    <!-- Property Style -->
+    <Style x:Key="LabelPropertyStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Gray600}"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+    
+    <!-- Character Style -->
+    <Style x:Key="LabelCharacteristicStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Gray400}"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+    
 
 </ResourceDictionary>
