@@ -49,9 +49,9 @@
         ContentTemplate="{DataTemplate views:ScanItemPage}"
         Route="ScanItemPage" />
     <ShellContent
-     Title="Product Info"
-     ContentTemplate="{DataTemplate views:ProductInfoPage}"
-     Route="ProductInfoPage" />
+        Title="Product Info"
+        ContentTemplate="{DataTemplate views:ProductInfoPage}"
+        Route="ProductInfoPage" />
 
 
 </Shell>

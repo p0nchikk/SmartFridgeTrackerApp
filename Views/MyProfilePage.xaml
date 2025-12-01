@@ -2,23 +2,22 @@
 <ContentPage
     x:Class="SmartFridgeTracker.Views.MyProfilePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="White">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ScrollView>
-        <VerticalStackLayout
-            Padding="25"
-            BackgroundColor="{StaticResource Background}"
-            Spacing="25">
+        <VerticalStackLayout Spacing="25" Style="{StaticResource VerticalContainerStyle}">
 
             <!--  Header  -->
-            <Grid Padding="10,0" ColumnDefinitions="Auto,*">
+            <Grid
+                Margin="10"
+                ColumnDefinitions="auto,*,auto"
+                ColumnSpacing="20">
                 <ImageButton
                     Command="{Binding GoBackCommand}"
                     Source="back_arrow.png"
                     Style="{StaticResource ImageButtonStyle}" />
                 <Label
                     Grid.Column="1"
-                    HorizontalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
                     Style="{StaticResource HeaderLabelStyle}"
                     Text="My Profile" />
             </Grid>
@@ -85,8 +84,8 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                Style="{StaticResource ImageIconStyle}"
-                                Source="user_icon.png" />
+                                Source="user_icon.png"
+                                Style="{StaticResource ImageIconStyle}" />
 
                             <Label
                                 Grid.Column="1"
@@ -111,8 +110,8 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                Style="{StaticResource ImageIconStyle}"
-                                Source="calendar_icon.png" />
+                                Source="calendar_icon.png"
+                                Style="{StaticResource ImageIconStyle}" />
 
                             <Label
                                 Grid.Column="1"
@@ -136,8 +135,8 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                Style="{StaticResource ImageIconStyle}"
-                                Source="email_icon.png" />
+                                Source="email_icon.png"
+                                Style="{StaticResource ImageIconStyle}" />
 
                             <Label
                                 Grid.Column="1"
@@ -162,8 +161,8 @@
 
                             <Image
                                 Grid.RowSpan="2"
-                                Style="{StaticResource ImageIconStyle}"
-                                Source="fridge_icon.png" />
+                                Source="fridge_icon.png"
+                                Style="{StaticResource ImageIconStyle}" />
 
                             <Label
                                 Grid.Column="1"
@@ -206,7 +205,7 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             Style="{StaticResource LabelCharacteristicStyle}"
-                            Text="{Binding ProductsCount}" />
+                            Text="{Binding ProductCount}" />
 
                         <Label
                             Grid.Row="2"
@@ -245,22 +244,20 @@
                         Style="{StaticResource LabelPropertyStyle}"
                         Text="Activity &amp; Insights" />
                     <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto">
-                        <Label 
-                            Style="{StaticResource LabelPropertyStyle}" 
-                            Text="Last Updated:" />
+                        <Label Style="{StaticResource LabelPropertyStyle}" Text="Last Updated:" />
                         <Label
                             Grid.Column="1"
-                            Text="{Binding LastUpdated, StringFormat='{0:dd MMM yyyy HH:mm}'}"
-                            Style="{StaticResource LabelCharacteristicStyle}" />
+                            Style="{StaticResource LabelCharacteristicStyle}"
+                            Text="{Binding LastUpdated, StringFormat='{0:dd MMM yyyy HH:mm}'}" />
                         <Label
                             Grid.Row="1"
-                            Text="Weekly Usage:"
-                            Style="{StaticResource LabelPropertyStyle}"/>
+                            Style="{StaticResource LabelPropertyStyle}"
+                            Text="Weekly Usage:" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
-                            Text="{Binding WeeklyUsage}"
-                            Style="{StaticResource LabelCharacteristicStyle}"/>
+                            Style="{StaticResource LabelCharacteristicStyle}"
+                            Text="{Binding WeeklyUsage}" />
                     </Grid>
                 </VerticalStackLayout>
             </Frame>

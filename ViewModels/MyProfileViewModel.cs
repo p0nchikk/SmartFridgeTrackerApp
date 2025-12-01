@@ -49,7 +49,7 @@ namespace SmartFridgeTracker.ViewModels
                 
                 if (user.Fridge != null)
                 {
-                    FridgeName = fridge.Name ?? "No Fridge";
+                    FridgeName = fridge.Name ?? "No name yet";
                     ProductCount = fridge.ProductsCount;
                     ExpiringSoonCount = fridge?.ProductsList.Count(p => !p.IsSpoiled && p.ExpirationDate <= DateTime.Now.AddDays(3)) ?? 0;
                     SpoiledCount = fridge?.ProductsList.Count(p => p.IsSpoiled) ?? 0;

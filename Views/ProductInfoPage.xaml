@@ -10,7 +10,35 @@
             <Label Grid.Column="1" Style="{StaticResource HeaderLabelStyle}" Text="Product Info" />
             <ImageButton Grid.Column="2" Source="menu.png" Style="{StaticResource ImageButtonStyle}"/>
         </Grid>
-        <VerticalStackLayout Grid.Row="1">
+        <VerticalStackLayout 
+            HorizontalOptions="Center"
+            Padding="0,30,0,0"
+            Grid.Row="1">
+            <!-- Product's image + name + fabricator -->
+            <Grid RowDefinitions="*,*" ColumnDefinitions="auto,*">
+                <Image 
+                    Source="image_icon.png"
+                    Style="{StaticResource ProductImageStyle}"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    Grid.RowSpan="2"/>
+                <Label
+                    Text="Product's Name"
+                    FontSize="30"
+                    Style="{StaticResource ProductNameStyle}"
+                    Grid.Column="1"
+                    />
+                <Label
+                    Text="Product's Fabricator"
+                    Style="{StaticResource ProductNameStyle}"
+                    TextColor="{StaticResource Gray300}"
+                    FontAttributes="Italic"
+                    FontSize="20"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    />
+            </Grid>
+            <!-- Product's additional info -->
             
         </VerticalStackLayout>
     </Grid>

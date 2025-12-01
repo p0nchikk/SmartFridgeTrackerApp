@@ -5,10 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <VerticalStackLayout BackgroundColor="White">
         <Image
+            Margin="50"
+            HeightRequest="500"
             HorizontalOptions="Center"
             Source="logo_carrot.png"
-            VerticalOptions="Center"
-            HeightRequest="500"
-            Margin="50"/>
+            VerticalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

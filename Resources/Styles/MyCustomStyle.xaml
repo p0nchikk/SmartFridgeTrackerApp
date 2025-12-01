@@ -6,8 +6,7 @@
 
     <!--  Vertical Container  -->
     <Style x:Key="VerticalContainerStyle" TargetType="VerticalStackLayout">
-        <Setter Property="Padding" Value="20" />
-        <Setter Property="Margin" Value="20"/>
+        <Setter Property="Padding" Value="30" />
         <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
         <Setter Property="Spacing" Value="15" />
     </Style>
@@ -16,8 +15,7 @@
     <Style x:Key="ThreeRowGridContainerStyle" TargetType="Grid">
         <Setter Property="RowDefinitions" Value="Auto,*,Auto" />
         <Setter Property="RowSpacing" Value="10" />
-        <Setter Property="Padding" Value="20" />
-        <Setter Property="Margin" Value="20"/>
+        <Setter Property="Padding" Value="30" />
         <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
     </Style>
     
