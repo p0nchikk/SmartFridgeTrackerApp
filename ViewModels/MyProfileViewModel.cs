@@ -14,6 +14,7 @@ namespace SmartFridgeTracker.ViewModels
         #region Variables Declaration
 
         // Identity
+        public int Achivements { get; set; }
         public string? Username { get; set; }
         public string? Email { get; set; }
         public DateTime RegDate { get; set; }
@@ -37,10 +38,11 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public MyProfileViewModel()
         {
-            if (LocalDataService.GetInstance()?.GetUser() != null) //If user is logged already
+            if (LocalDataService.GetInstance() != null) //If user is logged already
             {
                 User user = LocalDataService.GetInstance().GetUser();
 
+                Achivements = 0; //Temprorary
                 Username = user.UserName ?? "No username";
                 Email = user.Email ?? "No email";
                 RegDate = user.RegDate;
@@ -60,15 +62,16 @@ namespace SmartFridgeTracker.ViewModels
             }
             else //If user isn't logged yet
             {
-                Username = "Polina";
-                Email = "polina@gmail.com";
+                Achivements = 0;
+                Username = "Empty";
+                Email = "Empty";
                 RegDate = DateTime.Now;
-                FridgeName = "Num-num";
-                ProductCount = 10;
-                ExpiringSoonCount = 2;
-                SpoiledCount = 3;
+                FridgeName = "Empty";
+                ProductCount = 0;
+                ExpiringSoonCount = 0;
+                SpoiledCount = 0;
                 LastUpdated = DateTime.Now;
-                WeeklyUsage = 4;
+                WeeklyUsage = 0;
             }         
             GoBackCommand = new Command(GoBack);
         }

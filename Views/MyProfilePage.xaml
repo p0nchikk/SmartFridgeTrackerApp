@@ -97,7 +97,9 @@
                                 Grid.Column="1"
                                 ColumnDefinitions="Auto,Auto"
                                 ColumnSpacing="5">
-                                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="Empty" />
+                                <Label
+                                    Style="{StaticResource LabelCharacteristicStyle}"
+                                    Text="{Binding Achivements}" />
                                 <Image
                                     Grid.Column="1"
                                     HeightRequest="12"
