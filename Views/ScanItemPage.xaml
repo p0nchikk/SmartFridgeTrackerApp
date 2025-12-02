@@ -27,13 +27,12 @@
                 Grid.Row="2"
                 Command="{Binding GoToFrequentProductsCommand}"
                 Text="Frequent Products"
-                WidthRequest="200" />
+                Style="{StaticResource ButtonStyle}" />
             <!--  MESSAGE  -->
             <Label
                 Grid.Row="3"
-                HorizontalOptions="Center"
                 Text="{Binding Message}"
-                VerticalOptions="Center" />
+                Style="{StaticResource MessageStyle}"/>
         </Grid>
 
 

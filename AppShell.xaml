@@ -10,38 +10,37 @@
     <ShellContent
         Title="Start Page"
         ContentTemplate="{DataTemplate views:StartPage}"
-        Route="StartPage" 
-        FlyoutItemIsVisible="False"/>
+        FlyoutItemIsVisible="False"
+        Route="StartPage" />
     <ShellContent
         Title="Login"
         ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage" 
-        FlyoutItemIsVisible="False"/>
+        FlyoutItemIsVisible="False"
+        Route="LoginPage" />
     <ShellContent
         Title="Register"
         ContentTemplate="{DataTemplate views:RegisterPage}"
-        Route="RegisterPage" 
-        FlyoutItemIsVisible="False"/>
+        FlyoutItemIsVisible="False"
+        Route="RegisterPage" />
     <ShellContent
         Title="Main"
         ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage"
-        FlyoutIcon="home_icon.png"/>
+        FlyoutIcon="home_icon.png"
+        Route="MainPage" />
     <ShellContent
         Title="My Profile"
         ContentTemplate="{DataTemplate views:MyProfilePage}"
-        Route="MyProfilePage" 
-        FlyoutIcon="profile_placeholder.png"/>
+        FlyoutIcon="profile_placeholder.png"
+        Route="MyProfilePage" />
     <ShellContent
         Title="Scan Item"
         ContentTemplate="{DataTemplate views:ScanItemPage}"
-        Route="ScanItemPage"
-        FlyoutItemIsVisible="False"/>
+        FlyoutItemIsVisible="False"
+        Route="ScanItemPage" />
     <ShellContent
         Title="Product Info"
         ContentTemplate="{DataTemplate views:ProductInfoPage}"
-        Route="ProductInfoPage" 
-        FlyoutItemIsVisible="False"/>
+        Route="ProductInfoPage" />
 
 
 </Shell>

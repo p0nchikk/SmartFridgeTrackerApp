@@ -22,7 +22,7 @@
         <VerticalStackLayout
             Grid.Row="1"
             Padding="0,30,0,0"
-            HorizontalOptions="Center">
+            HorizontalOptions="CenterAndExpand">
             <!--  Product's image + name + fabricator  -->
             <Grid
                 Padding="0,0,0,10"
