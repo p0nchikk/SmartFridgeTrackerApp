@@ -6,40 +6,65 @@
     Title="ProductInfoPage">
     <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
         <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
-            <ImageButton Source="back_arrow.png" Style="{StaticResource ImageButtonStyle}" Command="{Binding GoBackCommand}" />
-            <Label Grid.Column="1" Style="{StaticResource HeaderLabelStyle}" Text="Product Info" />
-            <ImageButton Grid.Column="2" Source="menu.png" Style="{StaticResource ImageButtonStyle}"/>
+            <ImageButton
+                Command="{Binding GoBackCommand}"
+                Source="back_arrow.png"
+                Style="{StaticResource ImageButtonStyle}" />
+            <Label
+                Grid.Column="1"
+                Style="{StaticResource HeaderLabelStyle}"
+                Text="Product Info" />
+            <ImageButton
+                Grid.Column="2"
+                Source="menu.png"
+                Style="{StaticResource ImageButtonStyle}" />
         </Grid>
-        <VerticalStackLayout 
-            HorizontalOptions="Center"
+        <VerticalStackLayout
+            Grid.Row="1"
             Padding="0,30,0,0"
-            Grid.Row="1">
-            <!-- Product's image + name + fabricator -->
-            <Grid RowDefinitions="*,*" ColumnDefinitions="auto,*">
-                <Image 
+            HorizontalOptions="Center">
+            <!--  Product's image + name + fabricator  -->
+            <Grid
+                Padding="0,0,0,10"
+                ColumnDefinitions="auto,*"
+                RowDefinitions="*,*">
+                <Image
+                    Grid.RowSpan="2"
+                    HeightRequest="80"
                     Source="image_icon.png"
                     Style="{StaticResource ProductImageStyle}"
-                    HeightRequest="80"
-                    WidthRequest="80"
-                    Grid.RowSpan="2"/>
+                    WidthRequest="80" />
                 <Label
-                    Text="Product's Name"
+                    Grid.Column="1"
                     FontSize="30"
                     Style="{StaticResource ProductNameStyle}"
-                    Grid.Column="1"
-                    />
+                    Text="Product's Name" />
                 <Label
-                    Text="Product's Fabricator"
-                    Style="{StaticResource ProductNameStyle}"
-                    TextColor="{StaticResource Gray300}"
-                    FontAttributes="Italic"
-                    FontSize="20"
                     Grid.Row="1"
                     Grid.Column="1"
-                    />
+                    FontAttributes="Italic"
+                    FontSize="20"
+                    Style="{StaticResource ProductNameStyle}"
+                    Text="Product's Fabricator"
+                    TextColor="{StaticResource Gray300}" />
             </Grid>
-            <!-- Product's additional info -->
-            
+            <!--  Product's additional info  -->
+            <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="20" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Packaging" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="lalallal" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Categories" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="category" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Certification" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="certification" />
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

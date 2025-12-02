@@ -1,4 +1,6 @@
-﻿namespace SmartFridgeTracker
+﻿using SmartFridgeTracker.Views;
+
+namespace SmartFridgeTracker
 {
     public partial class AppShell : Shell
     {

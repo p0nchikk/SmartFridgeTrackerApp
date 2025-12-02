@@ -11,18 +11,18 @@
     <Color x:Key="Background">#FCFFFC</Color>
     <Color x:Key="Tertiary">#0b5e2d</Color>
 
-    <!-- FIRST OPTION-->
+    <!--  FIRST OPTION  -->
 
-    <Color x:Key="PrimaryDark">#4A9429</Color>    
+    <Color x:Key="PrimaryDark">#4A9429</Color>
     <Color x:Key="PrimaryBright">#65B741</Color>
     <Color x:Key="PrimaryLight">#E1FFD6</Color>
     <Color x:Key="BackgroundLight">#FFFDF5</Color>
-    <Color x:Key="SecondaryBright">#FAA300</Color> 
+    <Color x:Key="SecondaryBright">#FAA300</Color>
     <Color x:Key="SecondaryLight">#FFB534</Color>
     <Color x:Key="RedBright">#de281b</Color>
-    
-    <!-- SECOND OPTION-->
-    
+
+    <!--  SECOND OPTION  -->
+
     <!--<Color x:Key="PrimaryGreenBright">#8AA624</Color>
     <Color x:Key="PrimaryGreenLight">#DBE4C9</Color>
     <Color x:Key="BackgroundGrayLight">#FFFFF0</Color>

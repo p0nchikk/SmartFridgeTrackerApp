@@ -67,6 +67,7 @@ namespace SmartFridgeTracker.ViewModels
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
             GoToScanItemPageCommand = new Command(GoToScanItemPage);
             RemoveItemCommand = new Command(RemoveItem);
+            ProductTappedCommand = new Command(OnProductTapped);
         }
 
         #endregion
@@ -76,14 +77,14 @@ namespace SmartFridgeTracker.ViewModels
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("MyProfilePage");
+                await Shell.Current.GoToAsync("//MyProfilePage");
             });
         }
         private void GoToScanItemPage()
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("ScanItemPage");
+                await Shell.Current.GoToAsync("//ScanItemPage");
             });
         }
         private void RemoveItem(object objProduct)
@@ -94,7 +95,7 @@ namespace SmartFridgeTracker.ViewModels
                 Products.Remove(product);
             }
         }
-        private async void OnProductTapped(Product product)
+        private void OnProductTapped(object product)
         {
             if (product == null)
                 return;
@@ -105,7 +106,10 @@ namespace SmartFridgeTracker.ViewModels
                 { "Product", product }
             };
 
-            await Shell.Current.GoToAsync("ProductInfoPage", navigationParameter);
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//ProductInfoPage", navigationParameter);
+            });
         }
 
         #endregion

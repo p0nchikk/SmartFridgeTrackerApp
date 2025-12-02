@@ -7,51 +7,41 @@
     Title="SmartFridgeTracker"
     Shell.FlyoutBehavior="Flyout">
 
-    <!--<FlyoutItem Title="Home" Icon="https://cdn-icons-png.flaticon.com/128/1946/1946488.png">
-        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="My profile" Icon="https://cdn-icons-png.flaticon.com/128/456/456283.png">
-        <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Quick Update" Icon="https://cdn-icons-png.flaticon.com/128/1159/1159633.png">
-        <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Statistics" Icon="https://cdn-icons-png.flaticon.com/128/17105/17105689.png">
-        <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" />
-    </FlyoutItem>-->
-
-
     <ShellContent
         Title="Start Page"
         ContentTemplate="{DataTemplate views:StartPage}"
-        Route="StartPage" />
+        Route="StartPage" 
+        FlyoutItemIsVisible="False"/>
     <ShellContent
         Title="Login"
         ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage" />
+        Route="LoginPage" 
+        FlyoutItemIsVisible="False"/>
     <ShellContent
         Title="Register"
         ContentTemplate="{DataTemplate views:RegisterPage}"
-        Route="RegisterPage" />
-    <ShellContent
-        Title="My Profile"
-        ContentTemplate="{DataTemplate views:MyProfilePage}"
-        Route="MyProfilePage" />
+        Route="RegisterPage" 
+        FlyoutItemIsVisible="False"/>
     <ShellContent
         Title="Main"
         ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage" />
+        Route="MainPage"
+        FlyoutIcon="home_icon.png"/>
+    <ShellContent
+        Title="My Profile"
+        ContentTemplate="{DataTemplate views:MyProfilePage}"
+        Route="MyProfilePage" 
+        FlyoutIcon="profile_placeholder.png"/>
     <ShellContent
         Title="Scan Item"
         ContentTemplate="{DataTemplate views:ScanItemPage}"
-        Route="ScanItemPage" />
+        Route="ScanItemPage"
+        FlyoutItemIsVisible="False"/>
     <ShellContent
         Title="Product Info"
         ContentTemplate="{DataTemplate views:ProductInfoPage}"
-        Route="ProductInfoPage" />
+        Route="ProductInfoPage" 
+        FlyoutItemIsVisible="False"/>
 
 
 </Shell>

@@ -18,13 +18,13 @@
         <Setter Property="Padding" Value="30" />
         <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
     </Style>
-    
+
     <!--  3 Columns Grid Container  -->
     <Style x:Key="ThreeColumnGridContainerStyle" TargetType="Grid">
         <Setter Property="ColumnDefinitions" Value="Auto,*,Auto" />
         <Setter Property="ColumnSpacing" Value="20" />
     </Style>
-    
+
     <!--  Horizontal Line  -->
     <Style x:Key="HorizontalLineStyle" TargetType="BoxView">
         <Setter Property="Margin" Value="0,20,0,10" />
@@ -47,8 +47,8 @@
         <Setter Property="TextColor" Value="{StaticResource Gray500}" />
         <Setter Property="HorizontalOptions" Value="Center" />
     </Style>
-    
-    <!--  Regular text -->
+
+    <!--  Regular text  -->
     <Style x:Key="RegularLabelStyle" TargetType="Label">
         <Setter Property="FontSize" Value="20" />
         <Setter Property="TextColor" Value="{StaticResource Gray600}" />
@@ -60,7 +60,7 @@
     <Style x:Key="FridgeIconStyle" TargetType="Image">
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="WidthRequest" Value="100" />
-        <Setter Property="Source" Value="logo_carrot.png"/>
+        <Setter Property="Source" Value="logo_carrot.png" />
     </Style>
 
     <!--  Entry Frame  -->
@@ -112,7 +112,7 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="HeightRequest" Value="25" />
         <Setter Property="WidthRequest" Value="25" />
-        <Setter Property="Source" Value="profile_placeholder.png"/>
+        <Setter Property="Source" Value="profile_placeholder.png" />
     </Style>
 
     <!--  Navigation Button  -->
@@ -138,8 +138,8 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="Margin" Value="10,0,0,0" />
     </Style>
-    
-    <!-- Icon Style -->
+
+    <!--  Icon Style  -->
     <Style x:Key="ImageIconStyle" TargetType="Image">
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="HeightRequest" Value="40" />
@@ -163,18 +163,18 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
-    
-    <!-- Property Style -->
+
+    <!--  Property Style  -->
     <Style x:Key="LabelPropertyStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource Gray600}"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+        <Setter Property="FontSize" Value="20" />
     </Style>
-    
-    <!-- Character Style -->
+
+    <!--  Character Style  -->
     <Style x:Key="LabelCharacteristicStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource Gray400}"/>
-        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="TextColor" Value="{StaticResource Gray400}" />
+        <Setter Property="FontSize" Value="17" />
     </Style>
-    
+
 
 </ResourceDictionary>

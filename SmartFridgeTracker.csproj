@@ -93,7 +93,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Images\icons\" />
+	  <Folder Include="Resources\Images\menu_icons\" />
 	  <Folder Include="Resources\Images\products\" />
 	</ItemGroup>
 
