@@ -59,11 +59,17 @@
                                 CommandParameter="{Binding .}"
                                 Text="Remove" />
                         </SwipeView.RightItems>
-                       
+
                         <Grid
                             Padding="10"
                             ColumnDefinitions="Auto,*,Auto,60,60"
                             VerticalOptions="Center">
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ProductTappedCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}" 
+                                                      CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+
 
                             <!--  Product Image  -->
                             <Image Source="{Binding Image}" Style="{StaticResource ProductImageStyle}" />
@@ -85,13 +91,12 @@
                                 Grid.Column="3"
                                 Style="{StaticResource ProductQuantityStyle}"
                                 Text="{Binding Quantity}" />
-                            <!-- Remove -->
+                            <!--  Remove  -->
                             <Button
-                                 Grid.Column="4"
-                                 Text="Remove"
-                                 Command="{Binding RemoveItemCommand, 
-                                 Source={x:RelativeSource
-                                 AncestorType={x:Type viewmodels:MainViewModel}}}"/>
+                                Grid.Column="4"
+                                Command="{Binding RemoveItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}, Mode=FindAncestorBindingContext}}"
+                                CommandParameter="{Binding .}"
+                                Text="Remove" />
                         </Grid>
                     </SwipeView>
                 </DataTemplate>

@@ -33,6 +33,8 @@ namespace SmartFridgeTracker.ViewModels
         public ICommand? GoToScanItemPageCommand { get; set; }
 
         public ICommand? RemoveItemCommand { get; set; }
+        public ICommand? ProductTappedCommand { get; }
+
         #endregion
 
         #region Constructor
@@ -74,14 +76,14 @@ namespace SmartFridgeTracker.ViewModels
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("//MyProfilePage");
+                await Shell.Current.GoToAsync("MyProfilePage");
             });
         }
         private void GoToScanItemPage()
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("//ScanItemPage");
+                await Shell.Current.GoToAsync("ScanItemPage");
             });
         }
         private void RemoveItem(object objProduct)
@@ -91,6 +93,19 @@ namespace SmartFridgeTracker.ViewModels
             {
                 Products.Remove(product);
             }
+        }
+        private async void OnProductTapped(Product product)
+        {
+            if (product == null)
+                return;
+
+            // navigate and pass the product as a parameter
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { "Product", product }
+            };
+
+            await Shell.Current.GoToAsync("ProductInfoPage", navigationParameter);
         }
 
         #endregion
