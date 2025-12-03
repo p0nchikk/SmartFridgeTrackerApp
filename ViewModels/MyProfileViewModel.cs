@@ -2,6 +2,7 @@
 using SmartFridgeTracker.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,20 +15,79 @@ namespace SmartFridgeTracker.ViewModels
         #region Variables Declaration
 
         // Identity
-        public int Achivements { get; set; }
-        public string? Username { get; set; }
-        public string? Email { get; set; }
-        public DateTime RegDate { get; set; }
+        private int achivements;
+        public int Achivements
+        {   
+            get { return achivements; }
+            set { achivements = value; }
+        }
+
+        private string? username;
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+
+        private string? email;
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        private DateTime regDate;
+        public DateTime RegDate
+        {
+            get { return regDate; }
+            set { regDate = value; }
+        }
+
 
         // Fridge Summary
-        public string? FridgeName { get; set; }
-        public int ProductCount { get; set; }
-        public int ExpiringSoonCount { get; set; }
-        public int SpoiledCount { get; set; }
+        private string? fridgeName;
+        public string FridgeName
+        {
+            get { return fridgeName; }
+            set { fridgeName = value; }
+        }
+
+        private int productCount;
+        public int ProductCount
+        {   
+            get { return productCount; }
+            set { productCount = value; }
+        }
+
+        private int expiringSoonCount;
+        public int ExpiringSoonCount
+        {
+            get { return expiringSoonCount; }
+            set { expiringSoonCount = value; }
+        }
+
+        private int spoiledCount;
+        public int SpoiledCount
+        {
+            get { return spoiledCount; }
+            set { spoiledCount = value; }
+        }
+
 
         // Activity/Insights
-        public DateTime LastUpdated { get; set; }
-        public int WeeklyUsage { get; set; }
+        private DateTime lastUpdated;
+        public DateTime LastUpdated
+        {
+            get { return lastUpdated; }
+            set { lastUpdated = value; }
+        }
+
+        private int weeklyUsage;    
+        public int WeeklyUsage
+        {
+            get { return weeklyUsage; }
+            set { weeklyUsage = value; }
+        }
 
         #endregion
 
