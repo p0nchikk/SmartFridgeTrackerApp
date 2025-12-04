@@ -4,9 +4,17 @@ namespace SmartFridgeTracker.Views;
 
 public partial class MyProfilePage : ContentPage
 {
-	public MyProfilePage()
+	MyProfileViewModel vm;
+    public MyProfilePage()
 	{
 		InitializeComponent();
-		BindingContext = new MyProfileViewModel();
+		vm = new MyProfileViewModel();
+		BindingContext = vm;
+    }
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		vm.UpdateFields();
 	}
 }

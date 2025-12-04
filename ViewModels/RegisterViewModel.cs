@@ -223,6 +223,8 @@ namespace SmartFridgeTracker.ViewModels
                    
                 };
 
+                LocalDataService.GetInstance().AddUser(user);
+
                 GoToLogin();
 
             }

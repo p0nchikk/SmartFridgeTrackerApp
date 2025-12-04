@@ -83,6 +83,33 @@ namespace SmartFridgeTracker.Services
         {
             return products;
         }
+
+        public int GetExpinigSoonCount()
+        {
+            int count = 0;
+            for ( int i = 0; i < products.Count; i++ )
+            {
+                if ((products[i].ExpirationDate - DateTime.Now).TotalDays < 3)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        
+        public int GetSpoiledCount()
+        {
+            int count = 0;
+            for ( int i = 0; i < products.Count; i++ )
+            {
+                if (!products[i].IsSpoiled)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
         public bool IsUserRegistered(string userName, string password)
         {
             if (user != null)
