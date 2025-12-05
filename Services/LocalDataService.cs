@@ -64,6 +64,23 @@ namespace SmartFridgeTracker.Services
             return true;
         }
 
+        public bool DecrementCountOfItem(Product product)
+        {
+            if (products.Contains(product))
+            {
+                if(product.Quantity == 1)
+                {
+                    products.Remove(product);
+                }
+                else
+                {
+                    product.Quantity--;
+                }
+                return true;
+            }
+            return false;
+        }
+
         public string GetFridgeName()
         {
             return fridgeName;

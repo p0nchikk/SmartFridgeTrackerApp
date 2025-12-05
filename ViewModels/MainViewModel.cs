@@ -32,7 +32,7 @@ namespace SmartFridgeTracker.ViewModels
 
         public ICommand? GoToScanItemPageCommand { get; set; }
 
-        public ICommand? RemoveItemCommand { get; set; }
+        public ICommand? DecrementCountOfItemCommand { get; set; }
         public ICommand? ProductTappedCommand { get; }
 
         #endregion
@@ -51,7 +51,7 @@ namespace SmartFridgeTracker.ViewModels
 
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
             GoToScanItemPageCommand = new Command(GoToScanItemPage);
-            RemoveItemCommand = new Command(RemoveItem);
+            DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
             ProductTappedCommand = new Command(OnProductTapped);
         }
 
@@ -72,16 +72,17 @@ namespace SmartFridgeTracker.ViewModels
                 await Shell.Current.GoToAsync("//ScanItemPage");
             });
         }
-        private void RemoveItem(object objProduct)
+        private void DecrementCountOfItem(object objProduct)
         {
             Product product = objProduct as Product;
             if (product != null) 
             {
                 //Products.Remove(product);
-                if (LocalDataService.GetInstance().RemoveProduct(product))
+                if (LocalDataService.GetInstance().DecrementCountOfItem(product))
                 {
-                    Products.Remove(product);
-                } else
+                    Products = new ObservableCollection<Product>(LocalDataService.GetInstance().GetProducts());
+                }
+                else
                 {
                     // TODO: error
                 }

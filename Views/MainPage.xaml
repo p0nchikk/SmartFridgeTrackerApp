@@ -55,7 +55,7 @@
                         <SwipeView.RightItems>
                             <SwipeItem
                                 BackgroundColor="{StaticResource RedBright}"
-                                Command="{Binding RemoveItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}"
+                                Command="{Binding DecrementCountOfItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}"
                                 CommandParameter="{Binding .}"
                                 Text="Remove" />
                         </SwipeView.RightItems>
@@ -94,7 +94,7 @@
                             <!--  Remove  -->
                             <Button
                                 Grid.Column="4"
-                                Command="{Binding RemoveItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}, Mode=FindAncestorBindingContext}}"
+                                Command="{Binding DecrementCountOfItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}, Mode=FindAncestorBindingContext}}"
                                 CommandParameter="{Binding .}"
                                 Text="Remove" />
                         </Grid>
