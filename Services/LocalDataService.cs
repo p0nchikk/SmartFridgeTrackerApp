@@ -34,7 +34,7 @@ namespace SmartFridgeTracker.Services
             {
                 UserName = "Polina",
                 Password = "1234",
-                Email = "Email",
+                Email = "polina@gmail.com",
                 RegDate = DateTime.Now,
             };
             fridgeName = "Amkor 2XL Delux";
@@ -89,7 +89,7 @@ namespace SmartFridgeTracker.Services
             int count = 0;
             for ( int i = 0; i < products.Count; i++ )
             {
-                if ((products[i].ExpirationDate - DateTime.Now).TotalDays < 3)
+                if ((products[i].ExpirationDate - DateTime.Now).TotalDays < 3 && !products[i].IsSpoiled)
                 {
                     count++;
                 }
@@ -102,7 +102,7 @@ namespace SmartFridgeTracker.Services
             int count = 0;
             for ( int i = 0; i < products.Count; i++ )
             {
-                if (!products[i].IsSpoiled)
+                if (products[i].IsSpoiled)
                 {
                     count++;
                 }

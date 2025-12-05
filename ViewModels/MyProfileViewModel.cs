@@ -28,7 +28,7 @@ namespace SmartFridgeTracker.ViewModels
             set
             {
                 username = value;
-                OnPropertyChange(nameof(username));
+                OnPropertyChange(nameof(Username));
             }
         }
 
@@ -39,7 +39,7 @@ namespace SmartFridgeTracker.ViewModels
             set
             {
                 email = value; 
-                OnPropertyChange(nameof(email));
+                OnPropertyChange(nameof(Email));
             }
         }
 
@@ -50,7 +50,7 @@ namespace SmartFridgeTracker.ViewModels
             set
             {
                 regDate = value;
-                OnPropertyChange(nameof(regDate));
+                OnPropertyChange(nameof(RegDate));
             }
         }
 

@@ -134,13 +134,13 @@ namespace SmartFridgeTracker.ViewModels
                             await Shell.Current.GoToAsync("//MainPage");
                         });
                     }
-                    else if (Username != instance.GetUser().UserName)
+                    else if (Password != instance.GetUser().Password)
                     {
-                        Message = "Wrong username";
+                        Message = "Wrong password";
                     }
                     else // password is wrong
                     {
-                        Message = "Wrong password";
+                        Message = "Please check your input";
                     }
                 }
             }       
