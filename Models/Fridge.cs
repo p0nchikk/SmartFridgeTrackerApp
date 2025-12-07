@@ -26,8 +26,8 @@ namespace SmartFridgeTracker.Models
 
             if (existing != null)
             {
-                // Product already exists → increase its quantity
-                existing.Quantity += product.Quantity;
+                // Product already exists → increase its Count
+                existing.Count += product.Count;
             }
             else
             {

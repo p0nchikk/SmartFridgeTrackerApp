@@ -146,8 +146,8 @@
         <Setter Property="WidthRequest" Value="40" />
     </Style>
 
-    <!--  Product Quantity  -->
-    <Style x:Key="ProductQuantityStyle" TargetType="Label">
+    <!--  Product Count  -->
+    <Style x:Key="ProductCountStyle" TargetType="Label">
         <Setter Property="FontSize" Value="22" />
         <Setter Property="TextColor" Value="{StaticResource Gray900}" />
         <Setter Property="HorizontalOptions" Value="Center" />

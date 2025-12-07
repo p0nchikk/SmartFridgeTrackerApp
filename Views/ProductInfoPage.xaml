@@ -50,7 +50,7 @@
             </Grid>
             <!--  Product's additional info  -->
             <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity" />
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Count" />
                 <Label Style="{StaticResource LabelCharacteristicStyle}" Text="20" />
             </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="10">

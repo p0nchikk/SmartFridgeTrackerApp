@@ -11,7 +11,7 @@ namespace SmartFridgeTracker.Models
     {
         public string? Name { get; set; }
         public string? Image { get; set; }
-        public int Quantity { get; set; }
+        public int Count { get; set; }
         public DateTime ExpirationDate { get; set; }
         public bool IsSpoiled { get; set; }
         public string StateIcon
@@ -24,5 +24,7 @@ namespace SmartFridgeTracker.Models
                 else return string.Empty;
             }
         }
+        public string BarCode { set; get; }
+        public decimal Quantity {  set; get; }
     }
 }

@@ -13,6 +13,5 @@ namespace SmartFridgeTracker.Models
         public string? Email { set; get; }
         public DateTime RegDate { get; set; }   //Registraton Date ( to change to static )
 
-
     }
 }
