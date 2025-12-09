@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartFridgeTracker.Views.AddProductPage"
+             Title="AddProductPage">
+    <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
+        <!-- Navbar -->
+        <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
+            <ImageButton
+                 Command="{Binding GoBackCommand}"
+                 Source="back_arrow.png"
+                 Style="{StaticResource ImageButtonStyle}" />
+            <Label
+                 Grid.Column="1"
+                 Style="{StaticResource HeaderLabelStyle}"
+                 Text="Add New Product" />
+            <ImageButton
+                 Grid.Column="2"
+                 Source="menu.png"
+                 Style="{StaticResource ImageButtonStyle}" />
+        </Grid>
+            <VerticalStackLayout
+                    Grid.Row="1"
+                    Padding="0,30,0,0"
+                    HorizontalOptions="CenterAndExpand">
+            <!--  Product's image + name + fabricator  -->
+            <Grid
+                 Padding="0,0,0,10"
+                 ColumnDefinitions="auto,*"
+                 RowDefinitions="*,*">
+                <Image
+                     Grid.RowSpan="2"
+                     HeightRequest="80"
+                     Source="image_icon.png"
+                     Style="{StaticResource ProductImageStyle}"
+                     WidthRequest="80" />
+                <Label
+                     Grid.Column="1"
+                     FontSize="30"
+                     Style="{StaticResource ProductNameStyle}"
+                     Text="Product's Name" />
+                <Label
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     FontAttributes="Italic"
+                     FontSize="20"
+                     Style="{StaticResource ProductNameStyle}"
+                     Text="Product's Fabricator"
+                     TextColor="{StaticResource Gray300}" />
+            </Grid>
+            <!--  Product's additional info  -->
+            <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="20" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Packaging" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="can/packet..." />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Categories" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="category" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Product's origin" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="country" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        
+    </Grid>
+</ContentPage>

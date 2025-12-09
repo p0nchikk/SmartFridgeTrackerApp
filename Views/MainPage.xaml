@@ -70,7 +70,6 @@
                                                       CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
 
-
                             <!--  Product Image  -->
                             <Image Source="{Binding Image}" Style="{StaticResource ProductImageStyle}" />
 
