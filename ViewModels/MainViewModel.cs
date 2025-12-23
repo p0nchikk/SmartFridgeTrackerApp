@@ -29,9 +29,7 @@ namespace SmartFridgeTracker.ViewModels
 
         #region Commands
         public ICommand? ProfileImageTappedCommand { get; set; }
-
         public ICommand? GoToScanItemPageCommand { get; set; }
-
         public ICommand? DecrementCountOfItemCommand { get; set; }
         public ICommand? ProductTappedCommand { get; }
 
@@ -42,7 +40,8 @@ namespace SmartFridgeTracker.ViewModels
         {
             if (LocalDataService.GetInstance() != null)
             {
-                Products = new ObservableCollection<Product>(LocalDataService.GetInstance().GetProducts());
+                //Calling async function for retreiving data from service
+                InitializeAsyncFunctions();
             }
             else
             {
@@ -53,6 +52,11 @@ namespace SmartFridgeTracker.ViewModels
             GoToScanItemPageCommand = new Command(GoToScanItemPage);
             DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
             ProductTappedCommand = new Command(OnProductTapped);
+        }
+
+        public async void InitializeAsyncFunctions()
+        {
+            Products = new ObservableCollection<Product>(await LocalDataService.GetInstance().GetProductsAsync());
         }
 
         #endregion
@@ -72,19 +76,18 @@ namespace SmartFridgeTracker.ViewModels
                 await Shell.Current.GoToAsync("//ScanItemPage");
             });
         }
-        private void DecrementCountOfItem(object objProduct)
+        private async void DecrementCountOfItem(object objProduct)
         {
             Product product = objProduct as Product;
             if (product != null) 
             {
-                //Products.Remove(product);
-                if (LocalDataService.GetInstance().DecrementCountOfItem(product))
+                if (await LocalDataService.GetInstance().DecrementCountOfItem(product))
                 {
-                    Products = new ObservableCollection<Product>(LocalDataService.GetInstance().GetProducts());
+                    Products = new ObservableCollection<Product>(await LocalDataService.GetInstance().GetProductsAsync()); //here I don't need await because I alr have products
                 }
                 else
                 {
-                    // TODO: error
+                    // TODO: to throw error
                 }
             }
         }

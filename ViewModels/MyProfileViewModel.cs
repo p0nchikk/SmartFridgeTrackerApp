@@ -172,11 +172,11 @@ namespace SmartFridgeTracker.ViewModels
             });
         }
 
-        public void UpdateFields()
+        public async void UpdateFields()
         {
-            FridgeName = LocalDataService.GetInstance().GetFridgeName();
-            ProductCount = LocalDataService.GetInstance().GetProductCount();
-            User user = LocalDataService.GetInstance().GetUser();
+            FridgeName = await LocalDataService.GetInstance().GetFridgeNameAsync();
+            ProductCount = await LocalDataService.GetInstance().GetProductCountAsync();
+            User user = await LocalDataService.GetInstance().GetUserAsync();
             Username = user.UserName;
             Email = user.Email;
             RegDate = user.RegDate;

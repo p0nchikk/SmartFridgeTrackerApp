@@ -28,6 +28,7 @@ namespace SmartFridgeTracker.Services
             return instance;
         }
 
+        //Temprorary fake data generator
         private void CreateFakeData()
         {
             user = new User()
@@ -48,59 +49,34 @@ namespace SmartFridgeTracker.Services
             products.Add(new Product { Name = "Organic Free-Range Eggs L", Count = 2, Image = "https://shoppy.co.il/cdn/shop/products/organiceggs_a76c1206-e41c-4362-9fcc-d6faa72ca115_580x.jpg?v=1637113809", ExpirationDate = DateTime.Now.AddDays(3), IsSpoiled = false });
             products.Add(new Product { Name = "Yoplait Yogurt 0% - Strawberry", Count = 4, Image = "https://shoppy.co.il/cdn/shop/products/yoplaitstrawberry_1200x1200.png?v=1637084683", ExpirationDate = DateTime.Now, IsSpoiled = true });       
         }
-
-        public int GetProductCount()
-        {
-            return products.Count;
-        }
-        public bool AddProduct(Product newProduct)
-        {
-            products.Add(newProduct);
-            return true;
-        }
-        public bool RemoveProduct(Product product)
-        {
-            products.Remove(product);
-            return true;
-        }
-
-        public bool DecrementCountOfItem(Product product)
-        {
-            if (products.Contains(product))
-            {
-                if(product.Count == 1)
-                {
-                    products.Remove(product);
-                }
-                else
-                {
-                    product.Count--;
-                }
-                return true;
-            }
-            return false;
-        }
-
-        public string GetFridgeName()
+        #region Getters and Setters
+        //GET FRIDGE NAME
+        public async Task<string> GetFridgeNameAsync()
         {
             return fridgeName;
         }
-
-        public bool AddUser(User user)
+        //GET USER
+        public async Task<User?> GetUserAsync()
+        {
+            return this.user;
+        }
+        //ADD USER
+        public async Task<bool> AddUser(User user)
         {
             this.user = user;
             return true;
         }
-        public User? GetUser()
-        {
-            return this.user;
-        }
-
-        public List<Product> GetProducts()
+        //GET PRODUCTS
+        public async Task<List<Product>> GetProductsAsync()
         {
             return products;
         }
-
+        //GET PRODUCTS COUNT
+        public async Task<int GetProductCountAsync()
+        {
+            return products.Count;
+        }
+        //GET EXPIRING SOON PRODUCTS COUNT
         public int GetExpinigSoonCount()
         {
             int count = 0;
@@ -113,7 +89,7 @@ namespace SmartFridgeTracker.Services
             }
             return count;
         }
-        
+        //GET SPOLIED PRODUCTS COUNT
         public int GetSpoiledCount()
         {
             int count = 0;
@@ -126,21 +102,38 @@ namespace SmartFridgeTracker.Services
             }
             return count;
         }
+        #endregion
 
-        public bool IsUserRegistered(string userName, string password)
+        #region Functions
+        //DECREMENT COUNT OF ITEM
+        public async Task<bool> DecrementCountOfItem(Product product)
         {
-            if (user != null)
+            if (products.Contains(product))
             {
-                if (user.UserName == userName && user.Password == password)
+                if (product.Count == 1)
                 {
-                    return true;
+                    products.Remove(product);
                 }
                 else
                 {
-                    return false;
+                    product.Count--;
                 }
+                return true;
             }
             return false;
         }
+        //ADD PRODUCT 
+        public async Task<bool> AddProduct(Product newProduct)
+        {
+            products.Add(newProduct);
+            return true;
+        }
+        //REMOVE PRODUCT
+        public async Task<bool> RemoveProduct(Product product)
+        {
+            products.Remove(product);
+            return true;
+        }
+        #endregion
     }
 }
