@@ -61,7 +61,7 @@ namespace SmartFridgeTracker.Services
             return this.user;
         }
         //ADD USER
-        public async Task<bool> AddUser(User user)
+        public async Task<bool> AddUserAsync(User user)
         {
             this.user = user;
             return true;
@@ -72,12 +72,12 @@ namespace SmartFridgeTracker.Services
             return products;
         }
         //GET PRODUCTS COUNT
-        public async Task<int GetProductCountAsync()
+        public async Task<int> GetProductCountAsync()
         {
             return products.Count;
         }
         //GET EXPIRING SOON PRODUCTS COUNT
-        public int GetExpinigSoonCount()
+        public async Task<int> GetExpinigSoonCountAsync()
         {
             int count = 0;
             for ( int i = 0; i < products.Count; i++ )
@@ -90,7 +90,7 @@ namespace SmartFridgeTracker.Services
             return count;
         }
         //GET SPOLIED PRODUCTS COUNT
-        public int GetSpoiledCount()
+        public async Task<int> GetSpoiledCountAsync()
         {
             int count = 0;
             for ( int i = 0; i < products.Count; i++ )
@@ -106,7 +106,7 @@ namespace SmartFridgeTracker.Services
 
         #region Functions
         //DECREMENT COUNT OF ITEM
-        public async Task<bool> DecrementCountOfItem(Product product)
+        public async Task<bool> DecrementCountOfItemAsync(Product product)
         {
             if (products.Contains(product))
             {
@@ -123,13 +123,13 @@ namespace SmartFridgeTracker.Services
             return false;
         }
         //ADD PRODUCT 
-        public async Task<bool> AddProduct(Product newProduct)
+        public async Task<bool> AddProductAsync(Product newProduct)
         {
             products.Add(newProduct);
             return true;
         }
         //REMOVE PRODUCT
-        public async Task<bool> RemoveProduct(Product product)
+        public async Task<bool> RemoveProductAsync(Product product)
         {
             products.Remove(product);
             return true;

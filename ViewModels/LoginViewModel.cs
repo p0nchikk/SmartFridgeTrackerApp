@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using SmartFridgeTracker.Commands;
 using SmartFridgeTracker.Services;
+using SmartFridgeTracker.Models;
 
 namespace SmartFridgeTracker.ViewModels
 {
@@ -107,9 +108,10 @@ namespace SmartFridgeTracker.ViewModels
 
         }
 
-        public void LoginUser()
+        public async void LoginUser()
         {
             var instance = LocalDataService.GetInstance();
+            User user = await instance.GetUserAsync();
 
             if (instance == null)
             {
@@ -124,8 +126,8 @@ namespace SmartFridgeTracker.ViewModels
                     return;
                 }
                 else
-                {
-                    if (Username == instance.GetUser().UserName && Password == instance.GetUser().Password)
+                {      
+                    if (Username == user.UserName && Password == user.Password)
                     {
                         Message = $"{Username}, welcome!";
                         // Navigation to the MainPage.xaml
@@ -134,7 +136,7 @@ namespace SmartFridgeTracker.ViewModels
                             await Shell.Current.GoToAsync("//MainPage");
                         });
                     }
-                    else if (Password != instance.GetUser().Password)
+                    else if (Password != user.Password)
                     {
                         Message = "Wrong password";
                     }
