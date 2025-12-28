@@ -2,6 +2,7 @@
 using SmartFridgeTracker.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace SmartFridgeTracker.ViewModels
         #region Variables Declaration
 
         // Identity
+
         //private int achivements;
         //public int Achivements
         //{
@@ -101,7 +103,6 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-
         // Activity/Insights
         //private DateTime lastUpdated;
         //public DateTime LastUpdated
@@ -124,42 +125,36 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public MyProfileViewModel()
         {
-            if (LocalDataService.GetInstance() != null) //If user is logged already
+            var instance = LocalDataService.GetInstance();
+            if (instance != null) //If user is logged already
             {
-                User user = LocalDataService.GetInstance().GetUser();
-
-                //Achivements = 0; //Temprorary
-                //Username = user.UserName ?? "No username";
-                //Email = user.Email ?? "No email";
-                //RegDate = user.RegDate;
-
-                //List<Product>? products = LocalDataService.GetInstance().GetProducts();
-
-                //if (products != null)
-                //{
-                //    FridgeName = "No name yet";
-                //    ProductCount = products.Count;
-                //    ExpiringSoonCount = products.Count(p => !p.IsSpoiled && p.ExpirationDate <= DateTime.Now.AddDays(3));
-                //    SpoiledCount = products.Count(p => p.IsSpoiled);
-                //}
-                //LastUpdated = DateTime.Now; // Example, should be from last fridge update
-                //WeeklyUsage = 0; // Example, can be calculated from history
-
+                InitializeAsyncFunctions();
+                //...initialization
             }
             else //If user isn't logged yet
             {
-                //Achivements = 0;
-                //Username = "Empty";
-                //Email = "Empty";
-                //RegDate = DateTime.Now;
-                //FridgeName = "Empty";
-                //ProductCount = 0;
-                //ExpiringSoonCount = 0;
-                //SpoiledCount = 0;
-                //LastUpdated = DateTime.Now;
-                //WeeklyUsage = 0;
+               //to assure that user can't access this page before logging in
             }
             GoBackCommand = new Command(GoBack);
+        }
+        public async void InitializeAsyncFunctions()
+        {
+            var instance = LocalDataService.GetInstance();
+            User user = await instance.GetUserAsync();
+
+            Username = user.UserName ?? "No username";
+            Email = user.Email ?? "No email";
+            RegDate = user.RegDate;
+
+            List<Product>? products = await instance.GetProductsAsync();
+
+            if (products != null)
+            {
+                FridgeName = "No name yet";
+                ProductCount = products.Count;
+                ExpiringSoonCount = await instance.GetExpinigSoonCountAsync();
+                SpoiledCount = await instance.GetSpoiledCountAsync();
+            }
         }
         #endregion
 
@@ -180,8 +175,8 @@ namespace SmartFridgeTracker.ViewModels
             Username = user.UserName;
             Email = user.Email;
             RegDate = user.RegDate;
-            ExpiringSoonCount = LocalDataService.GetInstance().GetExpinigSoonCount(); 
-            SpoiledCount = LocalDataService.GetInstance().GetSpoiledCount();
+            ExpiringSoonCount = await LocalDataService.GetInstance().GetExpinigSoonCountAsync(); 
+            SpoiledCount = await LocalDataService.GetInstance().GetSpoiledCountAsync();
         }
         #endregion
     }

@@ -81,7 +81,7 @@ namespace SmartFridgeTracker.ViewModels
             Product product = objProduct as Product;
             if (product != null) 
             {
-                if (await LocalDataService.GetInstance().DecrementCountOfItem(product))
+                if (await LocalDataService.GetInstance().DecrementCountOfItemAsync(product))
                 {
                     Products = new ObservableCollection<Product>(await LocalDataService.GetInstance().GetProductsAsync()); //here I don't need await because I alr have products
                 }
