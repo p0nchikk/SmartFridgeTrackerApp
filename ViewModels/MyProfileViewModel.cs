@@ -1,5 +1,6 @@
 ﻿using SmartFridgeTracker.Models;
 using SmartFridgeTracker.Services;
+using SmartFridgeTracker.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -120,6 +121,7 @@ namespace SmartFridgeTracker.ViewModels
 
         #region Commands
         public ICommand? GoBackCommand { get; set; }
+        public ICommand? LogoutCommand { get; set; }
         #endregion
 
         #region Constructor
@@ -136,6 +138,7 @@ namespace SmartFridgeTracker.ViewModels
                //to assure that user can't access this page before logging in
             }
             GoBackCommand = new Command(GoBack);
+            LogoutCommand = new Command(Logout);
         }
         public async void InitializeAsyncFunctions()
         {
@@ -166,6 +169,14 @@ namespace SmartFridgeTracker.ViewModels
                 await Shell.Current.GoToAsync("//MainPage");
             });
         }
+        
+        private void GoToLogin()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//LoginPage");
+            });
+        }
 
         public async void UpdateFields()
         {
@@ -177,6 +188,12 @@ namespace SmartFridgeTracker.ViewModels
             RegDate = user.RegDate;
             ExpiringSoonCount = await LocalDataService.GetInstance().GetExpinigSoonCountAsync(); 
             SpoiledCount = await LocalDataService.GetInstance().GetSpoiledCountAsync();
+        }
+
+        private void Logout()
+        {
+            AppService.GetInstance().Logout();
+            GoToLogin();
         }
         #endregion
     }

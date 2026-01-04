@@ -7,7 +7,6 @@ using System.Windows.Input;
 using SmartFridgeTracker.Commands;
 using SmartFridgeTracker.Services;
 using SmartFridgeTracker.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SmartFridgeTracker.ViewModels
 {
@@ -77,6 +76,7 @@ namespace SmartFridgeTracker.ViewModels
         public ICommand LoginUserCommand { get; }
         public ICommand GoToRegisterCommand { get; }
         public ICommand ViewPassCommand { get; }
+        public ICommand ResetFieldsCommand { get; }
         #endregion
 
         #region Constructor
@@ -85,7 +85,10 @@ namespace SmartFridgeTracker.ViewModels
             LoginUserCommand = new Command(async () => await Login());
             GoToRegisterCommand = new Command(GoToRegister);
             ViewPassCommand = new Command(ViewPass);
+            ResetFieldsCommand = new Command(ResetFields);
         }
+
+       
         #endregion
 
         #region Fuctions
@@ -106,7 +109,11 @@ namespace SmartFridgeTracker.ViewModels
             {
                 ViewPassIcon = "hide.png";
             }
-
+        }
+        public void ResetFields()
+        {
+            Email = string.Empty;
+            Password = string.Empty;
         }
         private async Task Login()//
         {

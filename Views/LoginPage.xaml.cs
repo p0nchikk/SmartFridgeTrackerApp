@@ -8,8 +8,13 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
         BindingContext = new LoginViewModel();
     }
-    private async void ButtonGoToRegister_Clicked(object sender, EventArgs e)
+    protected override void OnAppearing()
     {
-        await Navigation.PushAsync(new RegisterPage());
+        base.OnAppearing();
+
+        if (BindingContext is LoginViewModel vm)
+        {
+            vm.ResetFields();
+        }
     }
 }
