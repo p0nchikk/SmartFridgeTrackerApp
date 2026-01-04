@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SmartFridgeTracker.Services;
 using ZXing.Net.Maui.Controls;
 
 namespace SmartFridgeTracker
@@ -7,6 +8,7 @@ namespace SmartFridgeTracker
     {
         public static MauiApp CreateMauiApp()
         {
+            AppService.GetInstance().Init();
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()

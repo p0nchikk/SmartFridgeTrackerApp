@@ -10,7 +10,7 @@ namespace SmartFridgeTracker.Services
     public class LocalDataService
     {
         private static LocalDataService? instance;
-        private User? user;
+        private AuthUser? user;
         private List<Product> products;
         private string fridgeName = "";
 
@@ -31,7 +31,7 @@ namespace SmartFridgeTracker.Services
         //Temprorary fake data generator
         private void CreateFakeData()
         {
-            user = new User()
+            user = new AuthUser()
             {
                 UserName = "Polina",
                 Password = "1234",
@@ -56,12 +56,12 @@ namespace SmartFridgeTracker.Services
             return fridgeName;
         }
         //GET USER
-        public async Task<User?> GetUserAsync()
+        public async Task<AuthUser?> GetUserAsync()
         {
             return this.user;
         }
         //ADD USER
-        public async Task<bool> AddUserAsync(User user)
+        public async Task<bool> AddUserAsync(AuthUser user)
         {
             this.user = user;
             return true;

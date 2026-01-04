@@ -7,6 +7,7 @@ using System.Windows.Input;
 using SmartFridgeTracker.Commands;
 using SmartFridgeTracker.Services;
 using SmartFridgeTracker.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SmartFridgeTracker.ViewModels
 {
@@ -27,13 +28,13 @@ namespace SmartFridgeTracker.ViewModels
         }
         //Username
 
-        private string? username;
-        public string? Username
+        private string? email;
+        public string? Email
         {
-            get { return username; }
+            get { return email; }
             set
             {
-                username = value;
+                email = value;
                 OnPropertyChange();
             }
         }
@@ -81,7 +82,7 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public LoginViewModel()
         {
-            LoginUserCommand = new Command(LoginUser);
+            LoginUserCommand = new Command(async () => await Login());
             GoToRegisterCommand = new Command(GoToRegister);
             ViewPassCommand = new Command(ViewPass);
         }
@@ -107,46 +108,72 @@ namespace SmartFridgeTracker.ViewModels
             }
 
         }
-
-        public async void LoginUser()
+        private async Task Login()//
         {
-            var instance = LocalDataService.GetInstance();
-            User user = await instance.GetUserAsync();
-
-            if (instance == null)
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
             {
-                Message = "User isn't registered yet";
+                Message = "Fill both the username and password";
                 return;
             }
             else
             {
-                if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+                bool successed = await AppService.GetInstance().TryLogin(email, password);
+                if (successed)
                 {
-                    Message = "Fill both the username and password";
-                    return;
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Shell.Current.GoToAsync("//MainPage");
+                    });
+                    //((App)Application.Current).SetAuthenticatedShell();
+                    // This will also navigate to the 1st page int the AuthenticatedShell 
                 }
                 else
-                {      
-                    if (Username == user.UserName && Password == user.Password)
-                    {
-                        Message = $"{Username}, welcome!";
-                        // Navigation to the MainPage.xaml
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await Shell.Current.GoToAsync("//MainPage");
-                        });
-                    }
-                    else if (Password != user.Password)
-                    {
-                        Message = "Wrong password";
-                    }
-                    else // password is wrong
-                    {
-                        Message = "Please check your input";
-                    }
+                {
+                    Message = "Something went wrong :(";
                 }
-            }       
+            }
+                
         }
+
+        //public async void LoginUser()
+        //{
+        //    var instance = LocalDataService.GetInstance();
+        //    User user = await instance.GetUserAsync();
+
+        //    if (instance == null)
+        //    {
+        //        Message = "User isn't registered yet";
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+        //        {
+        //            Message = "Fill both the username and password";
+        //            return;
+        //        }
+        //        else
+        //        {      
+        //            if (Username == user.UserName && Password == user.Password)
+        //            {
+        //                Message = $"{Username}, welcome!";
+        //                // Navigation to the MainPage.xaml
+        //                MainThread.BeginInvokeOnMainThread(async () =>
+        //                {
+        //                    await Shell.Current.GoToAsync("//MainPage");
+        //                });
+        //            }
+        //            else if (Password != user.Password)
+        //            {
+        //                Message = "Wrong password";
+        //            }
+        //            else // password is wrong
+        //            {
+        //                Message = "Please check your input";
+        //            }
+        //        }
+        //    }       
+        //}
         #endregion
 
     }

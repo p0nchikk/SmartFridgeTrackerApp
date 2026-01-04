@@ -28,15 +28,15 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-        //Username
+        //Email
 
-        private string? username;
-        public string? Username
+        private string email;
+        public string Email
         {
-            get { return username; }
+            get { return email; }
             set
             {
-                username = value;
+                email = value;
                 OnPropertyChange();
             }
         }
@@ -111,19 +111,6 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-        //Email
-
-        private string? email;
-        public string? Email
-        {
-            get { return email; }
-            set
-            {
-                email = value;
-                OnPropertyChange();
-            }
-        }
-
         #endregion
 
     #region Commands
@@ -136,7 +123,7 @@ namespace SmartFridgeTracker.ViewModels
     #region Constructor
         public RegisterViewModel()
         {
-            CommandRegisterUser = new Command(RegisterUser);
+            CommandRegisterUser = new Command(async () => await Register());
             CommandGoToLogin = new Command(GoToLogin);
             CommandViewPass = new Command(ViewPass);
             CommandViewVerifyPass = new Command(ViewVerifyPass);
@@ -175,60 +162,89 @@ namespace SmartFridgeTracker.ViewModels
                 ViewVerifyPassIcon = "hide.png";
             }
         }
-        public void RegisterUser()
+
+        private async Task Register()
         {
-            bool isValid = true;
-
-            // Username validation
-            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 5)
+            if( password == null || verifyPassword == null)
             {
-                Message += "Username too short, must be at least 5 chars.\n";
-                isValid = false;
+                Message = "Fill both password fields";
             }
-
-            // Password validation (optional regex)
-            //string passPattern = @"^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?:{}|<>])[A-Za-z\d!@#$%^&*(),.?:{}|<>]{8,}$";
-            //bool isPasswordOk = Regex.IsMatch(_vm.Password ?? "", passPattern);
-            //if (!isPasswordOk)
-            //{
-            //    message += "Password must be at least 8 chars, contain uppercase and special char.\n";
-            //    isValid = false;
-            //}
-
-            // Email validation (optional regex)
-            //string emailPattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
-            //bool isEmailOk = Regex.IsMatch(_vm.Email ?? "", emailPattern);
-            //if (!isEmailOk)
-            //{
-            //    message += "Enter a valid email address.\n";
-            //    isValid = false;
-            //}
-
-            // Password confirmation
-            if (Password != VerifyPassword)
+            else if (password.CompareTo(verifyPassword) == 0)
             {
-                Message += "Passwords do not match.\n";
-                isValid = false;
-            }
-
-            if (isValid)
-            {
-                // Create user and save to service
-                User user = new User()
+                bool successed = await AppService.GetInstance().TryRegister(email, password); //identicator of registration status
+                if (successed)
                 {
-                    UserName = Username,
-                    Password = Password,
-                    Email = Email,
-                    RegDate = DateTime.Now,
-                   
-                };
-
-                LocalDataService.GetInstance().AddUser(user);
-
-                GoToLogin();
-
-            }
+                    bool successedLogin = await AppService.GetInstance().TryLogin(email, password);  //identicator of login status
+                    if (successedLogin)
+                    {
+                        await Shell.Current.GoToAsync("//MainPage");
+                    }
+                    else
+                    {
+                        Message = "Signing In is failed :(";
+                    }
+                }
+                else
+                {
+                    Message = "Registration is failed :(";
+                }
+            }          
         }
+
+        //public void RegisterUser()
+        //{
+        //    bool isValid = true;
+
+        //    // Username validation
+        //    if (string.IsNullOrWhiteSpace(Username) || Username.Length < 5)
+        //    {
+        //        Message += "Username too short, must be at least 5 chars.\n";
+        //        isValid = false;
+        //    }
+
+        //    // Password validation (optional regex)
+        //    //string passPattern = @"^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?:{}|<>])[A-Za-z\d!@#$%^&*(),.?:{}|<>]{8,}$";
+        //    //bool isPasswordOk = Regex.IsMatch(_vm.Password ?? "", passPattern);
+        //    //if (!isPasswordOk)
+        //    //{
+        //    //    message += "Password must be at least 8 chars, contain uppercase and special char.\n";
+        //    //    isValid = false;
+        //    //}
+
+        //    // Email validation (optional regex)
+        //    //string emailPattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+        //    //bool isEmailOk = Regex.IsMatch(_vm.Email ?? "", emailPattern);
+        //    //if (!isEmailOk)
+        //    //{
+        //    //    message += "Enter a valid email address.\n";
+        //    //    isValid = false;
+        //    //}
+
+        //    // Password confirmation
+        //    if (Password != VerifyPassword)
+        //    {
+        //        Message += "Passwords do not match.\n";
+        //        isValid = false;
+        //    }
+
+        //    if (isValid)
+        //    {
+        //        // Create user and save to service
+        //        User user = new User()
+        //        {
+        //            UserName = Username,
+        //            Password = Password,
+        //            Email = Email,
+        //            RegDate = DateTime.Now,
+                   
+        //        };
+
+        //        LocalDataService.GetInstance().AddUser(user);
+
+        //        GoToLogin();
+
+        //    }
+        //}
         #endregion
 
     }

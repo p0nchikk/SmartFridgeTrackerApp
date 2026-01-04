@@ -140,7 +140,7 @@ namespace SmartFridgeTracker.ViewModels
         public async void InitializeAsyncFunctions()
         {
             var instance = LocalDataService.GetInstance();
-            User user = await instance.GetUserAsync();
+            AuthUser user = await instance.GetUserAsync();
 
             Username = user.UserName ?? "No username";
             Email = user.Email ?? "No email";
@@ -171,7 +171,7 @@ namespace SmartFridgeTracker.ViewModels
         {
             FridgeName = await LocalDataService.GetInstance().GetFridgeNameAsync();
             ProductCount = await LocalDataService.GetInstance().GetProductCountAsync();
-            User user = await LocalDataService.GetInstance().GetUserAsync();
+            AuthUser user = await LocalDataService.GetInstance().GetUserAsync();
             Username = user.UserName;
             Email = user.Email;
             RegDate = user.RegDate;

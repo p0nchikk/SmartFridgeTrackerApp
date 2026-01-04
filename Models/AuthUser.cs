@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmartFridgeTracker.Models
 {
-    public class User
+    public class AuthUser
     {
+        public string Id { get; set; }
         public string? UserName { set; get; }
         public string? Password { set; get; }
         public string? Email { set; get; }

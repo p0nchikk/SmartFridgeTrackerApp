@@ -20,19 +20,19 @@
             </Grid>
 
 
-            <!--  Username  -->
+            <!--  Email  -->
             <Label
                 Margin="0,25,0,0"
                 FontAttributes="Bold"
                 FontSize="14"
-                Text="Username"
+                Text="Email"
                 TextColor="#333" />
 
             <Frame Style="{StaticResource EntryFrameStyle}">
                 <Entry
-                    Placeholder="Username"
+                    Placeholder="Email"
                     Style="{StaticResource EntryFieldsStyle}"
-                    Text="{Binding Username}" />
+                    Text="{Binding Email}" />
             </Frame>
 
             <!--  Password  -->
