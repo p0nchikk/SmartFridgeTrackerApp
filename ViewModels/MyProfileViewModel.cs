@@ -24,17 +24,16 @@ namespace SmartFridgeTracker.ViewModels
         //    get { return achivements; }
         //}
 
-        private string? username;
-        public string Username
+        //FullName
+        private string fullName;
+
+        public string FullName
         {
-            get { return username; }
-            set
-            {
-                username = value;
-                OnPropertyChange(nameof(Username));
-            }
+            get { return fullName; }
+            set { fullName = value; }
         }
 
+        //Email
         private string? email;
         public string Email
         {
@@ -46,6 +45,7 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
+        //RegDate
         private DateTime regDate;
         public DateTime RegDate
         {
@@ -57,8 +57,7 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-
-        // Fridge Summary
+        //Fridge Summary
         private string? fridgeName;
         public string FridgeName
         {
@@ -103,20 +102,6 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(nameof(SpoiledCount));
             }
         }
-
-        // Activity/Insights
-        //private DateTime lastUpdated;
-        //public DateTime LastUpdated
-        //{
-        //    get { return lastUpdated; }
-        //}
-
-        //private int weeklyUsage;
-        //public int WeeklyUsage
-        //{
-        //    get { return weeklyUsage; }
-        //}
-
         #endregion
 
         #region Commands
@@ -142,22 +127,7 @@ namespace SmartFridgeTracker.ViewModels
         }
         public async void InitializeAsyncFunctions()
         {
-            var instance = LocalDataService.GetInstance();
-            AuthUser user = await instance.GetUserAsync();
-
-            Username = user.UserName ?? "No username";
-            Email = user.Email ?? "No email";
-            RegDate = user.RegDate;
-
-            List<Product>? products = await instance.GetProductsAsync();
-
-            if (products != null)
-            {
-                FridgeName = "No name yet";
-                ProductCount = products.Count;
-                ExpiringSoonCount = await instance.GetExpinigSoonCountAsync();
-                SpoiledCount = await instance.GetSpoiledCountAsync();
-            }
+            UpdateFields();
         }
         #endregion
 
@@ -180,14 +150,26 @@ namespace SmartFridgeTracker.ViewModels
 
         public async void UpdateFields()
         {
-            FridgeName = await LocalDataService.GetInstance().GetFridgeNameAsync();
-            ProductCount = await LocalDataService.GetInstance().GetProductCountAsync();
-            AuthUser user = await LocalDataService.GetInstance().GetUserAsync();
-            Username = user.UserName;
-            Email = user.Email;
-            RegDate = user.RegDate;
-            ExpiringSoonCount = await LocalDataService.GetInstance().GetExpinigSoonCountAsync(); 
-            SpoiledCount = await LocalDataService.GetInstance().GetSpoiledCountAsync();
+            var instance = AppService.GetInstance();
+
+            //User Details
+            AuthUser? user = instance.fullDetailsLoggedInUser;
+            if (user != null)
+            {
+                FullName = user.FullName ?? "No username";
+                Email = user.Email ?? "No email";
+                RegDate = user.RegDate;
+            }
+
+            //Fridge Details
+            //List<Product>? products = await instance.GetProductsAsync();
+            //if (products != null)
+            //{
+            //    FridgeName = "No name yet";
+            //    ProductCount = products.Count;
+            //    ExpiringSoonCount = await instance.GetExpinigSoonCountAsync();
+            //    SpoiledCount = await instance.GetSpoiledCountAsync();
+            //}      
         }
 
         private void Logout()

@@ -46,7 +46,7 @@
                             Grid.Column="1"
                             FontSize="20"
                             Style="{StaticResource LabelPropertyStyle}"
-                            Text="{Binding Username}" />
+                            Text="{Binding FullName}" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
