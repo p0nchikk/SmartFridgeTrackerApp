@@ -59,7 +59,7 @@ namespace SmartFridgeTracker.Services
         }
 
         //Registration
-        public async Task<bool> TryRegister(string email, string password)
+        public async Task<bool> TryRegister(string email, string password, string fullName)
         {
             try
             {
@@ -68,11 +68,16 @@ namespace SmartFridgeTracker.Services
                 fullDetailsLoggedInUser = new AuthUser()
                 {
                     Email = respond.User.Info.Email,
-                    Id = respond.User.Uid
+                    Id = respond.User.Uid,
+                    FullName = fullName
                 };
-                client //await client
+                await client //await client
                    .Child("users")
-                   .Child(fullDetailsLoggedInUser.Id);
+                   .Child(fullDetailsLoggedInUser.Id)
+                   .PutAsync(new 
+                    {
+                        fullName = fullName
+                    });
 
                 return true;
             }
@@ -98,10 +103,19 @@ namespace SmartFridgeTracker.Services
             {
                 var authUser = await auth.SignInWithEmailAndPasswordAsync(username, password); //try logging in
                 loginAuthUser = authUser.AuthCredential; //verification access to system
+
+                string uid = auth.User.Uid;
+                string fullName = await client
+                   .Child("users")
+                   .Child(uid)
+                   .Child("fullName")
+                   .OnceSingleAsync<string>();
+
                 fullDetailsLoggedInUser = new AuthUser() //sync user to user model
                 {
                     Email = auth.User.Info.Email,
-                    Id = auth.User.Uid
+                    Id = auth.User.Uid,
+                    FullName = fullName
                 };
                 return true;
             }

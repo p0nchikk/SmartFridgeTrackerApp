@@ -28,6 +28,17 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
+        //FullName
+
+        private string fullName;
+            
+        public string FullName
+        {
+            get { return fullName; }
+            set { fullName = value; }
+        }
+
+
         //Email
 
         private string email;
@@ -165,13 +176,15 @@ namespace SmartFridgeTracker.ViewModels
 
         private async Task Register()
         {
-            if( password == null || verifyPassword == null)
+            if (fullName == null) Message = "Fill full name field";
+            else if (email == null) Message = "Fill email field";
+            else if (password == null || verifyPassword == null)
             {
                 Message = "Fill both password fields";
             }
             else if (password.CompareTo(verifyPassword) == 0)
             {
-                bool successed = await AppService.GetInstance().TryRegister(email, password); //identicator of registration status
+                bool successed = await AppService.GetInstance().TryRegister(email, password, fullName); //identicator of registration status
                 if (successed)
                 {
                     bool successedLogin = await AppService.GetInstance().TryLogin(email, password);  //identicator of login status

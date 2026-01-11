@@ -33,7 +33,7 @@ namespace SmartFridgeTracker.Services
         {
             user = new AuthUser()
             {
-                UserName = "Polina",
+                FullName = "Polina",
                 Password = "1234",
                 Email = "polina@gmail.com",
                 RegDate = DateTime.Now,

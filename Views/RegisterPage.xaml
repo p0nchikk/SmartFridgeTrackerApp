@@ -23,13 +23,13 @@
             <Label
                 FontAttributes="Bold"
                 FontSize="14"
-                Text="Username"
+                Text="Full Name"
                 TextColor="#333" />
             <Frame Style="{StaticResource EntryFrameStyle}">
                 <Entry
-                    Placeholder="Username"
+                    Placeholder="Full Name"
                     Style="{StaticResource EntryFieldsStyle}"
-                    Text="{Binding Username}" />
+                    Text="{Binding FullName}" />
             </Frame>
 
             <!--  Email  -->
