@@ -17,6 +17,7 @@ namespace SmartFridgeTracker.Models
         public AuthUser()
         {
             RegDate = DateTime.Now;
-        }
+        }     
+        public Fridge Fridge { set; get; }
     }
 }

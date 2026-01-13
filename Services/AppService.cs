@@ -65,19 +65,24 @@ namespace SmartFridgeTracker.Services
             {
                 var respond = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
                 //User is signed up and logged in
+                Fridge userFridge = new Fridge();
                 fullDetailsLoggedInUser = new AuthUser()
                 {
                     Email = respond.User.Info.Email,
                     Id = respond.User.Uid,
-                    FullName = fullName
+                    FullName = fullName,
+                    Fridge = userFridge
                 };
+                
                 await client //await client
                    .Child("users")
                    .Child(fullDetailsLoggedInUser.Id)
                    .PutAsync(new 
                     {
-                        fullName = fullName
+                        fullName = fullName, 
+                        fridge = userFridge
                     });
+                
 
                 return true;
             }
@@ -111,11 +116,18 @@ namespace SmartFridgeTracker.Services
                    .Child("fullName")
                    .OnceSingleAsync<string>();
 
+                Fridge userFridge = await client
+                     .Child("users")
+                     .Child(uid)
+                     .Child("fridge")
+                     .OnceSingleAsync<Fridge>();
+
                 fullDetailsLoggedInUser = new AuthUser() //sync user to user model
                 {
                     Email = auth.User.Info.Email,
                     Id = auth.User.Uid,
-                    FullName = fullName
+                    FullName = fullName,
+                    Fridge = userFridge
                 };
                 return true;
             }

@@ -38,7 +38,7 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public MainViewModel()
         {
-            if (LocalDataService.GetInstance() != null)
+            if (AppService.GetInstance() != null)
             {
                 //Calling async function for retreiving data from service
                 InitializeAsyncFunctions();
@@ -56,7 +56,11 @@ namespace SmartFridgeTracker.ViewModels
 
         public async void InitializeAsyncFunctions()
         {
-            Products = new ObservableCollection<Product>(await LocalDataService.GetInstance().GetProductsAsync());
+            var instance = AppService.GetInstance();
+            if(instance != null)
+            {
+                Products = new ObservableCollection<Product>(instance.fullDetailsLoggedInUser.Fridge.ProductsList);
+            }          
         }
 
         #endregion

@@ -14,6 +14,12 @@ namespace SmartFridgeTracker.Models
         public ObservableCollection<Product> ProductsList { get; set; } = new ObservableCollection<Product>();
         public int ProductsCount => ProductsList.Count; // computed property
 
+        public Fridge()
+        {
+            Name = "No name yet";
+            ProductsList = new ObservableCollection<Product>();
+        }
+
         public void AddProduct(Product product)
         {
             if (product == null) return;
