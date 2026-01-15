@@ -10,6 +10,14 @@
         <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
         <Setter Property="Spacing" Value="15" />
     </Style>
+    
+    <!-- Navbar Container -->
+    <!--  3 Columns Grid Container  -->
+    <Style x:Key="ThreeColumnGridContainerStyle" TargetType="Grid">
+        <Setter Property="ColumnDefinitions" Value="Auto,*,Auto" />
+        <Setter Property="ColumnSpacing" Value="20" />
+    </Style>
+    
 
     <!--  3 Rows Grid Container  -->
     <Style x:Key="ThreeRowGridContainerStyle" TargetType="Grid">
@@ -17,12 +25,6 @@
         <Setter Property="RowSpacing" Value="10" />
         <Setter Property="Padding" Value="30" />
         <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
-    </Style>
-
-    <!--  3 Columns Grid Container  -->
-    <Style x:Key="ThreeColumnGridContainerStyle" TargetType="Grid">
-        <Setter Property="ColumnDefinitions" Value="Auto,*,Auto" />
-        <Setter Property="ColumnSpacing" Value="20" />
     </Style>
 
     <!--  Horizontal Line  -->

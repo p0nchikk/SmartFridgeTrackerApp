@@ -159,6 +159,7 @@ namespace SmartFridgeTracker.ViewModels
                 FullName = user.FullName ?? "No username";
                 Email = user.Email ?? "No email";
                 RegDate = user.RegDate;
+                FridgeName = user.Fridge.Name;
             }
 
             //Fridge Details

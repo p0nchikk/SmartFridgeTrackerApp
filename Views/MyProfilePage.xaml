@@ -6,20 +6,25 @@
     <ScrollView>
         <VerticalStackLayout Spacing="25" Style="{StaticResource VerticalContainerStyle}">
 
-            <!--  Header  -->
+            <!--  Navbar  -->
             <Grid
-                Margin="10"
-                ColumnDefinitions="auto,*,auto"
-                ColumnSpacing="20">
+                Style="{StaticResource ThreeColumnGridContainerStyle}">
+                <!-- Back Button -->
                 <ImageButton
                     Command="{Binding GoBackCommand}"
                     Source="back_arrow.png"
                     Style="{StaticResource ImageButtonStyle}" />
+                <!-- Header -->
                 <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     Style="{StaticResource HeaderLabelStyle}"
                     Text="My Profile" />
+                <!-- Menu Button -->
+                <ImageButton
+                     Command="{Binding GoBackCommand}"
+                     Source="back_arrow.png"
+                     Style="{StaticResource ImageButtonStyle}" />
             </Grid>
 
             <!--  Identity Section  -->
@@ -99,7 +104,7 @@
                                 ColumnSpacing="5">
                                 <Label
                                     Style="{StaticResource LabelCharacteristicStyle}"
-                                    Text="{Binding Achivements}" />
+                                    Text="Coming soon" />
                                 <Image
                                     Grid.Column="1"
                                     HeightRequest="12"
