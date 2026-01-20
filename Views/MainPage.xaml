@@ -8,24 +8,26 @@
     <!--  Container Grid  -->
     <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
 
-        <!--  Upper Block  -->
+        <!--  Navbar  -->
         <VerticalStackLayout Grid.Row="0">
-            <Grid
-                Margin="10"
-                ColumnDefinitions="auto,*,auto"
-                ColumnSpacing="20">
-                <!--  Fridge Name  -->
-                <Label
-                    Grid.Column="1"
-                    FontSize="25"
-                    Style="{StaticResource HeaderLabelStyle}"
-                    Text="My Fridge" />
+            <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
                 <!--  Profile Button  -->
                 <ImageButton
-                    Grid.Column="2"
                     Command="{Binding ProfileImageTappedCommand}"
-                    HorizontalOptions="End"
-                    Style="{StaticResource ProfileImageButtonStyle}" />
+                    Source="profile_placeholder.png"
+                    Style="{StaticResource ImageButtonStyle}" />
+                <!-- Header -->
+                <Label
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource HeaderLabelStyle}"
+                    Text="My Fridge" />
+                <!-- Menu Button -->
+                <ImageButton
+                     Grid.Column="2"
+                     Command="{Binding OpenMenuCommand}"
+                     Source="menu.png"
+                     Style="{StaticResource ImageButtonStyle}" />
             </Grid>
 
             <BoxView Style="{StaticResource HorizontalLineStyle}" />

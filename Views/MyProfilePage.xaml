@@ -22,8 +22,9 @@
                     Text="My Profile" />
                 <!-- Menu Button -->
                 <ImageButton
-                     Command="{Binding GoBackCommand}"
-                     Source="back_arrow.png"
+                     Grid.Column="2"
+                     Command="{Binding OpenMenuCommand}"
+                     Source="menu.png"
                      Style="{StaticResource ImageButtonStyle}" />
             </Grid>
 

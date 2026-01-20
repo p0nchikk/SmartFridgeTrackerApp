@@ -5,6 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="ProductInfoPage">
     <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
+
+        <!--  Navbar  -->
         <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
             <ImageButton
                 Command="{Binding GoBackCommand}"

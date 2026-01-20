@@ -16,7 +16,9 @@
     <Style x:Key="ThreeColumnGridContainerStyle" TargetType="Grid">
         <Setter Property="ColumnDefinitions" Value="Auto,*,Auto" />
         <Setter Property="ColumnSpacing" Value="20" />
+        <Setter Property="HeightRequest" Value="50" />
     </Style>
+    
     
 
     <!--  3 Rows Grid Container  -->
@@ -104,8 +106,8 @@
     <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="HeightRequest" Value="25" />
-        <Setter Property="WidthRequest" Value="25" />
+        <Setter Property="HeightRequest" Value="15" />
+        <Setter Property="WidthRequest" Value="15" />
     </Style>
 
     <!--  Profile Image Button  -->

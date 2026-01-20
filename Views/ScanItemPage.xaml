@@ -5,12 +5,30 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls">
     <VerticalStackLayout BackgroundColor="{StaticResource Background}" Style="{StaticResource VerticalContainerStyle}">
-        <Grid RowDefinitions="*,*,*,*" RowSpacing="20">
-            <!--  HEADER  -->
-            <Label
-                Padding="0,50,0,0"
-                Style="{StaticResource HeaderLabelStyle}"
-                Text="Scan your product!" />
+        <Grid RowDefinitions="*,*,*,*,*" RowSpacing="20">
+            
+            <!--  Navbar  -->
+            <Grid
+                     Style="{StaticResource ThreeColumnGridContainerStyle}">
+                <!-- Back Button -->
+                <ImageButton
+                     Command="{Binding GoBackCommand}"
+                     Source="back_arrow.png"
+                     Style="{StaticResource ImageButtonStyle}" />
+                <!-- Header -->
+                <Label
+                     Grid.Column="1"
+                     HorizontalOptions="Center"
+                     Style="{StaticResource HeaderLabelStyle}"
+                     Text="Scan your product!" />
+                <!-- Menu Button -->
+                <ImageButton
+                      Grid.Column="2"
+                      Command="{Binding OpenMenuCommand}"
+                      Source="menu.png"
+                      Style="{StaticResource ImageButtonStyle}" />
+            </Grid>
+            
             <!--  SCANNER  -->
             <Frame
                 Grid.Row="1"
@@ -28,9 +46,15 @@
                 Command="{Binding GoToFrequentProductsCommand}"
                 Text="Frequent Products"
                 Style="{StaticResource ButtonStyle}" />
+            <!--  ADD PRODUCT MANUALLY  -->
+            <Button
+                Grid.Row="3"
+                Command="{Binding GoToAddProductPage}"
+                Text="Add Product Manually"
+                Style="{StaticResource ButtonStyle}" />
             <!--  MESSAGE  -->
             <Label
-                Grid.Row="3"
+                Grid.Row="4"
                 Text="{Binding Message}"
                 Style="{StaticResource MessageStyle}"/>
         </Grid>

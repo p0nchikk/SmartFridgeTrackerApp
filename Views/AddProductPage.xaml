@@ -4,25 +4,28 @@
              x:Class="SmartFridgeTracker.Views.AddProductPage"
              Title="AddProductPage">
     <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
-        <!-- Navbar -->
-        <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
-            <ImageButton
-                 Command="{Binding GoBackCommand}"
-                 Source="back_arrow.png"
-                 Style="{StaticResource ImageButtonStyle}" />
-            <Label
-                 Grid.Column="1"
-                 Style="{StaticResource HeaderLabelStyle}"
-                 Text="Add New Product" />
-            <ImageButton
-                 Grid.Column="2"
-                 Source="menu.png"
-                 Style="{StaticResource ImageButtonStyle}" />
-        </Grid>
+        
+            <!-- Navbar -->
+            <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
+                <ImageButton
+                     Command="{Binding GoBackCommand}"
+                     Source="back_arrow.png"
+                     Style="{StaticResource ImageButtonStyle}" />
+                <Label
+                     Grid.Column="1"
+                     Style="{StaticResource HeaderLabelStyle}"
+                     Text="Add New Product" />
+                <ImageButton
+                     Grid.Column="2"
+                     Source="menu.png"
+                     Style="{StaticResource ImageButtonStyle}" />
+            </Grid>
+        
             <VerticalStackLayout
                     Grid.Row="1"
                     Padding="0,30,0,0"
                     HorizontalOptions="CenterAndExpand">
+                
             <!--  Product's image + name + fabricator  -->
             <Grid
                  Padding="0,0,0,10"
@@ -48,6 +51,7 @@
                      Text="Product's Fabricator"
                      TextColor="{StaticResource Gray300}" />
             </Grid>
+                
             <!--  Product's additional info  -->
             <HorizontalStackLayout Spacing="10">
                 <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity" />
