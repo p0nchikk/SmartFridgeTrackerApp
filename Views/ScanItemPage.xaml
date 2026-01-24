@@ -30,7 +30,7 @@
             </Grid>
             
             <!--  SCANNER  -->
-            <Frame
+            <!--<Frame
                 Grid.Row="1"
                 Padding="0"
                 BackgroundColor="Black"
@@ -38,7 +38,7 @@
                 HeightRequest="250"
                 WidthRequest="300">
                 <zxing:CameraBarcodeReaderView BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected" />
-            </Frame>
+            </Frame>-->
 
             <!--  FREQUENT PRODUCTS BUTTON  -->
             <Button
@@ -49,7 +49,7 @@
             <!--  ADD PRODUCT MANUALLY  -->
             <Button
                 Grid.Row="3"
-                Command="{Binding GoToAddProductPage}"
+                Command="{Binding GoToAddProductPageCommand}"
                 Text="Add Product Manually"
                 Style="{StaticResource ButtonStyle}" />
             <!--  MESSAGE  -->

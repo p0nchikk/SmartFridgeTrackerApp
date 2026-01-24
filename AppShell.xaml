@@ -41,6 +41,10 @@
         Title="Product Info"
         ContentTemplate="{DataTemplate views:ProductInfoPage}"
         Route="ProductInfoPage" />
+    <ShellContent
+        Title="Add Product"
+        ContentTemplate="{DataTemplate views:AddProductPage}"
+        Route="AddProductPage" />
 
 
 </Shell>

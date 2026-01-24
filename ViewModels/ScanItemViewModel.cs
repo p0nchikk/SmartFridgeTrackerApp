@@ -28,19 +28,29 @@ namespace SmartFridgeTracker.ViewModels
         #endregion
 
         #region Commands 
-        ICommand BarcodesDetectedCommand { get; set; }
+        public ICommand BarcodesDetectedCommand { get; set; }
+        public ICommand GoToAddProductPageCommand { get; set; }
         #endregion
 
         #region Constructor
         public ScanItemViewModel()
         {
             BarcodesDetectedCommand = new Command(BarcodesDetected);
+            GoToAddProductPageCommand = new Command(GoToAddProductPage);
         }
         #endregion
+
         #region Functions
         private void BarcodesDetected(/*object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e*/)
         {
 
+        }
+        private void GoToAddProductPage()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//AddProductPage");
+            });
         }
         #endregion
     }
