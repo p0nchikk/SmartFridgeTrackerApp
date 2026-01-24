@@ -30,6 +30,7 @@ namespace SmartFridgeTracker.ViewModels
         #region Commands 
         public ICommand BarcodesDetectedCommand { get; set; }
         public ICommand GoToAddProductPageCommand { get; set; }
+        public ICommand GoBackCommand { get; set; }
         #endregion
 
         #region Constructor
@@ -37,6 +38,7 @@ namespace SmartFridgeTracker.ViewModels
         {
             BarcodesDetectedCommand = new Command(BarcodesDetected);
             GoToAddProductPageCommand = new Command(GoToAddProductPage);
+            GoBackCommand = new Command(GoBack);
         }
         #endregion
 
@@ -50,6 +52,13 @@ namespace SmartFridgeTracker.ViewModels
             MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await Shell.Current.GoToAsync("//AddProductPage");
+            });
+        }
+        private void GoBack()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//MainPage");
             });
         }
         #endregion

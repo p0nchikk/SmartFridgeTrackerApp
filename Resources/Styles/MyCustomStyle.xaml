@@ -18,8 +18,7 @@
         <Setter Property="ColumnSpacing" Value="20" />
         <Setter Property="HeightRequest" Value="50" />
     </Style>
-    
-    
+
 
     <!--  3 Rows Grid Container  -->
     <Style x:Key="ThreeRowGridContainerStyle" TargetType="Grid">
@@ -168,10 +167,11 @@
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
 
-    <!--  Property Style  -->
+    <!--  Label Property Style  -->
     <Style x:Key="LabelPropertyStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource Gray600}" />
         <Setter Property="FontSize" Value="20" />
+        <Setter Property="VerticalOptions" Value="Center" />
     </Style>
 
     <!--  Character Style  -->

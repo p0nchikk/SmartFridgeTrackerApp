@@ -3,73 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartFridgeTracker.Views.AddProductPage"
              Title="AddProductPage">
-    <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
-        
-            <!-- Navbar -->
-            <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
-                <ImageButton
+    <ScrollView>
+        <VerticalStackLayout Style="{StaticResource VerticalContainerStyle}">
+        <!-- Navbar -->
+        <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
+            <ImageButton
                      Command="{Binding GoBackCommand}"
                      Source="back_arrow.png"
                      Style="{StaticResource ImageButtonStyle}" />
-                <Label
+            <Label
                      Grid.Column="1"
                      Style="{StaticResource HeaderLabelStyle}"
-                     Text="Add New Product" />
-                <ImageButton
+                     Text="Add Product" />
+            <ImageButton
                      Grid.Column="2"
                      Source="menu.png"
                      Style="{StaticResource ImageButtonStyle}" />
-            </Grid>
+        </Grid>
         
-            <VerticalStackLayout
-                    Grid.Row="1"
-                    Padding="0,30,0,0"
-                    HorizontalOptions="CenterAndExpand">
-                
-            <!--  Product's image + name + fabricator  -->
-            <Grid
-                 Padding="0,0,0,10"
-                 ColumnDefinitions="auto,*"
-                 RowDefinitions="*,*">
-                <Image
-                     Grid.RowSpan="2"
-                     HeightRequest="80"
-                     Source="image_icon.png"
-                     Style="{StaticResource ProductImageStyle}"
-                     WidthRequest="80" />
-                <Label
-                     Grid.Column="1"
-                     FontSize="30"
-                     Style="{StaticResource ProductNameStyle}"
-                     Text="Product's Name" />
-                <Label
-                     Grid.Row="1"
-                     Grid.Column="1"
-                     FontAttributes="Italic"
-                     FontSize="20"
-                     Style="{StaticResource ProductNameStyle}"
-                     Text="Product's Fabricator"
-                     TextColor="{StaticResource Gray300}" />
+        <!--  Product's info  -->
+           <Grid
+                Padding="20"
+                RowSpacing="5"
+                ColumnDefinitions="*,*"
+                RowDefinitions="*,*,*,*,*,*">
+            <!-- IMAGE -->
+            <ImageButton
+                Margin="0,0,0,20"
+                Grid.ColumnSpan="2"
+                HeightRequest="150"
+                Source="{Binding Image}"
+                HorizontalOptions="Center"
+                Style="{StaticResource ImageButtonStyle}"
+                WidthRequest="150" />
+            <!-- NAME -->
+            <HorizontalStackLayout Spacing="5" Grid.Row="1">
+                <Label Style="{StaticResource LabelPropertyStyle}" TextColor="{StaticResource RedBright}" Text="*" />
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Product Name" />
+            </HorizontalStackLayout>
+            <Frame Grid.Row="1" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                <Entry 
+                    Style="{StaticResource EntryFieldsStyle}" Placeholder="Name" Text="{Binding Name}"/>
+            </Frame>
+
+            <!-- QUANTITY -->
+            <HorizontalStackLayout Spacing="5" Grid.Row="2">
+                <Label Style="{StaticResource LabelPropertyStyle}" TextColor="{StaticResource RedBright}" Text="*" />
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity"/>
+            </HorizontalStackLayout>
+            <Frame Grid.Row="2" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                <Entry Style="{StaticResource EntryFieldsStyle}" Placeholder="Quantity" Text="{Binding Quantity}" />
+            </Frame>
+               
+            <!-- CATEGORIES --><!--
+            <HorizontalStackLayout Spacing="5" Grid.Row="3">
+                <Label Style="{StaticResource LabelPropertyStyle}" TextColor="{StaticResource RedBright}" Text="*" />
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Categories"/>
+            </HorizontalStackLayout>
+            <Frame Grid.Row="3" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+            <Picker Title="Categories" ItemDisplayBinding="{Binding Categories}" ItemsSource="{Binding Categories}"/>
+            </Frame>-->
+
+            <!-- FABRICATOR -->
+            <Label Grid.Row="3" Style="{StaticResource LabelPropertyStyle}" Text="Fabricator"/>
+            <Frame Grid.Row="3" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                <Entry Style="{StaticResource EntryFieldsStyle}" Placeholder="Fabricator" Text="{Binding Fabricator}"/>
+            </Frame>
+
+            <!-- PACKAGING -->
+            <Label Grid.Row="4" Style="{StaticResource LabelPropertyStyle}" Text="Packaging"/>
+                <Frame Grid.Row="4" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                    <Entry Style="{StaticResource EntryFieldsStyle}" Placeholder="Packaging" Text="{Binding Packaging}" />
+                </Frame>
             </Grid>
-                
-            <!--  Product's additional info  -->
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="20" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Packaging" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="can/packet..." />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Categories" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="category" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Product's origin" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="country" />
-            </HorizontalStackLayout>
+            
+            <!-- ADD BUTTON  -->
+            <Button
+                 Margin="0,0,0,0"
+                 Command="{Binding AddProductCommand}"
+                 Style="{StaticResource ButtonStyle}"
+                 Text="Sign In" />
+            
+            <!-- MESSAGE  -->
+            <Label Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource MessageStyle}" Text="{Binding Message}"/>
         </VerticalStackLayout>
-        
-    </Grid>
+    </ScrollView>
 </ContentPage>
