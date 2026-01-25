@@ -39,15 +39,6 @@ namespace SmartFridgeTracker.Services
                 RegDate = DateTime.Now,
             };
             fridgeName = "Amkor 2XL Delux";
-
-            products = new();
-            //Wrap each temprorary product to fridge
-            products.Add(new Product { Name = "Milk Tnyva 3%", Count = 2, Image = "https://shoppy.co.il/cdn/shop/products/tnuva3_milk_1200x1200.png?v=1637090060", ExpirationDate = DateTime.Now, IsSpoiled = true });
-            products.Add(new Product { Name = "Danone Bio Yogurt 3%", Count = 5, Image = "https://shoppy.co.il/cdn/shop/products/danonebioyogurt3_1200x1200.png?v=1636740481", ExpirationDate = DateTime.Now.AddDays(5), IsSpoiled = false });
-            products.Add(new Product { Name = "Emek Sliced cheese 28%", Count = 1, Image = "https://static.yango.tech/avatars/get-grocery-goods/2756334/2f2a22d4-60d8-445b-b983-5c98a1536299/300x300?webp=true", ExpirationDate = DateTime.Now.AddDays(2), IsSpoiled = false });
-            products.Add(new Product { Name = "Sliced Tea Salami - Tirat Tzvi", Count = 1, Image = "https://shoppy.co.il/cdn/shop/products/teasalami_580x.png?v=1641837594", ExpirationDate = DateTime.Now.AddDays(2), IsSpoiled = false });
-            products.Add(new Product { Name = "Organic Free-Range Eggs L", Count = 2, Image = "https://shoppy.co.il/cdn/shop/products/organiceggs_a76c1206-e41c-4362-9fcc-d6faa72ca115_580x.jpg?v=1637113809", ExpirationDate = DateTime.Now.AddDays(3), IsSpoiled = false });
-            products.Add(new Product { Name = "Yoplait Yogurt 0% - Strawberry", Count = 4, Image = "https://shoppy.co.il/cdn/shop/products/yoplaitstrawberry_1200x1200.png?v=1637084683", ExpirationDate = DateTime.Now, IsSpoiled = true });       
         }
         #region Getters and Setters
         //GET FRIDGE NAME

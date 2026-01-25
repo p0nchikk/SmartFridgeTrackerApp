@@ -38,9 +38,13 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public MainViewModel()
         {
-            if (AppService.GetInstance() != null)
+            var instance = AppService.GetInstance();
+            if (instance != null)
             {
-                //Calling async function for retreiving data from service
+                //Calling async function for retreiving data from service             
+                AuthUser user = instance.fullDetailsLoggedInUser;
+                Products = user.Fridge.ProductsList;
+
                 InitializeAsyncFunctions();
             }
             else

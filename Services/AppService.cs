@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using SmartFridgeTracker.Models;
 using Firebase.Auth.Providers;
 using Firebase.Database.Query;
+using Microsoft.Maui.ApplicationModel.Communication;
 
 namespace SmartFridgeTracker.Services
 {
@@ -150,6 +151,27 @@ namespace SmartFridgeTracker.Services
             {
                 return false;
             }
+        }
+
+        //Fridge
+
+        public async Task<bool> LoadProduct(Product product)
+        {
+            if (client != null && product != null)
+            {
+                await client //await client
+                   .Child("users")
+                   .Child(fullDetailsLoggedInUser.Id)
+                   .Child("fridge")
+                   .PutAsync(new
+                   {
+                       product = product
+                   });
+
+                fullDetailsLoggedInUser.Fridge.AddProduct(product);
+                return true;
+            }
+            return false;
         }
     }
 }

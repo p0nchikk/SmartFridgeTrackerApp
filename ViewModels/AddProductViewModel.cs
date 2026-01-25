@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmartFridgeTracker.Models;
+using SmartFridgeTracker.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,8 +46,8 @@ namespace SmartFridgeTracker.ViewModels
             }
         }        
         //Quantity
-        private double? quantity = null;
-        public double? Quantity
+        private double quantity;
+        public double Quantity
         {
             get { return quantity; }
             set
@@ -96,7 +98,7 @@ namespace SmartFridgeTracker.ViewModels
         #endregion
 
         #region Functions
-        private void AddProduct()
+        private async void AddProduct()
         {
             //Reset message
             Message = string.Empty;
@@ -111,6 +113,18 @@ namespace SmartFridgeTracker.ViewModels
                 }
             }
             // Implementation for adding a product goes here
+            Product newProduct = new Product(name, quantity, fabricator, packaging);
+
+            var instance = AppService.GetInstance();
+            bool result = await instance.LoadProduct(newProduct);
+            if (result)
+            {
+                Message = "Your product is added succesfully!";
+            }
+            else
+            {
+                Message = "Something went wrong";
+            }
         }
         private void GoBack() //Navigate to the previous page ( not neccessarily ScanPAge )
         {

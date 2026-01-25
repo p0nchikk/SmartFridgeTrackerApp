@@ -11,9 +11,12 @@ namespace SmartFridgeTracker.Models
     {
         public string? Name { get; set; }
         public string? Image { get; set; }
+        public double Quantity { get; set; }
         public int Count { get; set; }
+        public string? Fabricator { get; set; }
         public DateTime ExpirationDate { get; set; }
         public bool IsSpoiled { get; set; }
+        public string Packaging { get; set; }
         public string StateIcon
         {
             get
@@ -25,6 +28,14 @@ namespace SmartFridgeTracker.Models
             }
         }
         public string BarCode { set; get; }
-        public decimal Quantity {  set; get; }
+
+        public Product(string name, double quantity, string fabricator, string packaging)
+        {
+            this.Name = name;
+            this.Quantity = quantity;
+            this.Fabricator = fabricator;
+            this.Packaging = packaging;
+            //add count later
+        }
     }
 }
