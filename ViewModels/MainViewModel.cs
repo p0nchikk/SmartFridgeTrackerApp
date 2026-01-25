@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SmartFridgeTracker.Services;
+using System.Reactive.Linq;
 
 namespace SmartFridgeTracker.ViewModels
 {
@@ -38,33 +39,12 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public MainViewModel()
         {
-            var instance = AppService.GetInstance();
-            if (instance != null)
-            {
-                //Calling async function for retreiving data from service             
-                AuthUser user = instance.fullDetailsLoggedInUser;
-                Products = user.Fridge.ProductsList;
-
-                InitializeAsyncFunctions();
-            }
-            else
-            {
-                Products = new ObservableCollection<Product>();
-            }
+            Products = new ObservableCollection<Product>();
 
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
             GoToScanItemPageCommand = new Command(GoToScanItemPage);
             DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
             ProductTappedCommand = new Command(OnProductTapped);
-        }
-
-        public async void InitializeAsyncFunctions()
-        {
-            var instance = AppService.GetInstance();
-            if(instance != null)
-            {
-                Products = new ObservableCollection<Product>(instance.fullDetailsLoggedInUser.Fridge.ProductsList);
-            }          
         }
 
         #endregion
@@ -114,6 +94,19 @@ namespace SmartFridgeTracker.ViewModels
             {
                 await Shell.Current.GoToAsync("//ProductInfoPage", navigationParameter);
             });
+        }
+        //Load products from logged in user fridge
+        public async Task LoadProductsAsync()
+        {
+            var instance = AppService.GetInstance();
+            AuthUser user = instance.fullDetailsLoggedInUser;
+
+            if (user?.Fridge?.ProductsList != null)
+            {
+                Products.Clear();
+                foreach (var product in user.Fridge.ProductsList)
+                    Products.Add(product);
+            }
         }
 
         #endregion

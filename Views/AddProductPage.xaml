@@ -82,7 +82,7 @@
                  Margin="0,0,0,0"
                  Command="{Binding AddProductCommand}"
                  Style="{StaticResource ButtonStyle}"
-                 Text="Sign In" />
+                 Text="Add" />
             
             <!-- MESSAGE  -->
             <Label Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource MessageStyle}" Text="{Binding Message}"/>

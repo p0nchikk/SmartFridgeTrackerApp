@@ -72,17 +72,21 @@ namespace SmartFridgeTracker.Services
                     Email = respond.User.Info.Email,
                     Id = respond.User.Uid,
                     FullName = fullName,
-                    Fridge = userFridge
+                    Fridge = userFridge, 
+                    RegDate = DateTime.Now
                 };
-                
+                DateTime regDate = fullDetailsLoggedInUser.RegDate;
+
                 await client //await client
                    .Child("users")
                    .Child(fullDetailsLoggedInUser.Id)
                    .PutAsync(new 
                     {
+                        email = email,
                         fullName = fullName, 
-                        fridge = userFridge
-                    });
+                        fridge = userFridge,
+                        regDate = regDate.ToString("o") //ISO 8601 format
+                   });
                 
 
                 return true;
@@ -110,6 +114,7 @@ namespace SmartFridgeTracker.Services
                 var authUser = await auth.SignInWithEmailAndPasswordAsync(username, password); //try logging in
                 loginAuthUser = authUser.AuthCredential; //verification access to system
 
+                //Load additional user data from database
                 string uid = auth.User.Uid;
                 string fullName = await client
                    .Child("users")
@@ -117,18 +122,36 @@ namespace SmartFridgeTracker.Services
                    .Child("fullName")
                    .OnceSingleAsync<string>();
 
-                Fridge userFridge = await client
-                     .Child("users")
-                     .Child(uid)
-                     .Child("fridge")
-                     .OnceSingleAsync<Fridge>();
+                //Load registration date
+                string? regDateString = await client
+                   .Child("users")
+                   .Child(uid)
+                   .Child("regDate")
+                   .OnceSingleAsync<string>();
 
+                //Retreive products from fridge
+                var productsSnapshot = await client
+                .Child("users")
+                .Child(uid)
+                .Child("fridge")
+                .Child("products")
+                .OnceAsync<Product>();
+
+                Fridge userFridge = new Fridge();
+
+                foreach (var item in productsSnapshot)
+                {
+                    userFridge.ProductsList.Add(item.Object);
+                }
+
+                //Sync data to user model
                 fullDetailsLoggedInUser = new AuthUser() //sync user to user model
                 {
                     Email = auth.User.Info.Email,
                     Id = auth.User.Uid,
                     FullName = fullName,
-                    Fridge = userFridge
+                    Fridge = userFridge,
+                    RegDate = DateTime.Parse(regDateString)
                 };
                 return true;
             }
@@ -157,21 +180,27 @@ namespace SmartFridgeTracker.Services
 
         public async Task<bool> LoadProduct(Product product)
         {
-            if (client != null && product != null)
-            {
-                await client //await client
-                   .Child("users")
-                   .Child(fullDetailsLoggedInUser.Id)
-                   .Child("fridge")
-                   .PutAsync(new
-                   {
-                       product = product
-                   });
+            if (client == null || product == null || fullDetailsLoggedInUser == null)
+                return false;
 
-                fullDetailsLoggedInUser.Fridge.AddProduct(product);
-                return true;
-            }
-            return false;
+            string uid = fullDetailsLoggedInUser.Id;
+
+            // Generate unique key
+            string productId = Guid.NewGuid().ToString();
+
+            await client
+                .Child("users")
+                .Child(uid)
+                .Child("fridge")
+                .Child("products")
+                .Child(productId)
+                .PutAsync(product);
+
+            // Update local memory
+            fullDetailsLoggedInUser.Fridge.ProductsList.Add(product);
+
+            return true;
         }
+
     }
 }

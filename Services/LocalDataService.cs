@@ -16,7 +16,7 @@ namespace SmartFridgeTracker.Services
 
         public LocalDataService()
         {
-            CreateFakeData();
+            //
         }
 
         public static LocalDataService? GetInstance()
@@ -26,19 +26,6 @@ namespace SmartFridgeTracker.Services
                 instance = new LocalDataService();
             }
             return instance;
-        }
-
-        //Temprorary fake data generator
-        private void CreateFakeData()
-        {
-            user = new AuthUser()
-            {
-                FullName = "Polina",
-                Password = "1234",
-                Email = "polina@gmail.com",
-                RegDate = DateTime.Now,
-            };
-            fridgeName = "Amkor 2XL Delux";
         }
         #region Getters and Setters
         //GET FRIDGE NAME
@@ -68,31 +55,31 @@ namespace SmartFridgeTracker.Services
             return products.Count;
         }
         //GET EXPIRING SOON PRODUCTS COUNT
-        public async Task<int> GetExpinigSoonCountAsync()
-        {
-            int count = 0;
-            for ( int i = 0; i < products.Count; i++ )
-            {
-                if ((products[i].ExpirationDate - DateTime.Now).TotalDays < 3 && !products[i].IsSpoiled)
-                {
-                    count++;
-                }
-            }
-            return count;
-        }
+        //public async Task<int> GetExpinigSoonCountAsync()
+        //{
+        //    int count = 0;
+        //    for ( int i = 0; i < products.Count; i++ )
+        //    {
+        //        if ((products[i].ExpirationDate - DateTime.Now).TotalDays < 3 && !products[i].IsSpoiled)
+        //        {
+        //            count++;
+        //        }
+        //    }
+        //    return count;
+        //}
         //GET SPOLIED PRODUCTS COUNT
-        public async Task<int> GetSpoiledCountAsync()
-        {
-            int count = 0;
-            for ( int i = 0; i < products.Count; i++ )
-            {
-                if (products[i].IsSpoiled)
-                {
-                    count++;
-                }
-            }
-            return count;
-        }
+        //public async Task<int> GetSpoiledCountAsync()
+        //{
+        //    int count = 0;
+        //    for ( int i = 0; i < products.Count; i++ )
+        //    {
+        //        if (products[i].IsSpoiled)
+        //        {
+        //            count++;
+        //        }
+        //    }
+        //    return count;
+        //}
         #endregion
 
         #region Functions

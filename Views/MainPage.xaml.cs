@@ -8,4 +8,10 @@ public partial class MainPage : ContentPage
 		InitializeComponent();	
 		BindingContext = new MainViewModel();
 	}
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await ((MainViewModel)BindingContext).LoadProductsAsync();
+    }
+
 }

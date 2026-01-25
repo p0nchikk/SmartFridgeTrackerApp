@@ -58,16 +58,6 @@ namespace SmartFridgeTracker.ViewModels
         }
 
         //Fridge Summary
-        private string? fridgeName;
-        public string FridgeName
-        {
-            get { return fridgeName; }
-            set
-            {
-                fridgeName = value;
-                OnPropertyChange(nameof(FridgeName));
-            }
-        }
 
         private int productCount;
         public int ProductCount
@@ -159,18 +149,16 @@ namespace SmartFridgeTracker.ViewModels
                 FullName = user.FullName ?? "No username";
                 Email = user.Email ?? "No email";
                 RegDate = user.RegDate;
-                FridgeName = user.Fridge.Name;
             }
 
             //Fridge Details
-            //List<Product>? products = await instance.GetProductsAsync();
-            //if (products != null)
-            //{
-            //    FridgeName = "No name yet";
-            //    ProductCount = products.Count;
-            //    ExpiringSoonCount = await instance.GetExpinigSoonCountAsync();
-            //    SpoiledCount = await instance.GetSpoiledCountAsync();
-            //}      
+            Fridge? fridge = user?.Fridge;
+            if ( fridge != null)
+            {
+                ProductCount = fridge.ProductsList.Count;
+                ExpiringSoonCount = fridge.GetExpiringSoonCount();
+                SpoiledCount = fridge.GetSpoiledCount();
+            }
         }
 
         private void Logout()
