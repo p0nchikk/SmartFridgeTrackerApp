@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="SmartFridgeTracker.Views.AddProductPage"
              Title="AddProductPage">
     <ScrollView>
@@ -49,31 +49,39 @@
             <!-- QUANTITY -->
             <HorizontalStackLayout Spacing="5" Grid.Row="2">
                 <Label Style="{StaticResource LabelPropertyStyle}" TextColor="{StaticResource RedBright}" Text="*" />
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity"/>
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity/Amount"/>
             </HorizontalStackLayout>
-            <Frame Grid.Row="2" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
-                <Entry Style="{StaticResource EntryFieldsStyle}" Placeholder="Quantity" Text="{Binding Quantity}" />
-            </Frame>
+                <Frame Grid.Row="2" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                    <Entry
+                            Style="{StaticResource EntryFieldsStyle}"
+                            Text="{Binding Quantity, Mode=TwoWay}"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric" />
+                </Frame>
                
-            <!-- CATEGORIES --><!--
-            <HorizontalStackLayout Spacing="5" Grid.Row="3">
-                <Label Style="{StaticResource LabelPropertyStyle}" TextColor="{StaticResource RedBright}" Text="*" />
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Categories"/>
-            </HorizontalStackLayout>
-            <Frame Grid.Row="3" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
-            <Picker Title="Categories" ItemDisplayBinding="{Binding Categories}" ItemsSource="{Binding Categories}"/>
-            </Frame>-->
 
-            <!-- FABRICATOR -->
+                <!-- FABRICATOR -->
             <Label Grid.Row="3" Style="{StaticResource LabelPropertyStyle}" Text="Fabricator"/>
             <Frame Grid.Row="3" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
                 <Entry Style="{StaticResource EntryFieldsStyle}" Placeholder="Fabricator" Text="{Binding Fabricator}"/>
             </Frame>
 
-            <!-- PACKAGING -->
-            <Label Grid.Row="4" Style="{StaticResource LabelPropertyStyle}" Text="Packaging"/>
+            <!-- COUNT -->
+                <HorizontalStackLayout Spacing="5" Grid.Row="4">
+                    <Label Style="{StaticResource LabelPropertyStyle}" TextColor="{StaticResource RedBright}" Text="*" />
+                    <Label Grid.Row="4" Style="{StaticResource LabelPropertyStyle}" Text="Count"/>
+                </HorizontalStackLayout>
                 <Frame Grid.Row="4" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
-                    <Entry Style="{StaticResource EntryFieldsStyle}" Placeholder="Packaging" Text="{Binding Packaging}" />
+                    <HorizontalStackLayout>
+                        <Button Text="-" Command="{Binding DecreaseCountCommand}" Style="{StaticResource CountButtonStyle}" /> 
+                        <Entry
+                                Style="{StaticResource EntryFieldsStyle}"
+                                Text="{Binding Count, Mode=TwoWay}"
+                                HorizontalTextAlignment="Center"
+                                Keyboard="Numeric" />
+                        <Button Text="+" Command="{Binding IncreaseCountCommand}" Style="{StaticResource CountButtonStyle}" />
+                    </HorizontalStackLayout>
+                   
                 </Frame>
             </Grid>
             

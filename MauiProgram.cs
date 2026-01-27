@@ -2,6 +2,7 @@
 using SmartFridgeTracker.Services;
 using ZXing.Net.Maui.Controls;
 
+
 namespace SmartFridgeTracker
 {
     public static class MauiProgram

@@ -56,6 +56,18 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(nameof(Quantity));
             }
         }
+        //Count
+        private int count;
+        public int Count
+        {
+            get { return count; }
+            set
+            {
+                count = value;
+                OnPropertyChange(nameof(Count));
+            }
+        }
+
         //Category
         //public static List<string> Categories = new List<string>{ "Vegetables", "Fruits", "Dairy", "Meat", "Beverages", "Snacks", "Grains", "Frozen Foods", "Condiments", "Bakery" };
 
@@ -70,30 +82,25 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(nameof(Fabricator));
             }
         }
-        //Packaging
-        private string? packaging;
-        public string? Packaging
-        {
-            get { return packaging; }
-            set
-            {
-                packaging = value;
-                OnPropertyChange(nameof(Packaging));
-            }
-        }
+
         #endregion
 
         #region Commands
         public ICommand? GoBackCommand { get; set; }
         public ICommand SelectImageCommand { get; set; }
         public ICommand AddProductCommand { get; set; }
+        public ICommand DecreaseCountCommand { get; set; }
+        public ICommand IncreaseCountCommand { get; set; }
         #endregion
 
         #region Constructor
         public AddProductViewModel()
         {
+            Count = 1;
             AddProductCommand = new Command(AddProduct);
             GoBackCommand = new Command(GoBack);
+            DecreaseCountCommand = new Command(DecreaseCount);
+            IncreaseCountCommand = new Command(IncreaseCount);
         }
         #endregion
 
@@ -103,7 +110,7 @@ namespace SmartFridgeTracker.ViewModels
             //Reset message
             Message = string.Empty;
             //First, validate all fields are filled
-            List<Object> entries = new List<Object> { Name, Quantity, Fabricator, Packaging }; 
+            List<Object> entries = new List<Object> { Name, Quantity, Fabricator, Count };
             foreach (var entry in entries)
             {
                 if (entry == null || (entry is string str && string.IsNullOrWhiteSpace(str)))
@@ -113,7 +120,7 @@ namespace SmartFridgeTracker.ViewModels
                 }
             }
             // Implementation for adding a product goes here
-            Product newProduct = new Product(name, quantity, fabricator, packaging);
+            Product newProduct = new Product(name, quantity, fabricator, count);
 
             var instance = AppService.GetInstance();
             bool result = await instance.LoadProduct(newProduct);
@@ -132,6 +139,18 @@ namespace SmartFridgeTracker.ViewModels
             {
                 await Shell.Current.GoToAsync("//ScanItemPage");
             });
+        }
+
+        private void DecreaseCount()
+        {
+            if (Count > 1)
+            {
+                Count--;
+            }
+        }
+        private void IncreaseCount()
+        {
+            Count++;
         }
         #endregion
     }

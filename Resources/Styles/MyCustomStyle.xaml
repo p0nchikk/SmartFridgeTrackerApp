@@ -101,6 +101,12 @@
         <Setter Property="HeightRequest" Value="50" />
     </Style>
 
+    <!--  Count Button  -->
+    <Style x:Key="CountButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryLight}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
     <!--  Image Button  -->
     <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
         <Setter Property="Aspect" Value="AspectFit" />

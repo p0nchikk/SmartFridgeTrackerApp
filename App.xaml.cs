@@ -1,5 +1,6 @@
 ﻿using SmartFridgeTracker.Services;
 using SmartFridgeTracker.Views;
+
 namespace SmartFridgeTracker
 {
     public partial class App : Application
