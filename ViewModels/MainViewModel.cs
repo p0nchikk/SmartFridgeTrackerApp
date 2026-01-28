@@ -32,6 +32,7 @@ namespace SmartFridgeTracker.ViewModels
         public ICommand? ProfileImageTappedCommand { get; set; }
         public ICommand? GoToScanItemPageCommand { get; set; }
         public ICommand? DecrementCountOfItemCommand { get; set; }
+        public ICommand? RemoveItemCommand { get; set; }
         public ICommand? ProductTappedCommand { get; }
 
         #endregion
@@ -69,9 +70,9 @@ namespace SmartFridgeTracker.ViewModels
             Product product = objProduct as Product;
             if (product != null) 
             {
-                if (await LocalDataService.GetInstance().DecrementCountOfItemAsync(product))
+                if (await AppService.GetInstance().DecrementCountOfItemAsync(product))
                 {
-                    Products = new ObservableCollection<Product>(await LocalDataService.GetInstance().GetProductsAsync()); //here I don't need await because I alr have products
+                    await LoadProductsAsync();
                 }
                 else
                 {

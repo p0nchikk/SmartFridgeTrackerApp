@@ -97,7 +97,7 @@
                                 Grid.Column="4"
                                 Command="{Binding DecrementCountOfItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}, Mode=FindAncestorBindingContext}}"
                                 CommandParameter="{Binding .}"
-                                Text="Remove" />
+                                Text="-" />
                         </Grid>
                     </SwipeView>
                 </DataTemplate>

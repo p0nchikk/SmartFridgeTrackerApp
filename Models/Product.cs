@@ -9,6 +9,7 @@ namespace SmartFridgeTracker.Models
 {
     public class Product
     {
+        public string Id { get; set; } 
         public string BarCode { set; get; }
         public string? Name { get; set; }
         public string? Image { get; set; }

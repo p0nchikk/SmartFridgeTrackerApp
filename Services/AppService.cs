@@ -141,6 +141,7 @@ namespace SmartFridgeTracker.Services
 
                 foreach (var item in productsSnapshot)
                 {
+                    item.Object.Id = item.Key; //Assign unique ID from Firebase
                     userFridge.ProductsList.Add(item.Object);
                 }
 
@@ -185,22 +186,77 @@ namespace SmartFridgeTracker.Services
 
             string uid = fullDetailsLoggedInUser.Id;
 
-            // Generate unique key
-            string productId = Guid.NewGuid().ToString();
-
-            await client
+            var productId = await client
                 .Child("users")
                 .Child(uid)
                 .Child("fridge")
                 .Child("products")
-                .Child(productId)
-                .PutAsync(product);
+                .PostAsync(product);
 
+            product.Id = productId.Key;
             // Update local memory
             fullDetailsLoggedInUser.Fridge.ProductsList.Add(product);
 
             return true;
         }
 
-    }
+        public async Task<bool> DecrementCountOfItemAsync(Product product)
+        {
+            if (client == null || product == null || fullDetailsLoggedInUser == null || string.IsNullOrEmpty(product.Id))
+                return false;
+
+            string uid = fullDetailsLoggedInUser.Id;
+
+            try
+            {
+                // Get the product directly by its ID
+                var firebaseProductRef = client
+                    .Child("users")
+                    .Child(uid)
+                    .Child("fridge")
+                    .Child("products")
+                    .Child(product.Id);
+
+                // Fetch current value from Firebase
+                var firebaseProduct = await firebaseProductRef.OnceSingleAsync<Product>();
+
+                if (firebaseProduct == null)
+                    return false; // Product not found in Firebase
+
+                // Decrement count
+                if (firebaseProduct.Count > 0)
+                {
+                    firebaseProduct.Count -= 1;
+
+                    // Update the product in Firebase
+                    if (firebaseProduct.Count == 0)
+                    {
+                        // DELETE from Firebase
+                        await firebaseProductRef.DeleteAsync();
+
+                        // DELETE from local memory
+                        fullDetailsLoggedInUser?.Fridge?.ProductsList.RemoveAll(p => p.Id == product.Id);
+                    }
+                    else
+                    {                       
+                        await firebaseProductRef.PutAsync(firebaseProduct);
+
+                        // Update local memory
+                        var localProduct = fullDetailsLoggedInUser.Fridge.ProductsList
+                            .FirstOrDefault(p => p.Id == product.Id);
+
+                        if (localProduct != null)
+                            localProduct.Count = firebaseProduct.Count;
+                    }                                      
+                    return true;
+                }
+
+                return false; // Count already 0
+            }
+            catch
+            {
+                return false; // Any error
+            }
+        }
+        }
 }
