@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using SmartFridgeTracker.Services;
 using System.Reactive.Linq;
+using SmartFridgeTracker.Views;
 
 namespace SmartFridgeTracker.ViewModels
 {
@@ -100,13 +101,14 @@ namespace SmartFridgeTracker.ViewModels
         public async Task LoadProductsAsync()
         {
             var instance = AppService.GetInstance();
-            AuthUser user = instance.fullDetailsLoggedInUser;
+            AuthUser user = instance.loggedInUser;
 
             if (user?.Fridge?.ProductsList != null)
             {
-                Products.Clear();
-                foreach (var product in user.Fridge.ProductsList)
-                    Products.Add(product);
+                // Products.Clear();
+                Products = new ObservableCollection<Product>();
+                foreach (var p in user.Fridge.ProductsList)
+                    Products.Add(p);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartFridgeTracker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmartFridgeTracker.Models
 {
-    public class Product
+    public class Product : ViewModelBase
     {
         public string Id { get; set; } 
         public string BarCode { set; get; }
@@ -15,6 +16,16 @@ namespace SmartFridgeTracker.Models
         public string? Image { get; set; }
         public double Quantity { get; set; }
         public int Count { get; set; }
+        //private int count;
+
+        //public int Count
+        //{
+        //    get { return count; }
+        //    set { count = value;
+        //        OnPropertyChange();
+        //    }
+        //}
+
         public DateTime ExpirationDate { get; set; }
 
         //public string StateIcon

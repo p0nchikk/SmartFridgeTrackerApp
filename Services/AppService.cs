@@ -21,7 +21,7 @@ namespace SmartFridgeTracker.Services
         FirebaseAuthClient? auth;
         FirebaseClient? client;
         public AuthCredential? loginAuthUser;
-        public AuthUser fullDetailsLoggedInUser; //ask if it's ok to name user model as "User" or to change to "AuthUser"
+        public AuthUser loggedInUser; //ask if it's ok to name user model as "User" or to change to "AuthUser"
 
         // SingleTone Pattern
         static private AppService instance;
@@ -67,7 +67,7 @@ namespace SmartFridgeTracker.Services
                 var respond = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
                 //User is signed up and logged in
                 Fridge userFridge = new Fridge();
-                fullDetailsLoggedInUser = new AuthUser()
+                loggedInUser = new AuthUser()
                 {
                     Email = respond.User.Info.Email,
                     Id = respond.User.Uid,
@@ -75,11 +75,11 @@ namespace SmartFridgeTracker.Services
                     Fridge = userFridge, 
                     RegDate = DateTime.Now
                 };
-                DateTime regDate = fullDetailsLoggedInUser.RegDate;
+                DateTime regDate = loggedInUser.RegDate;
 
                 await client //await client
                    .Child("users")
-                   .Child(fullDetailsLoggedInUser.Id)
+                   .Child(loggedInUser.Id)
                    .PutAsync(new 
                     {
                         email = email,
@@ -146,7 +146,7 @@ namespace SmartFridgeTracker.Services
                 }
 
                 //Sync data to user model
-                fullDetailsLoggedInUser = new AuthUser() //sync user to user model
+                loggedInUser = new AuthUser() //sync user to user model
                 {
                     Email = auth.User.Info.Email,
                     Id = auth.User.Uid,
@@ -168,7 +168,7 @@ namespace SmartFridgeTracker.Services
             {
                 auth.SignOut(); //sign out
                 loginAuthUser = null; //deactivate user
-                fullDetailsLoggedInUser = null; //deactivate user model
+                loggedInUser = null; //deactivate user model
                 return true;
             }
             catch
@@ -181,10 +181,10 @@ namespace SmartFridgeTracker.Services
 
         public async Task<bool> LoadProduct(Product product)
         {
-            if (client == null || product == null || fullDetailsLoggedInUser == null)
+            if (client == null || product == null || loggedInUser == null)
                 return false;
 
-            string uid = fullDetailsLoggedInUser.Id;
+            string uid = loggedInUser.Id;
 
             var productId = await client
                 .Child("users")
@@ -195,17 +195,17 @@ namespace SmartFridgeTracker.Services
 
             product.Id = productId.Key;
             // Update local memory
-            fullDetailsLoggedInUser.Fridge.ProductsList.Add(product);
+            loggedInUser.Fridge.ProductsList.Add(product);
 
             return true;
         }
 
         public async Task<bool> DecrementCountOfItemAsync(Product product)
         {
-            if (client == null || product == null || fullDetailsLoggedInUser == null || string.IsNullOrEmpty(product.Id))
+            if (client == null || product == null || loggedInUser == null || string.IsNullOrEmpty(product.Id))
                 return false;
 
-            string uid = fullDetailsLoggedInUser.Id;
+            string uid = loggedInUser.Id;
 
             try
             {
@@ -235,14 +235,14 @@ namespace SmartFridgeTracker.Services
                         await firebaseProductRef.DeleteAsync();
 
                         // DELETE from local memory
-                        fullDetailsLoggedInUser?.Fridge?.ProductsList.RemoveAll(p => p.Id == product.Id);
+                        loggedInUser?.Fridge?.ProductsList.RemoveAll(p => p.Id == product.Id);
                     }
                     else
                     {                       
                         await firebaseProductRef.PutAsync(firebaseProduct);
 
                         // Update local memory
-                        var localProduct = fullDetailsLoggedInUser.Fridge.ProductsList
+                        Product? localProduct = loggedInUser.Fridge.ProductsList
                             .FirstOrDefault(p => p.Id == product.Id);
 
                         if (localProduct != null)
