@@ -15,7 +15,7 @@ namespace SmartFridgeTracker.Services
 {
     class AppService
     {
-        public List<Product>? products;
+        public List<Category> categories;
 
         //Firebase
         FirebaseAuthClient? auth;
@@ -33,8 +33,10 @@ namespace SmartFridgeTracker.Services
             }
             return instance;
         }
+
         public AppService()
         {
+            LoadCategories();
             // We need a costructor because of :  _instance = new AppService();
         }
        
@@ -258,5 +260,19 @@ namespace SmartFridgeTracker.Services
                 return false; // Any error
             }
         }
+
+        //Categories
+        private async void LoadCategories()
+        {
+            if (client != null)
+            {
+                var categoriesRef = client.Child("categories");
+                var firebaseCategories = await categoriesRef.OnceSingleAsync<List<Category>>();
+                categories = new List<Category>();
+                categories = firebaseCategories.ToList();
+            }
         }
+
+    }
+
 }
