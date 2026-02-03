@@ -127,6 +127,7 @@ namespace SmartFridgeTracker.ViewModels
             if (result)
             {
                 Message = "Your product is added succesfully!";
+                GoToMainPage();
             }
             else
             {
@@ -138,6 +139,13 @@ namespace SmartFridgeTracker.ViewModels
             MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await Shell.Current.GoToAsync("//ScanItemPage");
+            });
+        }
+        private void GoToMainPage()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//MainPage");
             });
         }
 

@@ -13,6 +13,7 @@ namespace SmartFridgeTracker.Models
         public string Id { get; set; } 
         public string BarCode { set; get; }
         public string? Name { get; set; }
+        public string? Fabricator { set; get; }
         public string? Image { get; set; }
         public double Quantity { get; set; }
         public int Count { get; set; }
@@ -42,7 +43,8 @@ namespace SmartFridgeTracker.Models
         public Product(string name, double quantity, string fabricator, int count)
         {
             this.Image = "image_icon.png";
-            this.Name = $"{name} - {fabricator}";
+            this.Name = name;
+            this.Fabricator = fabricator;
             this.Quantity = quantity; //temprorary hardcoded value; change later
             this.Count = count;
             this.ExpirationDate = DateTime.FromOADate(7); //default expiration date 7 days from now; change later

@@ -20,6 +20,16 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(); 
             }
         }
+        private string fabricator;
+
+        public string Fabricator
+        {
+            get { return fabricator; }
+            set { fabricator = value;
+                OnPropertyChange();
+            }
+        }
+
 
         private string? productImage = "image_icon.png";
         public string ProductImage
@@ -81,6 +91,7 @@ namespace SmartFridgeTracker.ViewModels
                 ProductImage = product.Image;
                 Count = product.Count;
                 Quantity = product.Quantity;
+                Fabricator = product.Fabricator;
             }
         }
         #endregion

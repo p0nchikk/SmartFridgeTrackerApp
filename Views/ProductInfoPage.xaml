@@ -47,7 +47,7 @@
                     FontAttributes="Italic"
                     FontSize="20"
                     Style="{StaticResource ProductNameStyle}"
-                    Text="Product's Fabricator"
+                    Text="{Binding Fabricator}"
                     TextColor="{StaticResource Gray300}" />
             </Grid>
             <!--  Product's additional info  -->

@@ -75,7 +75,7 @@
                             <!--  Product Image  -->
                             <Image Source="{Binding Image}" Style="{StaticResource ProductImageStyle}" />
 
-                            <!--  Product Name  -->
+                            <!--  Product Full Name  -->
                             <Label
                                 Grid.Column="1"
                                 Style="{StaticResource ProductNameStyle}"
