@@ -34,7 +34,7 @@ namespace SmartFridgeTracker.ViewModels
         public ICommand? GoToScanItemPageCommand { get; set; }
         public ICommand? DecrementCountOfItemCommand { get; set; }
         public ICommand? RemoveItemCommand { get; set; }
-        public ICommand? ProductTappedCommand { get; }
+        public ICommand? OnProductTappedCommand { get; }
 
         #endregion
 
@@ -46,7 +46,7 @@ namespace SmartFridgeTracker.ViewModels
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
             GoToScanItemPageCommand = new Command(GoToScanItemPage);
             DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
-            ProductTappedCommand = new Command(OnProductTapped);
+            OnProductTappedCommand = new Command(OnProductTapped);
         }
 
         #endregion

@@ -143,7 +143,7 @@ namespace SmartFridgeTracker.ViewModels
             var instance = AppService.GetInstance();
 
             //User Details
-            AuthUser? user = instance.fullDetailsLoggedInUser;
+            AuthUser? user = instance.loggedInUser;
             if (user != null)
             {
                 FullName = user.FullName ?? "No username";

@@ -68,7 +68,7 @@
                             VerticalOptions="Center">
 
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ProductTappedCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}" 
+                                <TapGestureRecognizer Command="{Binding OnProductTappedCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}" 
                                                       CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
 

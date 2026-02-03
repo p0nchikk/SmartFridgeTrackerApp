@@ -33,14 +33,14 @@
                 <Image
                     Grid.RowSpan="2"
                     HeightRequest="80"
-                    Source="image_icon.png"
+                    Source="{Binding ProductImage}"
                     Style="{StaticResource ProductImageStyle}"
                     WidthRequest="80" />
                 <Label
                     Grid.Column="1"
                     FontSize="30"
                     Style="{StaticResource ProductNameStyle}"
-                    Text="Product's Name" />
+                    Text="{Binding Name}" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="1"
@@ -52,20 +52,12 @@
             </Grid>
             <!--  Product's additional info  -->
             <HorizontalStackLayout Spacing="10">
+                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Quantity}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
                 <Label Style="{StaticResource LabelPropertyStyle}" Text="Count" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="20" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Packaging" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="lalallal" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Categories" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="category" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Certification" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="certification" />
+                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Count}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>
