@@ -4,7 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="ProductInfoPage">
-    <Grid Style="{StaticResource ThreeRowGridContainerStyle}">
+    <VerticalStackLayout Style="{StaticResource VerticalContainerStyle}">
+
 
         <!--  Navbar  -->
         <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
@@ -21,44 +22,32 @@
                 Source="menu.png"
                 Style="{StaticResource ImageButtonStyle}" />
         </Grid>
-        <VerticalStackLayout
-            Grid.Row="1"
-            Padding="0,30,0,0"
-            HorizontalOptions="CenterAndExpand">
-            <!--  Product's image + name + fabricator  -->
-            <Grid
-                Padding="0,0,0,10"
-                ColumnDefinitions="auto,*"
-                RowDefinitions="*,*">
-                <Image
-                    Grid.RowSpan="2"
-                    HeightRequest="80"
-                    Source="{Binding ProductImage}"
-                    Style="{StaticResource ProductImageStyle}"
-                    WidthRequest="80" />
-                <Label
-                    Grid.Column="1"
-                    FontSize="30"
-                    Style="{StaticResource ProductNameStyle}"
-                    Text="{Binding Name}" />
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    FontAttributes="Italic"
-                    FontSize="20"
-                    Style="{StaticResource ProductNameStyle}"
-                    Text="{Binding Fabricator}"
-                    TextColor="{StaticResource Gray300}" />
-            </Grid>
-            <!--  Product's additional info  -->
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Quantity" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Quantity}" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="10">
-                <Label Style="{StaticResource LabelPropertyStyle}" Text="Count" />
-                <Label Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Count}" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
-    </Grid>
+
+        <!--  Product's additional info  -->
+        <Grid
+                Grid.Row="1"
+                Padding="20"
+                ColumnSpacing="10"
+                RowSpacing="5"
+                ColumnDefinitions="*,*"
+                RowDefinitions="*,*,*,*"
+                HorizontalOptions="Center">
+            <!-- NAME -->
+            <Label
+                     Grid.ColumnSpan="2"
+                     FontSize="30"
+                     Style="{StaticResource ProductNameStyle}"
+                     Text="{Binding Name}" 
+                     HorizontalOptions="Center"/>
+            <!-- QUANTITY -->
+            <Label Grid.Row="1" Style="{StaticResource LabelPropertyStyle}" Text="Quantity:" WidthRequest="120"/>
+            <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Quantity}" />
+            <!-- COUNT -->
+            <Label Grid.Row="2" Style="{StaticResource LabelPropertyStyle}" Text="Count:" />
+            <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Count}" />
+            <!-- LIFE DAYS -->
+            <Label Grid.Row="3" Style="{StaticResource LabelPropertyStyle}" Text="Life Days:" WidthRequest="120" />
+            <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding LifeDays}" />
+        </Grid>
+    </VerticalStackLayout>
 </ContentPage>

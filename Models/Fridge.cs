@@ -15,21 +15,22 @@ namespace SmartFridgeTracker.Models
         {
             ProductsList = new List<Product>();
         }
+
         //Get total count of products expiring soon (within 3 days)
         public int GetExpiringSoonCount()
         {
             int count = 0;
-            DateTime now = DateTime.Now;
             foreach (var product in ProductsList)
             {
                 // Check if the product is expiring within the next 3 days
-                if ((product.ExpirationDate - now).TotalDays <= 3 && product.ExpirationDate >= now)
+                if (product.LifeDays <= 3)
                 {
                     count += product.Count; // Consider the Count of each product
                 }
             }
             return count;
         }
+
         //Get total count of spoiled products
         public int GetSpoiledCount()
         {
@@ -38,13 +39,14 @@ namespace SmartFridgeTracker.Models
             foreach (var product in ProductsList)
             {
                 // Check if the product is spoiled
-                if (product.ExpirationDate < now)
+                if (product.LifeDays < 0)
                 {
                     count += product.Count; // Consider the Count of each product
                 }
             }
             return count;
         }
+
         //Add product to the fridge
         public void AddProduct(Product product)
         {

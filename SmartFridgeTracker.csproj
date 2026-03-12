@@ -7,8 +7,7 @@
 		 <!--End of Life false check for workloads-->
 		<ExpectOutdatedWorkloads>true</ExpectOutdatedWorkloads>
 
-		<TargetFrameworks>net8.0-android34.0;net8.0-ios17.0;net8.0-maccatalyst17.0</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net8.0-android34.0;net8.0-ios17.0;net8.0-maccatalyst17.0;net8.0-windows10.0.19041.0</TargetFrameworks>
 
 		 <!--Note for MacCatalyst:
 		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.

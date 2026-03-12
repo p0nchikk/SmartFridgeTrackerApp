@@ -12,6 +12,18 @@ namespace SmartFridgeTracker.ViewModels
     {
         #region Variables Declaration
 
+        #region Think About
+        //private string? productImage = "image_icon.png";
+        //public string ProductImage
+        //{
+        //    get { return productImage; }
+        //    set { productImage = value;
+        //        OnPropertyChange();
+        //    }
+        //}
+        #endregion
+
+        //Name
         private string? name = "No name";
         public string Name
         {
@@ -20,26 +32,20 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(); 
             }
         }
-        private string fabricator;
 
-        public string Fabricator
+        //Quantity ( quantity + unit)
+        private string quantity;
+        public string Quantity
         {
-            get { return fabricator; }
-            set { fabricator = value;
+            get { return quantity; }
+            set
+            {
+                quantity = value;
                 OnPropertyChange();
             }
         }
 
-
-        private string? productImage = "image_icon.png";
-        public string ProductImage
-        {
-            get { return productImage; }
-            set { productImage = value;
-                OnPropertyChange();
-            }
-        }
-
+        //Count
         private int count;
         public int Count
         {
@@ -49,16 +55,15 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-        private double quantity;
-
-        public double Quantity
+        //Life Days ( good for )
+        private string lifeDays;
+        public string LifeDays
         {
-            get { return quantity; }
-            set { quantity = value;
+            get { return lifeDays; }
+            set { lifeDays = value;
                 OnPropertyChange();
             }
-        }
-
+        }   
 
         #endregion
 
@@ -88,10 +93,9 @@ namespace SmartFridgeTracker.ViewModels
                 productObj is Product product)
             {
                 Name = product.Name;
-                ProductImage = product.Image;
+                Quantity = $"{product.Quantity} {product.QuantityUnit}";
                 Count = product.Count;
-                Quantity = product.Quantity;
-                Fabricator = product.Fabricator;
+                LifeDays = $"{product.LifeDays} days";
             }
         }
         #endregion

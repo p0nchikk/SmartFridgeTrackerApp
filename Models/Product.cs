@@ -11,44 +11,38 @@ namespace SmartFridgeTracker.Models
     public class Product : ViewModelBase
     {
         public string Id { get; set; } 
-        public string BarCode { set; get; }
         public string? Name { get; set; }
-        public string? Fabricator { set; get; }
-        public string? Image { get; set; }
         public double Quantity { get; set; }
-        public int Count { get; set; }
-        //private int count;
+        public string QuantityUnit { get; set; }
+        public int Count { get; set; } //think about        
+        public int LifeDays { get; set; } //in days
 
-        //public int Count
-        //{
-        //    get { return count; }
-        //    set { count = value;
-        //        OnPropertyChange();
-        //    }
-        //}
+        #region Properties for future use
+        //public string? Image { get; set; }
+        //public Category Category { get; set; } = new Category();
+        //public bool IsFrequent { get; set; } //for future use, to mark products that are added often by the user
+        #endregion
 
-        public DateTime ExpirationDate { get; set; }
-
-        //public string StateIcon
-        //{
-        //    get
-        //    {
-        //        if (ExpirationDate.CompareTo(DateTime.Now) < 0) return "exclamation.png";
-        //        // "Soon to expire" if 2 days or less left
-        //        else if ((ExpirationDate - DateTime.Now).TotalDays <= 3) return "warning_sign.png";
-        //        else return string.Empty;
-        //    }
-        //}       
-
-        public Product(string name, double quantity, string fabricator, int count)
+        public Product(){ } //Parameterless constructor for Firebase deserialization
+        public Product(string id, string name, double quantity, string quantityUnit, int count, int lifeDays)
         {
-            this.Image = "image_icon.png";
+            this.Id = id;
             this.Name = name;
-            this.Fabricator = fabricator;
-            this.Quantity = quantity; //temprorary hardcoded value; change later
+            this.Quantity = quantity;
+            this.QuantityUnit = quantityUnit;
             this.Count = count;
-            this.ExpirationDate = DateTime.FromOADate(7); //default expiration date 7 days from now; change later
-            this.BarCode = string.Empty;
+            this.LifeDays = lifeDays;
+        }
+
+        //Constructor without id, for new products that haven't been saved to Firebase yet
+        public Product(string name, double quantity, string quantityUnit, int count, int lifeDays)
+        {
+            this.Id = String.Empty;
+            this.Name = name;
+            this.Quantity = quantity;
+            this.QuantityUnit = quantityUnit;
+            this.Count = count;
+            this.LifeDays = lifeDays;
         }
     }
 }

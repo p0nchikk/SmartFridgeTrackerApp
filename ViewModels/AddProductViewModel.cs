@@ -12,6 +12,8 @@ namespace SmartFridgeTracker.ViewModels
     public class AddProductViewModel : ViewModelBase
     {
         #region Variables Declaration
+
+        #region Think about 
         //Image
         private string? image = "image_icon.png";
         public string? Image
@@ -34,6 +36,15 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(nameof(Message));
             }
         }
+        //Is Frequent
+        private bool isFrequent;
+        public bool IsFrequent
+        {
+            get { return isFrequent; }
+            set { isFrequent = value; }
+        }
+        #endregion
+
         //Product Name
         private string? name;
         public string? Name
@@ -56,6 +67,13 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange(nameof(Quantity));
             }
         }
+        //Measurement Unit = Quantity Unit
+        private string measurement;
+        public string Measurement
+        {
+            get { return measurement; }
+            set { measurement = value; }
+        }
         //Count
         private int count;
         public int Count
@@ -63,25 +81,23 @@ namespace SmartFridgeTracker.ViewModels
             get { return count; }
             set
             {
-                count = value;
+                count = value;  
                 OnPropertyChange(nameof(Count));
             }
         }
+        //Life Days
+        private int lifeDays;
+        public int LifeDays
+        {
+            get { return lifeDays; }
+            set { lifeDays = value; }
+        }
+
+
+
 
         //Category
         //public static List<string> Categories = new List<string>{ "Vegetables", "Fruits", "Dairy", "Meat", "Beverages", "Snacks", "Grains", "Frozen Foods", "Condiments", "Bakery" };
-
-        //Fabricator
-        private string? fabricator;
-        public string? Fabricator
-        {
-            get { return fabricator; }
-            set
-            {
-                fabricator = value;
-                OnPropertyChange(nameof(Fabricator));
-            }
-        }
 
         #endregion
 
@@ -110,7 +126,7 @@ namespace SmartFridgeTracker.ViewModels
             //Reset message
             Message = string.Empty;
             //First, validate all fields are filled
-            List<Object> entries = new List<Object> { Name, Quantity, Fabricator, Count };
+            List<Object> entries = new List<Object> { Name, Quantity, Measurement, Count, LifeDays};
             foreach (var entry in entries)
             {
                 if (entry == null || (entry is string str && string.IsNullOrWhiteSpace(str)))
@@ -120,7 +136,7 @@ namespace SmartFridgeTracker.ViewModels
                 }
             }
             // Implementation for adding a product goes here
-            Product newProduct = new Product(name, quantity, fabricator, count);
+            Product newProduct = new Product(name, quantity, measurement, count, lifeDays);
 
             var instance = AppService.GetInstance();
             bool result = await instance.LoadProduct(newProduct);
