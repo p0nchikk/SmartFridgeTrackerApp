@@ -82,6 +82,7 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public LoginViewModel()
         {
+            Email = "cherry@gmail.com";
             LoginUserCommand = new Command(async () => await Login());
             GoToRegisterCommand = new Command(GoToRegister);
             ViewPassCommand = new Command(ViewPass);
@@ -127,12 +128,12 @@ namespace SmartFridgeTracker.ViewModels
                 bool successed = await AppService.GetInstance().TryLogin(email, password);
                 if (successed)
                 {
+                    ((App)Application.Current).SetAppShell();
+
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await Shell.Current.GoToAsync("//MainPage");
                     });
-                    //((App)Application.Current).SetAuthenticatedShell();
-                    // This will also navigate to the 1st page int the AuthenticatedShell 
                 }
                 else
                 {

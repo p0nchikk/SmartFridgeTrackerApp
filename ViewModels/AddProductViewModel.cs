@@ -154,7 +154,7 @@ namespace SmartFridgeTracker.ViewModels
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("//ScanItemPage");
+                await Shell.Current.GoToAsync("//MainPage");
             });
         }
         private void GoToMainPage()

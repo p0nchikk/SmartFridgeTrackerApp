@@ -108,7 +108,7 @@
         <Button
             Grid.Row="2"
             BackgroundColor="{StaticResource PrimaryDark}"
-            Command="{Binding GoToScanItemPageCommand}"
+            Command="{Binding GoToAddProductPageCommand}"
             Style="{StaticResource ButtonStyle}"
             Text="ADD" />
 

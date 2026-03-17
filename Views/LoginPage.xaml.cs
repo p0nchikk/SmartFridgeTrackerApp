@@ -8,13 +8,13 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
         BindingContext = new LoginViewModel();
     }
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
+    //protected override void OnAppearing()
+    //{
+    //    base.OnAppearing();
 
-        if (BindingContext is LoginViewModel vm)
-        {
-            vm.ResetFields();
-        }
-    }
+    //    if (BindingContext is LoginViewModel vm)
+    //    {
+    //        vm.ResetFields();
+    //    }
+    //}
 }

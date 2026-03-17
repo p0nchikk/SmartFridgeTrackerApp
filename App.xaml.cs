@@ -1,4 +1,5 @@
 ﻿using SmartFridgeTracker.Services;
+using SmartFridgeTracker.Shells;
 using SmartFridgeTracker.Views;
 
 namespace SmartFridgeTracker
@@ -9,14 +10,16 @@ namespace SmartFridgeTracker
         {
             LocalDataService.GetInstance();
             InitializeComponent();
-            MainPage = new AppShell()
-            {
-                FlowDirection = FlowDirection.LeftToRight,
-            };
+            MainPage = new AuthShell();
         }
-        //protected override Window CreateWindow(IActivationState? activationState)
-        //{
-        //    return new Window(new NavigationPage(new MainPage()));
-        //}
+
+        public void SetAppShell()
+        {
+            MainPage = new AppShell();
+        }
+        public void SetAuthShell()
+        {
+            MainPage = new AuthShell();
+        }
     }
 }

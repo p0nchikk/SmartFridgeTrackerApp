@@ -6,45 +6,39 @@
     xmlns:views="clr-namespace:SmartFridgeTracker.Views"
     Title="SmartFridgeTracker"
     Shell.FlyoutBehavior="Flyout">
-
-    <ShellContent
-        Title="Start Page"
-        ContentTemplate="{DataTemplate views:StartPage}"
-        FlyoutItemIsVisible="False"
-        Route="StartPage" />
-    <ShellContent
-        Title="Login"
-        ContentTemplate="{DataTemplate views:LoginPage}"
-        FlyoutItemIsVisible="False"
-        Route="LoginPage" />
-    <ShellContent
-        Title="Register"
-        ContentTemplate="{DataTemplate views:RegisterPage}"
-        FlyoutItemIsVisible="False"
-        Route="RegisterPage" />
+    
     <ShellContent
         Title="Main"
         ContentTemplate="{DataTemplate views:MainPage}"
         FlyoutIcon="home_icon.png"
         Route="MainPage" />
+    
     <ShellContent
         Title="My Profile"
         ContentTemplate="{DataTemplate views:MyProfilePage}"
         FlyoutIcon="profile_placeholder.png"
         Route="MyProfilePage" />
-    <ShellContent
-        Title="Scan Item"
-        ContentTemplate="{DataTemplate views:ScanItemPage}"
-        FlyoutItemIsVisible="False"
-        Route="ScanItemPage" />
-    <ShellContent
-        Title="Product Info"
-        ContentTemplate="{DataTemplate views:ProductInfoPage}"
-        Route="ProductInfoPage" />
+
+    <!--<ShellContent
+        Title="Fridge Inventory"
+        ContentTemplate="{DataTemplate views:FridgeInventoryPage}"
+        Route="FridgeInventoryPage" />-->
+    
     <ShellContent
         Title="Add Product"
         ContentTemplate="{DataTemplate views:AddProductPage}"
         Route="AddProductPage" />
+
+    <ShellContent
+         Title="Scan Product"
+         ContentTemplate="{DataTemplate views:ScanItemPage}"
+         FlyoutItemIsVisible="False"
+         Route="ScanItemPage" />
+
+    <ShellContent
+        Title="Product Info"
+        ContentTemplate="{DataTemplate views:ProductInfoPage}"
+        Route="ProductInfoPage" />
 
 
 </Shell>

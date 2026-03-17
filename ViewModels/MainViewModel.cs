@@ -31,7 +31,7 @@ namespace SmartFridgeTracker.ViewModels
 
         #region Commands
         public ICommand? ProfileImageTappedCommand { get; set; }
-        public ICommand? GoToScanItemPageCommand { get; set; }
+        public ICommand? GoToAddProductPageCommand { get; set; }
         public ICommand? DecrementCountOfItemCommand { get; set; }
         public ICommand? RemoveItemCommand { get; set; }
         public ICommand? OnProductTappedCommand { get; }
@@ -44,7 +44,7 @@ namespace SmartFridgeTracker.ViewModels
             Products = new ObservableCollection<Product>();
 
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
-            GoToScanItemPageCommand = new Command(GoToScanItemPage);
+            GoToAddProductPageCommand = new Command(GoToAddProductPage);
             DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
             OnProductTappedCommand = new Command(OnProductTapped);
         }
@@ -59,11 +59,11 @@ namespace SmartFridgeTracker.ViewModels
                 await Shell.Current.GoToAsync("//MyProfilePage");
             });
         }
-        private void GoToScanItemPage()
+        private void GoToAddProductPage()
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("//ScanItemPage");
+                await Shell.Current.GoToAsync("//AddProductPage");
             });
         }
         private async void DecrementCountOfItem(object objProduct)
