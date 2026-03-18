@@ -19,10 +19,10 @@
         FlyoutIcon="profile_placeholder.png"
         Route="MyProfilePage" />
 
-    <!--<ShellContent
+   <ShellContent
         Title="Fridge Inventory"
         ContentTemplate="{DataTemplate views:FridgeInventoryPage}"
-        Route="FridgeInventoryPage" />-->
+        Route="FridgeInventoryPage" />
     
     <ShellContent
         Title="Add Product"

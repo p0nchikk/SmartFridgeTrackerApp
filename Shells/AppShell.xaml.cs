@@ -11,6 +11,7 @@ namespace SmartFridgeTracker
             Routing.RegisterRoute(nameof(AddProductPage), typeof(AddProductPage));
             Routing.RegisterRoute(nameof(ScanProductPage), typeof(ScanProductPage));
             Routing.RegisterRoute(nameof(ProductInfoPage), typeof(ProductInfoPage));
+            Routing.RegisterRoute(nameof(FridgeInventoryPage), typeof(FridgeInventoryPage));
         }
     }
 }

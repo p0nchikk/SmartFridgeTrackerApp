@@ -21,7 +21,7 @@
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     Style="{StaticResource HeaderLabelStyle}"
-                    Text="My Fridge" />
+                    Text="Main" />
                 <!-- Menu Button -->
                 <ImageButton
                      Grid.Column="2"
@@ -30,6 +30,7 @@
                      Style="{StaticResource ImageButtonStyle}" />
             </Grid>
 
+            <!-- Divider -->
             <BoxView Style="{StaticResource HorizontalLineStyle}" />
 
         </VerticalStackLayout>
@@ -57,7 +58,7 @@
                         <SwipeView.RightItems>
                             <SwipeItem
                                 BackgroundColor="{StaticResource RedBright}"
-                                Command="{Binding DecrementCountOfItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}"
+                                Command="{Binding RemoveItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}"
                                 CommandParameter="{Binding .}"
                                 Text="Remove" />
                         </SwipeView.RightItems>
@@ -108,9 +109,17 @@
         <Button
             Grid.Row="2"
             BackgroundColor="{StaticResource PrimaryDark}"
-            Command="{Binding GoToAddProductPageCommand}"
             Style="{StaticResource ButtonStyle}"
             Text="ADD" />
+        
+        <Button
+            Grid.Row="2"
+            BackgroundColor="{StaticResource PrimaryDark}"
+            Style="{StaticResource ButtonStyle}"
+            Command="{Binding GoToFridgeInventoryCommand}"
+            Text="Inventory" />
+        
+       
 
         <!--  To recheck constructor  -->
 

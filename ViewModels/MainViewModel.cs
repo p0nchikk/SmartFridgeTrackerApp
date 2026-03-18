@@ -35,6 +35,7 @@ namespace SmartFridgeTracker.ViewModels
         public ICommand? DecrementCountOfItemCommand { get; set; }
         public ICommand? RemoveItemCommand { get; set; }
         public ICommand? OnProductTappedCommand { get; }
+        public ICommand? GoToFridgeInventoryCommand { get; }
 
         #endregion
 
@@ -47,6 +48,7 @@ namespace SmartFridgeTracker.ViewModels
             GoToAddProductPageCommand = new Command(GoToAddProductPage);
             DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
             OnProductTappedCommand = new Command(OnProductTapped);
+            GoToFridgeInventoryCommand = new Command(GoToFridgeInventory);
         }
 
         #endregion
@@ -110,6 +112,15 @@ namespace SmartFridgeTracker.ViewModels
                 foreach (var p in user.Fridge.ProductsList)
                     Products.Add(p);
             }
+        }
+
+        private void GoToFridgeInventory()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("FridgeInventoryPage");
+            });
+
         }
 
         #endregion
