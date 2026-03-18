@@ -102,11 +102,12 @@ namespace SmartFridgeTracker.ViewModels
         #endregion
 
         #region Commands
-        public ICommand? GoBackCommand { get; set; }
         public ICommand SelectImageCommand { get; set; }
         public ICommand AddProductCommand { get; set; }
         public ICommand DecreaseCountCommand { get; set; }
         public ICommand IncreaseCountCommand { get; set; }
+        public ICommand GoToScanProductPageCommand { get; set; }
+        public ICommand GoToFrequentProductsCommand { get; set; }
         #endregion
 
         #region Constructor
@@ -114,9 +115,10 @@ namespace SmartFridgeTracker.ViewModels
         {
             Count = 1;
             AddProductCommand = new Command(AddProduct);
-            GoBackCommand = new Command(GoBack);
+            GoToScanProductPageCommand = new Command(GoToScanProductPage);
             DecreaseCountCommand = new Command(DecreaseCount);
             IncreaseCountCommand = new Command(IncreaseCount);
+            
         }
         #endregion
 
@@ -143,25 +145,22 @@ namespace SmartFridgeTracker.ViewModels
             if (result)
             {
                 Message = "Your product is added succesfully!";
-                GoToMainPage();
+                //Go to Main Page
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await Shell.Current.GoToAsync("//MainPage");
+                });
             }
             else
             {
                 Message = "Something went wrong";
             }
         }
-        private void GoBack() //Navigate to the previous page ( not neccessarily ScanPAge )
+        private void GoToScanProductPage()
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("//MainPage");
-            });
-        }
-        private void GoToMainPage()
-        {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Shell.Current.GoToAsync("//MainPage");
+                await Shell.Current.GoToAsync("ScanProductPage");
             });
         }
 

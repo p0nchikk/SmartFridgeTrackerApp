@@ -114,7 +114,7 @@
 	  <MauiXaml Update="Views\RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ScanItemPage.xaml">
+	  <MauiXaml Update="Views\ScanProductPageProduct.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\StartPage.xaml">
@@ -125,6 +125,12 @@
 	<ItemGroup>
 	  <Folder Include="Resources\Images\menu_icons\" />
 	  <Folder Include="Resources\Images\products\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\ScanProductPage.xaml.cs">
+	    <DependentUpon>ScanProductPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

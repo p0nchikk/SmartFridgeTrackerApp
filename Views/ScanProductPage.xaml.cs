@@ -2,12 +2,12 @@ using SmartFridgeTracker.ViewModels;
 
 namespace SmartFridgeTracker.Views;
 
-public partial class ScanItemPage : ContentPage
+public partial class ScanProductPage : ContentPage
 {
-	public ScanItemPage()
+	public ScanProductPage()
 	{
 		InitializeComponent();
-		BindingContext = new ScanItemViewModel();
+		BindingContext = new ScanProductViewModel();
 	}
 
     private void CameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)

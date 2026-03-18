@@ -56,14 +56,14 @@ namespace SmartFridgeTracker.ViewModels
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("//MyProfilePage");
+                await Shell.Current.GoToAsync("MyProfilePage");
             });
         }
         private void GoToAddProductPage()
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("//AddProductPage");
+                await Shell.Current.GoToAsync("AddProductPage");
             });
         }
         private async void DecrementCountOfItem(object objProduct)
@@ -94,7 +94,7 @@ namespace SmartFridgeTracker.ViewModels
 
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Shell.Current.GoToAsync("//ProductInfoPage", navigationParameter);
+                await Shell.Current.GoToAsync("ProductInfoPage", navigationParameter);
             });
         }
         //Load products from logged in user fridge

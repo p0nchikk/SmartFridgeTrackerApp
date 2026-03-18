@@ -5,23 +5,12 @@
              Title="AddProductPage">
     <ScrollView>
         <VerticalStackLayout Style="{StaticResource VerticalContainerStyle}">
-        <!-- Navbar -->
-        <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
-            <ImageButton
-                     Command="{Binding GoBackCommand}"
-                     Source="back_arrow.png"
-                     Style="{StaticResource ImageButtonStyle}" />
+             <!-- Header -->
             <Label
-                     Grid.Column="1"
                      Style="{StaticResource HeaderLabelStyle}"
                      Text="Add Product" />
-            <ImageButton
-                     Grid.Column="2"
-                     Source="menu.png"
-                     Style="{StaticResource ImageButtonStyle}" />
-        </Grid>
-        
-        <!--  Product's info  -->
+
+            <!--  Product's info  -->
             <Grid
             Padding="20"
             RowSpacing="5"
@@ -49,7 +38,7 @@
                 <Label Grid.Row="2" Style="{StaticResource LabelPropertyStyle}" Text="Measurement:"/>
                 <Frame Grid.Row="2" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
                     <Entry 
-                    Style="{StaticResource EntryFieldsStyle}" Placeholder="pc, ml, kg" Text="{Binding Measurement}"/>
+                    Style="{StaticResource EntryFieldsStyle}" Placeholder="pc, ml, ltr, kg, gr" Text="{Binding Measurement}"/>
                 </Frame>
 
                 <!-- COUNT -->
@@ -74,14 +63,38 @@
                 </Frame>
 
             </Grid>
+
+            <Grid
+                ColumnDefinitions="*,*"
+                RowDefinitions="*,*"
+                RowSpacing="10">
+                <!-- ADD BUTTON  -->
+                <Button
+                     Margin="0,0,0,0"
+                     Grid.ColumnSpan="2"
+                     Command="{Binding AddProductCommand}"
+                     Style="{StaticResource ButtonStyle}"
+                     Text="Add" />
+
+                <!--  SCAN PRODUCT  -->
+                <Button
+                     Grid.Row="1"
+                     Command="{Binding GoToScanProductPageCommand}"
+                     Text="Scan Product"
+                     BackgroundColor="{StaticResource SecondaryBright}"
+                     Style="{StaticResource ButtonStyle}" />
+
+                <!--  FREQUENT PRODUCTS BUTTON  -->
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Command="{Binding GoToFrequentProductsCommand}"
+                    Text="Frequent Products"
+                    BackgroundColor="{StaticResource SecondaryLight}"
+                    Style="{StaticResource ButtonStyle}" />
+            </Grid>
             
-            <!-- ADD BUTTON  -->
-            <Button
-                 Margin="0,0,0,0"
-                 Command="{Binding AddProductCommand}"
-                 Style="{StaticResource ButtonStyle}"
-                 Text="Add" />
-            
+
             <!-- MESSAGE  -->
             <Label Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource MessageStyle}" Text="{Binding Message}"/>
            

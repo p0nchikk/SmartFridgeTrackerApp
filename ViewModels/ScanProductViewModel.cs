@@ -8,8 +8,9 @@ using ZXing.QrCode.Internal;
 
 namespace SmartFridgeTracker.ViewModels
 {
-    public class ScanItemViewModel
+    public class ScanProductViewModel
     {
+        //change everything to photo and not barcode
         #region Variables Definition
         private QRCode? _QRCode;
 
@@ -29,16 +30,12 @@ namespace SmartFridgeTracker.ViewModels
 
         #region Commands 
         public ICommand BarcodesDetectedCommand { get; set; }
-        public ICommand GoToAddProductPageCommand { get; set; }
-        public ICommand GoBackCommand { get; set; }
         #endregion
 
         #region Constructor
-        public ScanItemViewModel()
+        public ScanProductViewModel()
         {
             BarcodesDetectedCommand = new Command(BarcodesDetected);
-            GoToAddProductPageCommand = new Command(GoToAddProductPage);
-            GoBackCommand = new Command(GoBack);
         }
         #endregion
 
@@ -46,20 +43,6 @@ namespace SmartFridgeTracker.ViewModels
         private void BarcodesDetected(/*object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e*/)
         {
 
-        }
-        private void GoToAddProductPage()
-        {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Shell.Current.GoToAsync("//AddProductPage");
-            });
-        }
-        private void GoBack()
-        {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Shell.Current.GoToAsync("//MainPage");
-            });
         }
         #endregion
     }

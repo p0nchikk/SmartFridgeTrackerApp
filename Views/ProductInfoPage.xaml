@@ -7,22 +7,12 @@
     <VerticalStackLayout Style="{StaticResource VerticalContainerStyle}">
 
 
-        <!--  Navbar  -->
-        <Grid Style="{StaticResource ThreeColumnGridContainerStyle}">
-            <ImageButton
-                Command="{Binding GoBackCommand}"
-                Source="back_arrow.png"
-                Style="{StaticResource ImageButtonStyle}" />
-            <Label
+        <!--  Header  -->
+        <Label
                 Grid.Column="1"
                 Style="{StaticResource HeaderLabelStyle}"
                 Text="Product Info" />
-            <ImageButton
-                Grid.Column="2"
-                Source="menu.png"
-                Style="{StaticResource ImageButtonStyle}" />
-        </Grid>
-
+        
         <!--  Product's additional info  -->
         <Grid
                 Grid.Row="1"

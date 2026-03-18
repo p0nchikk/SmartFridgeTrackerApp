@@ -31,9 +31,9 @@
 
     <ShellContent
          Title="Scan Product"
-         ContentTemplate="{DataTemplate views:ScanItemPage}"
+         ContentTemplate="{DataTemplate views:ScanProductPage}"
          FlyoutItemIsVisible="False"
-         Route="ScanItemPage" />
+         Route="ScanProductPage" />
 
     <ShellContent
         Title="Product Info"
