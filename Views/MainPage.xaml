@@ -35,93 +35,90 @@
 
         </VerticalStackLayout>
 
-        <!--  Product List  -->
+        <ScrollView   Grid.Row="1">
+       
+        <!--  Dashboard  -->
+            <Grid          
+                RowDefinitions="*,*,*,*"
+                RowSpacing="15">
+                
+                <!--  Sector #1 - Fridge Summary -->
+                <Frame
+                Grid.Row="0"
+                BackgroundColor="{StaticResource BackgroundLight}"
+                CornerRadius="20"
+                Style="{StaticResource SectorFrameStyle}"
+                HeightRequest="170">
+                    <VerticalStackLayout>
+                        <!-- Greeting  -->
+                        <Label
+                         Text="{Binding Greeting}"
+                         Style="{StaticResource RegularLabelStyle}" />
+                        <Label
+                         Text="your fridge have"
+                         Style="{StaticResource SubheaderLabelStyle}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!--  Sector #2 - Eat Soon -->
+                <Frame
+                Grid.Row="1"
+                BackgroundColor="{StaticResource BackgroundLight}"
+                CornerRadius="20"
+                Style="{StaticResource SectorFrameStyle}"
+                HeightRequest="170">
+                    <VerticalStackLayout>
+                        <!-- Header  -->
+                        <Label
+                         Text="Eat soon"
+                         Style="{StaticResource RegularLabelStyle}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!--  Sector #3 - All Products -->
+                <Frame
+                Grid.Row="2"
+                BackgroundColor="{StaticResource BackgroundLight}"
+                CornerRadius="20"
+                Style="{StaticResource SectorFrameStyle}"
+                HeightRequest="170">
+                    <VerticalStackLayout>
+                        <!-- Header  -->
+                        <Label
+                         Text="All Products"
+                         Style="{StaticResource RegularLabelStyle}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!--  Sector #4 - Receipts -->
+                <Frame
+                Grid.Row="3"
+                BackgroundColor="{StaticResource BackgroundLight}"
+                CornerRadius="20"
+                Style="{StaticResource SectorFrameStyle}"
+                HeightRequest="170">
+                    <VerticalStackLayout>
+                        <!-- Header  -->
+                        <Label
+                         Text="You can cook:"
+                         Style="{StaticResource RegularLabelStyle}" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
 
-        <CollectionView
-            Grid.Row="1"
-            Margin="0,10,0,10"
-            ItemsSource="{Binding Products}">
-            <!--  EMPTY LIST  -->
-            <CollectionView.EmptyView>
-                <VerticalStackLayout>
-                    <Label
-                        FontSize="20"
-                        HorizontalOptions="Center"
-                        Text="You have no products yet"
-                        TextColor="{StaticResource Gray600}" />
-                </VerticalStackLayout>
-            </CollectionView.EmptyView>
-            <!--  FILLED LIST  -->
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <SwipeView>
-                        <SwipeView.RightItems>
-                            <SwipeItem
-                                BackgroundColor="{StaticResource RedBright}"
-                                Command="{Binding RemoveItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}"
-                                CommandParameter="{Binding .}"
-                                Text="Remove" />
-                        </SwipeView.RightItems>
-
-                        <Grid
-                            Padding="10"
-                            ColumnDefinitions="Auto,*,Auto,60,60"
-                            VerticalOptions="Center">
-
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnProductTappedCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}}" 
-                                                      CommandParameter="{Binding .}" />
-                            </Grid.GestureRecognizers>
-
-                            <!--  Product Image  -->
-                            <Image Source="{Binding Image}" Style="{StaticResource ProductImageStyle}" />
-
-                            <!--  Product Full Name  -->
-                            <Label
-                                Grid.Column="1"
-                                Style="{StaticResource ProductNameStyle}"
-                                Text="{Binding Name}" />
-
-                            <!--  Warning Sign  -->
-                            <Image
-                                Grid.Column="2"
-                                Source="{Binding StateIcon}"
-                                Style="{StaticResource WarningSignStyle}" />
-
-                            <!--  Count  -->
-                            <Label
-                                Grid.Column="3"
-                                Style="{StaticResource ProductCountStyle}"
-                                Text="{Binding Count}" />
-                            <!--  Remove  -->
-                            <Button
-                                Grid.Column="4"
-                                Command="{Binding DecrementCountOfItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:MainViewModel}, Mode=FindAncestorBindingContext}}"
-                                CommandParameter="{Binding .}"
-                                Text="-" />
-                        </Grid>
-                    </SwipeView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
 
         <!--  Button ADD  -->
         <Button
             Grid.Row="2"
             BackgroundColor="{StaticResource PrimaryDark}"
             Style="{StaticResource ButtonStyle}"
-            Text="ADD" />
-        
-        <Button
-            Grid.Row="2"
-            BackgroundColor="{StaticResource PrimaryDark}"
-            Style="{StaticResource ButtonStyle}"
-            Command="{Binding GoToFridgeInventoryCommand}"
-            Text="Inventory" />
-        
-       
-
-        <!--  To recheck constructor  -->
+            HeightRequest="70"
+            WidthRequest="70"
+            HorizontalOptions="End"
+            CornerRadius="50"
+            Command="{Binding GoToAddProductPageCommand}"
+            Text="+" />
 
     </Grid>
 </ContentPage>

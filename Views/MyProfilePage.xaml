@@ -60,8 +60,7 @@
 
                     <!--  USER DETAILS SECTION  -->
                     <Grid
-                        ColumnDefinitions="auto, 100, auto"
-                        RowDefinitions="*,*"
+                        RowDefinitions="*,*,*,*"
                         RowSpacing="10">
 
                         <!--  ACHIVEMENTS  -->
@@ -129,7 +128,7 @@
                         </Grid>
                         <!--  EMAIL  -->
                         <Grid
-                            Grid.Column="2"
+                            Grid.Row="2"
                             ColumnDefinitions="*,*"
                             ColumnSpacing="15"
                             HeightRequest="50"
@@ -154,8 +153,7 @@
                         </Grid>
                         <!--  FRIDGE NAME  -->
                         <Grid
-                            Grid.Row="1"
-                            Grid.Column="2"
+                            Grid.Row="3"
                             ColumnDefinitions="*,*"
                             ColumnSpacing="15"
                             HeightRequest="50"

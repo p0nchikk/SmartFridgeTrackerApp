@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:SmartFridgeTracker.ViewModels"
-             x:Class="SmartFridgeTracker.Views.FridgeInventoryPage"
-             Title="FridgeInventoryPage">
+             x:Class="SmartFridgeTracker.Views.FridgeInventoryPage">
 
     <!--  Container Grid  -->
     <Grid Style="{StaticResource ThreeRowGridContainerStyle}">

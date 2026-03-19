@@ -27,6 +27,16 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
+        private string greeting;
+        public string Greeting
+        {       
+            get { return greeting; }
+            set { greeting = value;
+                OnPropertyChange();
+            }
+        }
+
+
         #endregion
 
         #region Commands
@@ -99,6 +109,18 @@ namespace SmartFridgeTracker.ViewModels
                 await Shell.Current.GoToAsync("ProductInfoPage", navigationParameter);
             });
         }
+        
+
+        private void GoToFridgeInventory()
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("FridgeInventoryPage");
+            });
+
+        }
+
+        #region On Appearing
         //Load products from logged in user fridge
         public async Task LoadProductsAsync()
         {
@@ -114,14 +136,28 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-        private void GoToFridgeInventory()
+        public async Task LoadGreetingAsync()
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
+            var instance = AppService.GetInstance();
+            AuthUser user = instance.loggedInUser;
+            if (user != null)
             {
-                await Shell.Current.GoToAsync("FridgeInventoryPage");
-            });
-
+                string timeOfDay = GetTimeOfDay();
+                Greeting = $"Good {timeOfDay}, {user.FullName}!";
+            }
         }
+
+        private string GetTimeOfDay()
+        {
+            DateTime dt = DateTime.Now;
+            if(dt.Hour < 12)
+                return "Morning";
+            else if (dt.Hour < 18)
+                return "Afternoon";
+            else
+                return "Evening";
+        }
+        #endregion
 
         #endregion
     }

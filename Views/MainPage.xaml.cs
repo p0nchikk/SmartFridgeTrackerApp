@@ -12,6 +12,7 @@ public partial class MainPage : ContentPage
     {
         base.OnAppearing();
         await ((MainViewModel)BindingContext).LoadProductsAsync();
+        await ((MainViewModel)BindingContext).LoadGreetingAsync();
     }
 
 }
