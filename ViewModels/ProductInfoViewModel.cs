@@ -23,6 +23,17 @@ namespace SmartFridgeTracker.ViewModels
         //}
         #endregion
 
+        //Emoji
+        private string? emoji;
+        public string? Emoji
+        {
+            get { return emoji; }
+            set { emoji = value; 
+                OnPropertyChange();
+            }
+        }
+
+
         //Name
         private string? name = "No name";
         public string Name
@@ -92,8 +103,9 @@ namespace SmartFridgeTracker.ViewModels
             if (query.TryGetValue("Product", out var productObj) &&
                 productObj is Product product)
             {
+                Emoji = product.Emoji;
                 Name = product.Name;
-                Quantity = $"{product.Quantity} {product.QuantityUnit}";
+                Quantity = product.Quantity;
                 Count = product.Count;
                 LifeDays = $"{product.LifeDays} days";
             }

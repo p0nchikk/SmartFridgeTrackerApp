@@ -15,6 +15,16 @@ namespace SmartFridgeTracker.ViewModels
     public class MainViewModel : ViewModelBase
     {
         #region Variables Declaration
+        private ObservableCollection<Product> expiringSoonProducts;
+        public ObservableCollection<Product> ExpiringSoonProducts
+        {
+            get => expiringSoonProducts;
+            set
+            {
+                expiringSoonProducts = value;
+                OnPropertyChange();
+            }
+        }
 
         private ObservableCollection<Product> products;
         public ObservableCollection<Product> Products
@@ -27,6 +37,33 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
+        private int totalCount;
+        public int TotalCount
+        {
+            get { return totalCount; }
+            set { totalCount = value;
+                OnPropertyChange();
+            }   
+        }
+
+        private int expiringSoonCount;
+        public int ExpiringSoonCount
+        {
+            get { return expiringSoonCount; }
+            set { expiringSoonCount = value;
+                OnPropertyChange();
+            }
+        }
+
+        private int expiredCount;
+        public int ExpiredCount
+        {
+            get { return expiredCount; }
+            set { expiredCount = value;
+                OnPropertyChange();
+            }
+        }
+
         private string greeting;
         public string Greeting
         {       
@@ -35,8 +72,6 @@ namespace SmartFridgeTracker.ViewModels
                 OnPropertyChange();
             }
         }
-
-
         #endregion
 
         #region Commands
@@ -53,6 +88,7 @@ namespace SmartFridgeTracker.ViewModels
         public MainViewModel()
         {
             Products = new ObservableCollection<Product>();
+            ExpiringSoonProducts = new ObservableCollection<Product>();
 
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
             GoToAddProductPageCommand = new Command(GoToAddProductPage);
@@ -129,10 +165,18 @@ namespace SmartFridgeTracker.ViewModels
 
             if (user?.Fridge?.ProductsList != null)
             {
-                // Products.Clear();
-                Products = new ObservableCollection<Product>();
+                Products.Clear();
                 foreach (var p in user.Fridge.ProductsList)
                     Products.Add(p);
+
+                ExpiringSoonProducts.Clear();
+                List<Product> expSoonList = user.Fridge.GetExpiringSoonList();
+                foreach (var p in expSoonList)
+                    ExpiringSoonProducts.Add(p);
+
+                TotalCount = Products.Count;
+                ExpiringSoonCount = ExpiringSoonProducts.Count;
+                ExpiredCount = user.Fridge.GetSpoiledCount();
             }
         }
 

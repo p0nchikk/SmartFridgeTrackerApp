@@ -19,24 +19,38 @@
                 ColumnSpacing="10"
                 RowSpacing="5"
                 ColumnDefinitions="*,*"
-                RowDefinitions="*,*,*,*"
+                RowDefinitions="*,*,*,*,*"
                 HorizontalOptions="Center">
+            
+            <!-- EMOJI -->
+            <Label 
+                FontSize="50"
+                Grid.Row="0" 
+                Grid.ColumnSpan="2" 
+                Style="{StaticResource EmojiLabelStyle}" 
+                Text="{Binding Emoji}" 
+                HorizontalOptions="Center"/>
+            
             <!-- NAME -->
             <Label
+                     Grid.Row="1"
                      Grid.ColumnSpan="2"
                      FontSize="30"
                      Style="{StaticResource ProductNameStyle}"
                      Text="{Binding Name}" 
                      HorizontalOptions="Center"/>
+            
             <!-- QUANTITY -->
-            <Label Grid.Row="1" Style="{StaticResource LabelPropertyStyle}" Text="Quantity:" WidthRequest="120"/>
-            <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Quantity}" />
+            <Label Grid.Row="2" Style="{StaticResource LabelPropertyStyle}" Text="Quantity:" WidthRequest="120"/>
+            <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Quantity}" />
+            
             <!-- COUNT -->
-            <Label Grid.Row="2" Style="{StaticResource LabelPropertyStyle}" Text="Count:" />
-            <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Count}" />
+            <Label Grid.Row="3" Style="{StaticResource LabelPropertyStyle}" Text="Count:" />
+            <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Count}" />
+            
             <!-- LIFE DAYS -->
-            <Label Grid.Row="3" Style="{StaticResource LabelPropertyStyle}" Text="Life Days:" WidthRequest="120" />
-            <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding LifeDays}" />
+            <Label Grid.Row="4" Style="{StaticResource LabelPropertyStyle}" Text="Life Days:" WidthRequest="120" />
+            <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding LifeDays}" />
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

@@ -3,6 +3,7 @@
     x:Class="SmartFridgeTracker.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:comp="clr-namespace:SmartFridgeTracker.Components"
     xmlns:viewmodels="clr-namespace:SmartFridgeTracker.ViewModels">
 
     <!--  Container Grid  -->
@@ -48,8 +49,8 @@
                 BackgroundColor="{StaticResource BackgroundLight}"
                 CornerRadius="20"
                 Style="{StaticResource SectorFrameStyle}"
-                HeightRequest="170">
-                    <VerticalStackLayout>
+                HeightRequest="210">
+                    <VerticalStackLayout Spacing="5">
                         <!-- Greeting  -->
                         <Label
                          Text="{Binding Greeting}"
@@ -57,6 +58,59 @@
                         <Label
                          Text="your fridge have"
                          Style="{StaticResource SubheaderLabelStyle}" />
+
+                        <Grid RowDefinitions="Auto,Auto" 
+                              ColumnDefinitions="*,*,*" 
+                              RowSpacing="5"
+                              HorizontalOptions="FillAndExpand"
+                              Padding="0,10,0,0">
+                            <!-- Expiring soon count -->
+                            <Border
+                                Style="{StaticResource EmojiBorderStyle}"
+                                Stroke="{StaticResource SecondaryBright}"
+                                HorizontalOptions="Center">
+                                <Label Style="{StaticResource EmojiLabelStyle}"
+                                       TextColor="{StaticResource Gray600}"
+                                       Text="{Binding ExpiringSoonCount}"/>
+                            </Border>
+                            <Label Grid.Row="1"
+                                 Style="{StaticResource LabelCharacteristicStyle}"
+                                 HorizontalTextAlignment="Center"
+                                 HorizontalOptions="Center"
+                                 Text="expiring soon"/>
+                            
+                            <!-- Total count -->
+                            <Border Grid.Column="1"
+                                Style="{StaticResource EmojiBorderStyle}"
+                                Stroke="{StaticResource PrimaryBright}"
+                                HorizontalOptions="Center">
+                                <Label Style="{StaticResource EmojiLabelStyle}"
+                                       TextColor="{StaticResource Gray600}"
+                                       Text="{Binding TotalCount}"/>
+                            </Border>
+                            <Label Grid.Row="1" Grid.Column="1"
+                                Style="{StaticResource LabelCharacteristicStyle}"
+                                 HorizontalTextAlignment="Center"
+                                 HorizontalOptions="Center"
+                                Text="total"/>
+                            
+                            <!-- Expired count -->
+                            <Border Grid.Column="2" 
+                                Style="{StaticResource EmojiBorderStyle}"
+                                Stroke="{StaticResource RedBright}"
+                                HorizontalOptions="Center">
+                                <Label Style="{StaticResource EmojiLabelStyle}"
+                                       TextColor="{StaticResource Gray600}"
+                                       Text="{Binding ExpiredCount}"/>
+                            </Border>
+                            <Label Grid.Row="1" Grid.Column="2"
+                                Style="{StaticResource LabelCharacteristicStyle}"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="Center"
+                                Text="expired"/>
+                            
+                        </Grid>
+                        
                     </VerticalStackLayout>
                 </Frame>
                 
@@ -66,13 +120,35 @@
                 BackgroundColor="{StaticResource BackgroundLight}"
                 CornerRadius="20"
                 Style="{StaticResource SectorFrameStyle}"
-                HeightRequest="170">
-                    <VerticalStackLayout>
+                MinimumHeightRequest="200"
+                MaximumHeightRequest="310">
+                    <Grid RowDefinitions="Auto, *, Auto">
                         <!-- Header  -->
                         <Label
                          Text="Eat soon"
                          Style="{StaticResource RegularLabelStyle}" />
-                    </VerticalStackLayout>
+
+                        <!-- Expiring Soon Products -->
+                        <CollectionView
+                             Grid.Row="1"
+                             Margin="0,10,0,10"
+                             ItemsSource="{Binding ExpiringSoonProducts}">
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <comp:ExpiringSoonProductView />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <!-- Navigation -->
+                        <ImageButton Grid.Row="2"
+                              Source="right_arrow.png"
+                              HorizontalOptions="End"
+                              Style="{StaticResource ImageButtonStyle}"
+                              Command="{Binding GoToExpiringSoonProducts}"/>
+
+                    </Grid>
                 </Frame>
                 
                 <!--  Sector #3 - All Products -->
@@ -81,13 +157,43 @@
                 BackgroundColor="{StaticResource BackgroundLight}"
                 CornerRadius="20"
                 Style="{StaticResource SectorFrameStyle}"
-                HeightRequest="170">
-                    <VerticalStackLayout>
+                MinimumHeightRequest="200"
+                MaximumHeightRequest="310">
+                    <Grid RowDefinitions="Auto, *, Auto">
                         <!-- Header  -->
                         <Label
                          Text="All Products"
                          Style="{StaticResource RegularLabelStyle}" />
-                    </VerticalStackLayout>
+
+                        <!-- All Products -->
+                        <CollectionView
+                                 Grid.Row="1"
+                                 Margin="0,10,0,10"
+                                 ItemsSource="{Binding Products}">
+                            
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="2" />
+                            </CollectionView.ItemsLayout>
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <comp:InventoryProductView />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                            <CollectionView.EmptyView>
+                                <Label Text="No products found" Style="{StaticResource SubheaderLabelStyle}" />
+                            </CollectionView.EmptyView>
+
+                        </CollectionView>
+                        
+                        <!-- Navigation -->
+                        <ImageButton Grid.Row="2"
+                                     Source="right_arrow.png"
+                                     HorizontalOptions="End"
+                                     Style="{StaticResource ImageButtonStyle}"
+                                     Command="{Binding GoToFridgeInventoryCommand}"/>
+                    </Grid>
                 </Frame>
                 
                 <!--  Sector #4 - Receipts -->

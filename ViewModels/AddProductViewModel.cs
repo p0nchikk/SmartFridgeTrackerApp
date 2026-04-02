@@ -44,6 +44,17 @@ namespace SmartFridgeTracker.ViewModels
             set { isFrequent = value; }
         }
         #endregion
+        //Emoji
+        private string? emoji;
+        public string? Emoji
+        {
+            get { return emoji; }
+            set
+            {
+                emoji = value;
+                OnPropertyChange();
+            }
+        }
 
         //Product Name
         private string? name;
@@ -57,8 +68,8 @@ namespace SmartFridgeTracker.ViewModels
             }
         }        
         //Quantity
-        private double quantity;
-        public double Quantity
+        private float quantity;
+        public float Quantity
         {
             get { return quantity; }
             set
@@ -92,10 +103,6 @@ namespace SmartFridgeTracker.ViewModels
             get { return lifeDays; }
             set { lifeDays = value; }
         }
-
-
-
-
         //Category
         //public static List<string> Categories = new List<string>{ "Vegetables", "Fruits", "Dairy", "Meat", "Beverages", "Snacks", "Grains", "Frozen Foods", "Condiments", "Bakery" };
 
@@ -128,7 +135,7 @@ namespace SmartFridgeTracker.ViewModels
             //Reset message
             Message = string.Empty;
             //First, validate all fields are filled
-            List<Object> entries = new List<Object> { Name, Quantity, Measurement, Count, LifeDays};
+            List<Object> entries = new List<Object> { Emoji, Name, Quantity, Measurement, Count, LifeDays};
             foreach (var entry in entries)
             {
                 if (entry == null || (entry is string str && string.IsNullOrWhiteSpace(str)))
@@ -138,7 +145,7 @@ namespace SmartFridgeTracker.ViewModels
                 }
             }
             // Implementation for adding a product goes here
-            Product newProduct = new Product(name, quantity, measurement, count, lifeDays);
+            Product newProduct = new Product(emoji, name, quantity, measurement, count, lifeDays);
 
             var instance = AppService.GetInstance();
             bool result = await instance.LoadProduct(newProduct);

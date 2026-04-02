@@ -55,8 +55,8 @@
                                                CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
 
-                            <!--  Product Image  -->
-                            <Image Source="{Binding Image}" Style="{StaticResource ProductImageStyle}" />
+                            <!--  Product Emoji  -->
+                            <Label Text="{Binding Emoji}" Style="{StaticResource EmojiLabelStyle}" />
 
                             <!--  Product Full Name  -->
                             <Label

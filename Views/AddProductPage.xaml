@@ -14,18 +14,25 @@
             Padding="20"
             RowSpacing="5"
             ColumnDefinitions="*,*"
-            RowDefinitions="*,*,*,*,*,*">
+            RowDefinitions="*,*,*,*,*,*,*">
+                
+                <!-- EMOJI -->
+                <Border Grid.ColumnSpan="2"
+                    Style="{StaticResource EmojiBorderStyle}" 
+                    Stroke="{StaticResource PrimaryBright}"> 
+                    <Entry Text="{Binding Emoji}" Style="{StaticResource EmojiLabelStyle}" Placeholder="😊"/>
+                </Border>
 
                 <!-- NAME -->
-                <Label Grid.Row="0" Style="{StaticResource LabelPropertyStyle}" Text="Product Name" />
-                <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                <Label Grid.Row="1" Style="{StaticResource LabelPropertyStyle}" Text="Product Name" />
+                <Frame Grid.Row="1" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
                     <Entry 
                         Style="{StaticResource EntryFieldsStyle}" Placeholder="Name" Text="{Binding Name}"/>
                 </Frame>
 
                 <!-- QUANTITY -->
-                <Label Grid.Row="1" Style="{StaticResource LabelPropertyStyle}" Text="Quantity/Amount"/>
-                <Frame Grid.Row="1" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                <Label Grid.Row="2" Style="{StaticResource LabelPropertyStyle}" Text="Quantity/Amount"/>
+                <Frame Grid.Row="2" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
                     <Entry
                                 Style="{StaticResource EntryFieldsStyle}"
                                 Text="{Binding Quantity, Mode=TwoWay}"
@@ -34,15 +41,15 @@
                 </Frame>
 
                 <!-- MEASUREMENT -->
-                <Label Grid.Row="2" Style="{StaticResource LabelPropertyStyle}" Text="Measurement:"/>
-                <Frame Grid.Row="2" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                <Label Grid.Row="3" Style="{StaticResource LabelPropertyStyle}" Text="Measurement:"/>
+                <Frame Grid.Row="3" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
                     <Entry 
                     Style="{StaticResource EntryFieldsStyle}" Placeholder="pc, ml, ltr, kg, gr" Text="{Binding Measurement}"/>
                 </Frame>
 
                 <!-- COUNT -->
-                <Label Grid.Row="3" Style="{StaticResource LabelPropertyStyle}" Text="Count"/>
-                <Frame Grid.Row="3" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                <Label Grid.Row="4" Style="{StaticResource LabelPropertyStyle}" Text="Count"/>
+                <Frame Grid.Row="4" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
                     <HorizontalStackLayout>
                         <Button Text="-" Command="{Binding DecreaseCountCommand}" Style="{StaticResource CountButtonStyle}" />
                         <Entry
@@ -55,8 +62,8 @@
                 </Frame>
 
                 <!-- LIFE DAYS  -->
-                <Label Grid.Row="4" Style="{StaticResource LabelPropertyStyle}" Text="Life Days:"/>
-                <Frame Grid.Row="4" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
+                <Label Grid.Row="5" Style="{StaticResource LabelPropertyStyle}" Text="Life Days:"/>
+                <Frame Grid.Row="5" Grid.Column="1" Style="{StaticResource EntryFrameStyle}">
                     <Entry 
                             Style="{StaticResource EntryFieldsStyle}" Placeholder="7, 14, 21" Text="{Binding LifeDays}"/>
                 </Frame>
