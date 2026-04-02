@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using DotNetEnv;
+using Firebase.Auth;
+using Microsoft.Extensions.Logging;
 using SmartFridgeTracker.Services;
 using ZXing.Net.Maui.Controls;
-
 
 namespace SmartFridgeTracker
 {
@@ -9,10 +11,14 @@ namespace SmartFridgeTracker
     {
         public static MauiApp CreateMauiApp()
         {
+            Env.Load(@"C:\Users\proko\source\repos\p0nchikk\SmartFridgeTrackerApp\.env");
+            var GeminiAPIKey = Environment.GetEnvironmentVariable("GEMINI_API_KEY");
+
             AppService.GetInstance().Init();
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkitCamera()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
