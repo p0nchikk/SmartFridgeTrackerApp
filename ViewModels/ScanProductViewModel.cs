@@ -14,24 +14,15 @@ namespace SmartFridgeTracker.ViewModels
     {
         //change everything to photo and not barcode
         #region Variables Definition
-        private string? previewImage = "image_icon.png";
-        public string? PreviewImage
+        private byte[]? _currentImageBytes; //Hold the current image bytes for API upload
+
+        private ImageSource previewImage = "image_icon.png";
+        public ImageSource PreviewImage
         {
             get { return previewImage; }
             set
             {
                 previewImage = value;
-                OnPropertyChange();
-            }
-        }
-
-        private FileResult? selectedImage;
-        public FileResult? SelectedImage
-        {
-            get { return selectedImage; }
-            set
-            {
-                selectedImage = value;
                 OnPropertyChange();
             }
         }
@@ -91,27 +82,53 @@ namespace SmartFridgeTracker.ViewModels
         #endregion
 
         #region Functions
-        private async void SelectImage_Clicked()
+        public async void TakePhoto_Clicked(CommunityToolkit.Maui.Views.MediaCapturedEventArgs e)
         {
-            SelectedImage = await MediaPicker.Default.PickPhotoAsync();
-            IsCameraViewVisible = false;
-            IsPreviewImageVisible = true;
+            if (e?.Media == null) return;
+            //Capture the photo and convert it to byte array
+            using var stream = e.Media;
+            using var memoryStream = new MemoryStream();
+            await stream.CopyToAsync(memoryStream);
 
-            if (selectedImage != null)
+            _currentImageBytes = memoryStream.ToArray();
+
+            ShowPreview(); //Show the preview after taking the photo
+        }
+        private async void SelectImage_Clicked()
+        {         
+            var result = await MediaPicker.Default.PickPhotoAsync();
+            if (result != null)
             {
-                //var stream = await selectedImage.OpenReadAsync();
-                PreviewImage = selectedImage.FullPath;
+                //Read the selected photo and convert it to byte array
+                using var stream = await result.OpenReadAsync();
+                using var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+
+                // Save to our Single Source of Truth
+                _currentImageBytes = memoryStream.ToArray();
+
+                ShowPreview(); //Show the preview after selecting the photo
             }
         }
-        private async void TakePhoto_Clicked(CommunityToolkit.Maui.Views.MediaCapturedEventArgs e)
+
+        /// <summary>
+        /// Show the preview of the captured or selected photo. 
+        /// This will update the UI to show the image and hide the camera view.
+        /// </summary>
+        private void ShowPreview()
         {
-            IsCameraViewVisible = false;
-            IsPreviewImageVisible = true;
-            PreviewImage = ImageSource.FromStream(() => e.Media).ToString(); //check if this works
-            //send to api and get the product info
+            if (_currentImageBytes != null)
+            {
+                PreviewImage = ImageSource.FromStream(() => new MemoryStream(_currentImageBytes));
+                IsCameraViewVisible = false;
+                IsPreviewImageVisible = true;
+                Message = "Photo ready! Send it or retake.";
+            }
         }
+       
         private async void UploadImage_Clicked()
         {
+            Message = "Sent successfully! Fetching product info...";
             //send to api and get the product info
         }
         #endregion
