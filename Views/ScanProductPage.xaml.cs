@@ -10,8 +10,8 @@ public partial class ScanProductPage : ContentPage
 		BindingContext = new ScanProductViewModel();
 	}
 
-    private void CameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
-    {
+    //private void CameraView_MediaCaptured(object sender, CommunityToolkit.Maui.Views.MediaCapturedEventArgs e)
+    //{
 
-    }
+    //}
 }

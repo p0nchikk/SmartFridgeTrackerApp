@@ -3,34 +3,60 @@
     x:Class="SmartFridgeTracker.Views.ScanProductPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls">
-    <VerticalStackLayout BackgroundColor="{StaticResource Background}" Style="{StaticResource VerticalContainerStyle}">
-        <Grid RowDefinitions="*,*,*,*,*" RowSpacing="20">
-            
+    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <VerticalStackLayout Style="{StaticResource VerticalContainerStyle}">
 
-            <!-- Header -->
+        <!-- Header -->
             <Label
-                     Grid.Column="1"
                      HorizontalOptions="Center"
                      Style="{StaticResource HeaderLabelStyle}"
                      Text="Scan your product!" />
-            
-             <!--  SCANNER  --><!--
-            <Frame
-                Grid.Row="1"
-                Padding="0"
-                BackgroundColor="Black"
-                CornerRadius="20"
-                HeightRequest="250"
-                WidthRequest="300">
-            </Frame>-->
-            
+        
+        <!-- Container -->
+        <Frame
+                    HorizontalOptions="Center"
+                    Style="{StaticResource FrameGreenStyle}">
+            <VerticalStackLayout>
+                <!-- CAMERA -->
+                <toolkit:CameraView 
+                       IsVisible="{Binding IsCameraViewVisible}"
+                       HeightRequest="300"
+                       WidthRequest="300"/>
+
+                <!--  PREVIEW IMAGE  -->
+                <Image
+                        IsVisible="{Binding IsPreviewImageVisible}"
+                        Source="{Binding PreviewImage}"
+                        Aspect="AspectFit"
+                        HeightRequest="200" />
+            </VerticalStackLayout>
+        </Frame>
+               
+            <!--  TAKE PHOTO  -->
+        <Frame
+                Style="{StaticResource FrameGreenStyle}"
+                CornerRadius="40"
+                HeightRequest="80"
+                WidthRequest="80">
+            <ImageButton
+                    Command="{Binding TakePhotoCommand}"
+                    Source="camera_icon.png"
+                    Style="{StaticResource ImageButtonStyle}" 
+                    HeightRequest="50"
+                    WidthRequest="50"/>
+        </Frame>
+        
+            <!--  SELECT IMAGE  -->
+            <Button Command="{Binding SelectImageCommand}" Text="Select an Image" Style="{StaticResource ButtonStyle}" />
+
+            <!--  UPLOAD IMAGE  -->
+            <Button Command="{Binding UploadImageCommand}" Text="Send Image"  Style="{StaticResource ButtonStyle}" BackgroundColor="{StaticResource SecondaryBright}" />
+
             <!--  MESSAGE  -->
-            <Label
-                Grid.Row="4"
+        <Label
                 Text="{Binding Message}"
                 Style="{StaticResource MessageStyle}"/>
-        </Grid>
 
 
     </VerticalStackLayout>

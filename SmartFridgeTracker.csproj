@@ -62,6 +62,23 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <AndroidResource Remove="Resources\Images\menu_icons\**" />
+	  <AndroidResource Remove="Resources\Images\products\**" />
+	  <Compile Remove="Resources\Images\menu_icons\**" />
+	  <Compile Remove="Resources\Images\products\**" />
+	  <EmbeddedResource Remove="Resources\Images\menu_icons\**" />
+	  <EmbeddedResource Remove="Resources\Images\products\**" />
+	  <MauiCss Remove="Resources\Images\menu_icons\**" />
+	  <MauiCss Remove="Resources\Images\products\**" />
+	  <MauiImage Remove="Resources\Images\menu_icons\**" />
+	  <MauiImage Remove="Resources\Images\products\**" />
+	  <MauiXaml Remove="Resources\Images\menu_icons\**" />
+	  <MauiXaml Remove="Resources\Images\products\**" />
+	  <None Remove="Resources\Images\menu_icons\**" />
+	  <None Remove="Resources\Images\products\**" />
+	</ItemGroup>
+
 	<!--<ItemGroup>
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
 		<PackageReference Include="FirebaseDatabase.net" Version="5.0.0" />
@@ -73,8 +90,11 @@
 
 	<ItemGroup>
 		<!-- Fixation for package versions -->
+		<PackageReference Include="CommunityToolkit.Maui.Camera" Version="1.0.5" />
+		<PackageReference Include="DotNetEnv" Version="3.1.1" />
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
 		<PackageReference Include="FirebaseDatabase.net" Version="5.0.0" />
+		<PackageReference Include="Google.GenAI" Version="1.6.1" />
 
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.100" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.100" />
@@ -126,8 +146,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Images\menu_icons\" />
-	  <Folder Include="Resources\Images\products\" />
+	  <MauiImage Include="Resources\AppIcon\carrot_icon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
