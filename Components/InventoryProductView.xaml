@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartFridgeTracker.Components.InventoryProductView">
+    <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="15" Padding="15, 8">
+        <!-- Emoji -->
+        <Border Grid.Column="0" 
+            Style="{StaticResource EmojiBorderStyle}" 
+            Stroke="{StaticResource PrimaryBright}">
+            <Label Text="{Binding Emoji}" Style="{StaticResource EmojiLabelStyle}" />
+        </Border>
+
+        <!-- Name -->
+        <Label Grid.Column="1" 
+           Text="{Binding Name}" 
+           Style="{StaticResource ProductNameStyle}" />
+
+        <!-- Count -->
+        <Label Grid.Column="2" 
+            Text="{Binding Count}" 
+            FontSize="22" 
+            FontAttributes="Bold"
+            Style="{StaticResource LabelPropertyStyle}"/>
+    </Grid>
+</ContentView>
