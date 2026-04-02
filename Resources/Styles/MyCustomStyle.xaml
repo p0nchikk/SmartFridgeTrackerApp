@@ -3,24 +3,22 @@
     x:Class="SmartFridgeTracker.Resources.Styles.MyCustomStyle"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
-    <!--  Vertical Container  -->
-    <Style x:Key="VerticalContainerStyle" TargetType="VerticalStackLayout">
-        <Setter Property="Padding" Value="30" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
-        <Setter Property="Spacing" Value="15" />
-    </Style>
     
-    <!-- Navbar Container -->
-    <!--  3 Columns Grid Container  -->
-    <Style x:Key="ThreeColumnGridContainerStyle" TargetType="Grid">
-        <Setter Property="ColumnDefinitions" Value="Auto,*,Auto" />
-        <Setter Property="ColumnSpacing" Value="20" />
-        <Setter Property="HeightRequest" Value="50" />
-    </Style>
+        <!--  Vertical Container  -->
+        <Style x:Key="VerticalContainerStyle" TargetType="VerticalStackLayout">
+            <Setter Property="Padding" Value="30" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
+            <Setter Property="Spacing" Value="15" />
+        </Style>
+    
+        <!--  3 Columns Grid Container  -->
+        <Style x:Key="ThreeColumnGridContainerStyle" TargetType="Grid">
+            <Setter Property="ColumnDefinitions" Value="Auto,*,Auto" />
+            <Setter Property="ColumnSpacing" Value="20" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
 
-
-    <!--  3 Rows Grid Container  -->
+        <!--  3 Rows Grid Container  -->
     <Style x:Key="ThreeRowGridContainerStyle" TargetType="Grid">
         <Setter Property="RowDefinitions" Value="Auto,*,Auto" />
         <Setter Property="RowSpacing" Value="10" />
@@ -34,31 +32,84 @@
         <Setter Property="BackgroundColor" Value="{StaticResource Gray400}" />
         <Setter Property="HeightRequest" Value="2" />
     </Style>
-
+    
     <!--  Header 1  -->
-    <Style x:Key="HeaderLabelStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="40" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="TextColor" Value="{StaticResource PrimaryDark}" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-    </Style>
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="40" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryDark}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
 
-    <!--  Subheader  -->
-    <Style x:Key="SubheaderLabelStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="16" />
-        <Setter Property="TextColor" Value="{StaticResource Gray500}" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-    </Style>
+        <!--  Subheader  -->
+        <Style x:Key="SubheaderLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="{StaticResource Gray500}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
 
-    <!--  Regular text  -->
-    <Style x:Key="RegularLabelStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="20" />
+        <!--  Regular text  -->
+        <Style x:Key="RegularLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+    
+        <!--  Message  -->
+        <Style x:Key="MessageStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource SecondaryBright}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <!--  Navigation Button  -->
+        <Style x:Key="NavigationButtonStyle" TargetType="Label">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryBright}" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+
+        <!--  Product Name  -->
+        <Style x:Key="ProductNameStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+            <Setter Property="HorizontalOptions" Value="Start" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Margin" Value="10,0,0,0" />
+        </Style>
+
+        <!--  Product Count  -->
+        <Style x:Key="ProductCountStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="TextColor" Value="{StaticResource Gray900}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Margin" Value="10,0,0,0" />
+        </Style>
+    
+        <!--  Label Property Style  -->
+        <Style x:Key="LabelPropertyStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+    
+        <!--  Character Style  -->
+        <Style x:Key="LabelCharacteristicStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Gray400}" />
+        <Setter Property="FontSize" Value="17" />
+    </Style>
+    
+        <!--  Emoji Label Style  -->
+    <Style x:Key="EmojiLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="35" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
-
+    
     <!--  Fridge Icon  -->
     <Style x:Key="FridgeIconStyle" TargetType="Image">
         <Setter Property="HeightRequest" Value="100" />
@@ -66,23 +117,35 @@
         <Setter Property="Source" Value="logo_carrot.png" />
     </Style>
 
-    <!--  Entry Frame  -->
-    <Style x:Key="EntryFrameStyle" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="12" />
-        <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="Padding" Value="10" />
-        <Setter Property="HasShadow" Value="False" />
-        <Setter Property="BorderColor" Value="{StaticResource PrimaryDark}" />
-        <Setter Property="BackgroundColor" Value="{StaticResource White}" />
-    </Style>
+        <!--  Entry Frame  -->
+        <Style x:Key="EntryFrameStyle" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="BorderColor" Value="{StaticResource PrimaryDark}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+        </Style>
 
-    <!--  Basic Green Frame  -->
-    <Style x:Key="FrameGreenStyle" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="12" />
-        <Setter Property="BackgroundColor" Value="{StaticResource White}" />
-        <Setter Property="Padding" Value="10" />
-        <Setter Property="HasShadow" Value="False" />
-        <Setter Property="BorderColor" Value="{StaticResource PrimaryDark}" />
+        <!--  Basic Green Frame  -->
+        <Style x:Key="FrameGreenStyle" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="BorderColor" Value="{StaticResource PrimaryDark}" />
+        </Style>
+
+        <!-- Emoji Border Style -->
+    <Style x:Key="EmojiBorderStyle" TargetType="Border">
+        <Setter Property="StrokeThickness" Value="3" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 35" />
+        <Setter Property="HeightRequest" Value="70" />
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
     </Style>
 
     <!--  Entry Field  -->
@@ -92,39 +155,31 @@
         <Setter Property="TextColor" Value="{StaticResource Gray900}" />
     </Style>
 
-    <!--  Message  -->
-    <Style x:Key="MessageStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="TextColor" Value="{StaticResource SecondaryBright}" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-    </Style>
+        <!--  Button  -->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDark}" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
 
-    <!--  Button  -->
-    <Style x:Key="ButtonStyle" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDark}" />
-        <Setter Property="TextColor" Value="White" />
-        <Setter Property="CornerRadius" Value="20" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="18" />
-        <Setter Property="HeightRequest" Value="50" />
-    </Style>
+        <!--  Count Button  -->
+        <Style x:Key="CountButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryLight}"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
 
-    <!--  Count Button  -->
-    <Style x:Key="CountButtonStyle" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryLight}"/>
-        <Setter Property="FontAttributes" Value="Bold"/>
-    </Style>
+        <!--  Image Button  -->
+        <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
+            <Setter Property="Aspect" Value="AspectFit" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HeightRequest" Value="15" />
+            <Setter Property="WidthRequest" Value="15" />
+        </Style>
 
-    <!--  Image Button  -->
-    <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
-        <Setter Property="Aspect" Value="AspectFit" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="HeightRequest" Value="15" />
-        <Setter Property="WidthRequest" Value="15" />
-    </Style>
-
-    <!--  Profile Image Button  -->
+        <!--  Profile Image Button  -->
     <Style x:Key="ProfileImageButtonStyle" TargetType="ImageButton">
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="BackgroundColor" Value="Transparent" />
@@ -132,48 +187,23 @@
         <Setter Property="WidthRequest" Value="25" />
         <Setter Property="Source" Value="profile_placeholder.png" />
     </Style>
-
-    <!--  Navigation Button  -->
-    <Style x:Key="NavigationButtonStyle" TargetType="Label">
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="TextColor" Value="{StaticResource PrimaryBright}" />
-        <Setter Property="FontAttributes" Value="Bold" />
-    </Style>
-
+    
     <!--  Product Image  -->
-    <Style x:Key="ProductImageStyle" TargetType="Image">
-        <Setter Property="Aspect" Value="AspectFill" />
-        <Setter Property="WidthRequest" Value="60" />
-        <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="VerticalOptions" Value="Center" />
-    </Style>
+        <Style x:Key="ProductImageStyle" TargetType="Image">
+            <Setter Property="Aspect" Value="AspectFill" />
+            <Setter Property="WidthRequest" Value="60" />
+            <Setter Property="HorizontalOptions" Value="Start" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
 
-    <!--  Product Name  -->
-    <Style x:Key="ProductNameStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="TextColor" Value="{StaticResource Gray600}" />
-        <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="Margin" Value="10,0,0,0" />
-    </Style>
+        <!--  Icon Style  -->
+        <Style x:Key="ImageIconStyle" TargetType="Image">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="WidthRequest" Value="40" />
+        </Style>
 
-    <!--  Icon Style  -->
-    <Style x:Key="ImageIconStyle" TargetType="Image">
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="HeightRequest" Value="40" />
-        <Setter Property="WidthRequest" Value="40" />
-    </Style>
-
-    <!--  Product Count  -->
-    <Style x:Key="ProductCountStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="TextColor" Value="{StaticResource Gray900}" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="Margin" Value="10,0,0,0" />
-    </Style>
-
-    <!--  Warning Sign  -->
+        <!--  Warning Sign  -->
     <Style x:Key="WarningSignStyle" TargetType="Image">
         <Setter Property="Aspect" Value="AspectFill" />
         <Setter Property="HeightRequest" Value="30" />
@@ -181,19 +211,5 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
-
-    <!--  Label Property Style  -->
-    <Style x:Key="LabelPropertyStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource Gray600}" />
-        <Setter Property="FontSize" Value="20" />
-        <Setter Property="VerticalOptions" Value="Center" />
-    </Style>
-
-    <!--  Character Style  -->
-    <Style x:Key="LabelCharacteristicStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource Gray400}" />
-        <Setter Property="FontSize" Value="17" />
-    </Style>
-
 
 </ResourceDictionary>
