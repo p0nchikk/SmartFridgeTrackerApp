@@ -20,15 +20,21 @@ namespace SmartFridgeTracker.Models
         public int GetExpiringSoonCount()
         {
             int count = 0;
-            foreach (var product in ProductsList)
+            foreach (var product in ProductsList.Where(p => p.LifeDays <= 3))
             {
-                // Check if the product is expiring within the next 3 days
-                if (product.LifeDays <= 3)
-                {
-                    count += product.Count; // Consider the Count of each product
-                }
+                 count += product.Count;
             }
             return count;
+        }
+
+        public List<Product> GetExpiringSoonList()
+        {
+            List<Product> list = new List<Product>();
+            foreach (Product product in ProductsList.Where(p => p.LifeDays <= 3))
+            {
+                list.Add(product);
+            }
+            return list;
         }
 
         //Get total count of spoiled products
