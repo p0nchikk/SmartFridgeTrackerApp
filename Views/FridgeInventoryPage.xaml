@@ -47,7 +47,8 @@
 
                         <Grid
                      Padding="10"
-                     ColumnDefinitions="Auto,*,Auto,60"
+                     ColumnDefinitions="Auto,*,*,*,50"
+                     ColumnSpacing="10"
                      VerticalOptions="Center">
                             <!--  Remove  -->
                             <Grid.GestureRecognizers>
@@ -83,9 +84,23 @@
                                    HorizontalOptions="Center"/> 
                             </VerticalStackLayout>
 
+                            <!-- Life Days -->
+                            <VerticalStackLayout Grid.Column="3" HorizontalOptions="End">
+
+                                <Label Text="{Binding DaysLeft}" 
+                                       FontSize="22" 
+                                       FontAttributes="Bold" 
+                                       Style="{StaticResource LabelPropertyStyle}"
+                                       HorizontalOptions="Center"/>
+
+                                <Label Text="days" 
+                                       Style="{StaticResource LabelCharacteristicStyle}"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
                             <!--  Decrement Count  -->
                             <Button
-                         Grid.Column="3"
+                         Grid.Column="4"
                          Command="{Binding DecrementCountOfItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:FridgeInventoryViewModel}, Mode=FindAncestorBindingContext}}"
                          CommandParameter="{Binding .}"
                          Text="-" />

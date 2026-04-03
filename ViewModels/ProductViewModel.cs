@@ -20,15 +20,22 @@ namespace SmartFridgeTracker.ViewModels
         public string Emoji => product.Emoji;
         public string Quantity => product.Quantity;
         public int Count => product.Count;
-        public int LifeDays => product.LifeDays;
+        public int DaysLeft
+        {
+            get  
+            {
+                int daysLeft = product.LifeDays - (DateTime.Now - product.DateAdded).Days;
+                return daysLeft >= 0 ? daysLeft : 0; // Return 0 if the product is already expired
+            }
+        }
 
         public Color StatusColor
         {
             get
             {
-                if (LifeDays <= 2)
+                if (DaysLeft <= 2)
                     return (Color)Application.Current.Resources["RedBright"];
-                else if (LifeDays <= 5)
+                else if (DaysLeft <= 5)
                     return (Color)Application.Current.Resources["SecondaryBright"];
                 else
                     return (Color)Application.Current.Resources["PrimaryBright"];

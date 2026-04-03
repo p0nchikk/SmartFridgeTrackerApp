@@ -16,6 +16,7 @@ namespace SmartFridgeTracker.Models
         public string Quantity { get; set; }
         public int Count { get; set; } //think about        
         public int LifeDays { get; set; } //in days
+        public DateTime DateAdded { get; set; } = DateTime.Now; //to calculate expiration date and for sorting by date added
 
         #region Properties for future use
         //public Category Category { get; set; } = new Category();

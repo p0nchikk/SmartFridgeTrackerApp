@@ -107,7 +107,7 @@ namespace SmartFridgeTracker.ViewModels
                 Name = product.Name;
                 Quantity = product.Quantity;
                 Count = product.Count;
-                LifeDays = $"{product.LifeDays} days";
+                LifeDays = $"{product.DaysLeft} days";
             }
         }
         #endregion
