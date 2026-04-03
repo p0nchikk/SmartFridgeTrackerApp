@@ -15,8 +15,8 @@ namespace SmartFridgeTracker.ViewModels
     public class MainViewModel : ViewModelBase
     {
         #region Variables Declaration
-        private ObservableCollection<Product> expiringSoonProducts;
-        public ObservableCollection<Product> ExpiringSoonProducts
+        private ObservableCollection<ProductViewModel> expiringSoonProducts;
+        public ObservableCollection<ProductViewModel> ExpiringSoonProducts
         {
             get => expiringSoonProducts;
             set
@@ -26,8 +26,8 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-        private ObservableCollection<Product> products;
-        public ObservableCollection<Product> Products
+        private ObservableCollection<ProductViewModel> products;
+        public ObservableCollection<ProductViewModel> Products
         {
             get => products;
             set
@@ -87,8 +87,8 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public MainViewModel()
         {
-            Products = new ObservableCollection<Product>();
-            ExpiringSoonProducts = new ObservableCollection<Product>();
+            Products = new ObservableCollection<ProductViewModel>();
+            ExpiringSoonProducts = new ObservableCollection<ProductViewModel>();
 
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
             GoToAddProductPageCommand = new Command(GoToAddProductPage);
@@ -167,12 +167,12 @@ namespace SmartFridgeTracker.ViewModels
             {
                 Products.Clear();
                 foreach (var p in user.Fridge.ProductsList)
-                    Products.Add(p);
+                    Products.Add(new ProductViewModel(p));
 
                 ExpiringSoonProducts.Clear();
                 List<Product> expSoonList = user.Fridge.GetExpiringSoonList();
                 foreach (var p in expSoonList)
-                    ExpiringSoonProducts.Add(p);
+                    ExpiringSoonProducts.Add(new ProductViewModel(p));
 
                 TotalCount = Products.Count;
                 ExpiringSoonCount = ExpiringSoonProducts.Count;

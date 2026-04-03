@@ -110,6 +110,9 @@
 	  <MauiXaml Update="Components\ExpiringSoonProductView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\ExtendedProductView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\InventoryProductView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

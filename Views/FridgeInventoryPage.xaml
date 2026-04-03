@@ -47,7 +47,7 @@
 
                         <Grid
                      Padding="10"
-                     ColumnDefinitions="Auto,*,Auto,60,60"
+                     ColumnDefinitions="Auto,*,Auto,60"
                      VerticalOptions="Center">
                             <!--  Remove  -->
                             <Grid.GestureRecognizers>
@@ -55,31 +55,39 @@
                                                CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
 
-                            <!--  Product Emoji  -->
-                            <Label Text="{Binding Emoji}" Style="{StaticResource EmojiLabelStyle}" />
+                            <!-- Emoji -->
+                            <Border Grid.Column="0" 
+                                 Style="{StaticResource EmojiBorderStyle}" 
+                                 Stroke="{Binding StatusColor}">
+                                <Label Text="{Binding Emoji}" Style="{StaticResource EmojiLabelStyle}" />
+                            </Border>
 
-                            <!--  Product Full Name  -->
+                            <!--  Name  -->
                             <Label
-                         Grid.Column="1"
-                         Style="{StaticResource ProductNameStyle}"
-                         Text="{Binding Name}" />
+                                 Grid.Column="1"
+                                 Style="{StaticResource ProductNameStyle}"
+                                 Text="{Binding Name}" />
 
-                            <!--  Warning Sign  -->
-                            <Image
-                         Grid.Column="2"
-                         Source="{Binding StateIcon}"
-                         Style="{StaticResource WarningSignStyle}" />
+                            <!--  Count & Quantity  -->
+                            <VerticalStackLayout Grid.Column="2" 
+                                 HorizontalOptions="End">
 
-                            <!--  Count  -->
-                            <Label
-                         Grid.Column="3"
-                         Style="{StaticResource ProductCountStyle}"
-                         Text="{Binding Count}" />
+                                <Label Text="{Binding Count}" 
+                                   FontSize="22" 
+                                   FontAttributes="Bold" 
+                                   Style="{StaticResource LabelPropertyStyle}"
+                                   HorizontalOptions="Center"/>
+
+                                <Label Text="{Binding Quantity}" 
+                                   Style="{StaticResource LabelCharacteristicStyle}"
+                                   HorizontalOptions="Center"/> 
+                            </VerticalStackLayout>
+
                             <!--  Decrement Count  -->
                             <Button
-                         Grid.Column="4"
+                         Grid.Column="3"
                          Command="{Binding DecrementCountOfItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:FridgeInventoryViewModel}, Mode=FindAncestorBindingContext}}"
-                        CommandParameter="{Binding .}"
+                         CommandParameter="{Binding .}"
                          Text="-" />
                         </Grid>
                     </SwipeView>

@@ -13,8 +13,8 @@ namespace SmartFridgeTracker.ViewModels
     public class FridgeInventoryViewModel : ViewModelBase
     {
         #region Variables Declaration
-        private ObservableCollection<Product> products;
-        public ObservableCollection<Product> Products
+        private ObservableCollection<ProductViewModel> products;
+        public ObservableCollection<ProductViewModel> Products
         {
             get => products;
             set
@@ -35,7 +35,7 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public FridgeInventoryViewModel()
         {
-            Products = new ObservableCollection<Product>();
+            Products = new ObservableCollection<ProductViewModel>();
             OnProductTappedCommand = new Command(OnProductTapped);
             DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
         }
@@ -51,9 +51,9 @@ namespace SmartFridgeTracker.ViewModels
             if (user?.Fridge?.ProductsList != null)
             {
                 // Products.Clear();
-                Products = new ObservableCollection<Product>();
+                Products = new ObservableCollection<ProductViewModel>();
                 foreach (var p in user.Fridge.ProductsList)
-                    Products.Add(p);
+                    Products.Add(new ProductViewModel(p));
             }
         }
         private void OnProductTapped(object product)
@@ -72,6 +72,7 @@ namespace SmartFridgeTracker.ViewModels
                 await Shell.Current.GoToAsync("ProductInfoPage", navigationParameter);
             });
         }
+
         private async void DecrementCountOfItem(object objProduct)
         {
             Product product = objProduct as Product;

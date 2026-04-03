@@ -6,7 +6,7 @@
         <!-- Emoji -->
         <Border Grid.Column="0" 
                 Style="{StaticResource EmojiBorderStyle}" 
-                Stroke="{StaticResource PrimaryBright}">
+                Stroke="{Binding StatusColor}">
             <Label Text="{Binding Emoji}" Style="{StaticResource EmojiLabelStyle}" />
         </Border>
 

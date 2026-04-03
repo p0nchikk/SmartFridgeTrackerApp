@@ -101,7 +101,7 @@ namespace SmartFridgeTracker.ViewModels
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             if (query.TryGetValue("Product", out var productObj) &&
-                productObj is Product product)
+                productObj is ProductViewModel product)
             {
                 Emoji = product.Emoji;
                 Name = product.Name;
