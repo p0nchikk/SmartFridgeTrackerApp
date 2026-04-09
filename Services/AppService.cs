@@ -44,7 +44,8 @@ namespace SmartFridgeTracker.Services
         {
             var config = new FirebaseAuthConfig()
             {
-                ApiKey = "AIzaSyBgNrU9XdtYiZpruPDGWZ9gtjzhOo9IG9Q", //Unique API Key
+                //hide to the .env file
+                ApiKey = "AIzaSyBgNrU9XdtYiZpruPDGWZ9gtjzhOo9IG9Q", //Unique API Key 
                 AuthDomain = "smartfridgetracker-555df.firebaseapp.com", //Loggin address 
                 Providers = new Firebase.Auth.Providers.FirebaseAuthProvider[] //List of authentication variations
                 {
