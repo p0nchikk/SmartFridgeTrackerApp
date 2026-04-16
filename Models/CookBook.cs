@@ -8,10 +8,12 @@ namespace SmartFridgeTracker.Models
 {
     public class CookBook
     {
+        public List<Recipe> FavoritesList { get; set; }
         public List<Recipe> RecipesList { get; set; }
 
         public CookBook()
         {
+            FavoritesList = new List<Recipe>();
             RecipesList = new List<Recipe>();
         }
 

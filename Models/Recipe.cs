@@ -9,14 +9,26 @@ namespace SmartFridgeTracker.Models
 {
     public class Recipe
     {
-        #region Variables Declaration
-        public enum Type { Breakfast, Lunch, Dinner }; //constant recipe types
+        public enum RecipeType
+        {
+            Breakfast = 1,
+            Lunch = 2,
+            Dinner = 3
+        }
 
+        #region Variables Declaration
         public string Id { get; set; } //property for firebase
-        public string? Name { get; set; }
-        public string? Description { get; set; }         
-        public List<Product?>? ProductsList { get; set; } //List of products needed for cooking, think about type string or Product
-        public Type? RecipeType { get; set; }
+        public string? Name { get; set; } = String.Empty;
+        public string? Description { get; set; } = String.Empty; // Keep short for UI cards
+        public List<string> Instructions { get; set; } = new List<string>(); // Step-by-step guide
+
+        //List of products needed for cooking that are currently in the fridge
+        public List<Product> AvailableIngredients { get; set; } =  new List<Product>();
+
+        // List of missing ingredients (salt, spices, etc.) not tracked in the fridge
+        public List<string> MissingIngredients { get; set; } = new List<string>();
+        public RecipeType? Type { get; set; }
+        public int CookingTime { get; set; } //in minutes
         #endregion
 
         #region Constructors
@@ -24,36 +36,42 @@ namespace SmartFridgeTracker.Models
 
 
         //Constructor without id, for new products that haven't been saved to Firebase yet
-        public Recipe(string name, string description, List<string> listWithID, int typeNum) //I have to tell to gemini recipe types and their key numbers
+        public Recipe(
+             string name,
+             string description,
+             List<string> instructions, // Added instructions
+             List<string> listWithID,
+             List<string> missingIngredients,
+             int typeNum,
+             int cookingTime) // Added cooking time
         {
-            Id = String.Empty;
+            Id = Guid.NewGuid().ToString(); // Generate a unique ID for Firebase
             Name = name;
             Description = description;
-            ProductsList = new List<Product?>();
-            foreach (var productID in listWithID) //Add products by their ID
+            Instructions = instructions ?? new List<string>();
+
+            AvailableIngredients = new List<Product>();
+
+            // Look up products in the fridge by ID
+            if (listWithID != null)
             {
-                var product = AppService.GetInstance().loggedInUser.Fridge.ProductsList.FirstOrDefault(item => item.Id == productID);
-                ProductsList.Add(product);
+                var fridgeProducts = AppService.GetInstance().loggedInUser.Fridge.ProductsList;
+                foreach (var productID in listWithID)
+                {
+                    var product = fridgeProducts.FirstOrDefault(item => item.Id == productID);
+                    if (product != null)
+                    {
+                        AvailableIngredients.Add(product);
+                    }
+                }
             }
-            RecipeType = (Type)typeNum;
+
+            MissingIngredients = missingIngredients ?? new List<string>();
+
+            // Cast the int to our Enum
+            Type = (RecipeType)typeNum;
+            CookingTime = cookingTime;
         }
-
-        //Constructor with id
-        public Recipe(string id, string name, string description, List<string> listWithID, int typeNum) //I have to tell to gemini recipe types and their key numbers
-        {
-            Id = id;
-            Name = name;
-            Description = description;
-            ProductsList = new List<Product?>();
-            foreach (var productID in listWithID) //Add products by their ID
-            {
-                var product = AppService.GetInstance().loggedInUser.Fridge.ProductsList.FirstOrDefault(item => item.Id == productID);
-                ProductsList.Add(product);
-            }
-            RecipeType = (Type)typeNum;
-        }
-
-
         #endregion
 
         #region Functions 
