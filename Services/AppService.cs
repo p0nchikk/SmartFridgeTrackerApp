@@ -23,7 +23,7 @@ namespace SmartFridgeTracker.Services
         public AuthCredential? loginAuthUser;
         public AuthUser loggedInUser; //ask if it's ok to name user model as "User" or to change to "AuthUser"
 
-        // SingleTone Pattern
+        //Singleton Pattern
         static private AppService instance;
         static public AppService GetInstance()
         {
