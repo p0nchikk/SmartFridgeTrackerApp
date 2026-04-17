@@ -2,11 +2,14 @@
 using Google.GenAI;
 using Google.GenAI.Types;
 using SmartFridgeTracker.Models;
+using SmartFridgeTracker.Models.DTOs;
+using SmartFridgeTracker.Services.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 
@@ -14,7 +17,7 @@ namespace SmartFridgeTracker.Services
 {
     public class GeminiAIService : IAIService
     {
-        static private string modelName = "gemini-3-flash";
+        static private string _modelName = "gemini-3-flash";
         private Client _client;
         private GenerateContentConfig _config;
 
@@ -48,41 +51,54 @@ namespace SmartFridgeTracker.Services
         #region Recipe Generation
         public async Task<Recipe> GetRecipeAsync(List<Product> availableProducts)
         {
-            // 1. Prepare Data
-            Schema recipeSchema = GetRecipeResponseSchema();
-            string jsonProducts = GetSimplifiedProductList(availableProducts);
-            string prompt = GetChefPromt(jsonProducts);
-
-
-        }
-
-        private string GetChefPromt(string jsonProducts)
-        {
-            return $@"
-                You are a professional chef. Suggest a delicious recipe using ONLY the products provided in the list below. 
-
-                Available Products (JSON format):
-                {jsonProducts}
-
-                Rules:
-                1. Use the 'id' from the provided list for the 'ingredients' field.
-                2. If a recipe needs 'Kitchen Basics' that are not in the list (like salt, water, pepper, or oil), include them in the 'missing_ingredients' list.
-                3. The 'description' must be a single, catchy sentence for a mobile UI card.
-                4. The 'type' must be 1 (Breakfast), 2 (Lunch), or 3 (Dinner).
-                5. Output MUST be in raw JSON format matching the provided schema.";
-        }
-        private string GetSimplifiedProductList(List<Product> availableProducts)
-        {
-            var simplifiedProducts = availableProducts.Select(p => new
+            //Check if list is empty
+            if (availableProducts == null || availableProducts.Count == 0)
             {
-                id = p.Id,
-                name = p.Name,
-                count = p.Count,
-                quantity = p.Quantity
-            }).ToList();
+                System.Diagnostics.Debug.WriteLine("No products available for recipe generation.");
+                return null;
+            }
 
-            string jsonProducts = JsonSerializer.Serialize(simplifiedProducts);
-            return jsonProducts;
+            //Prepare Data
+            Schema recipeSchema = GetRecipeResponseSchema();
+            string jsonProducts = RecipePromptBuilder.GetSimplifiedProductList(availableProducts);
+            string prompt = RecipePromptBuilder.BuildChefPrompt(jsonProducts);
+
+            try
+            {
+                //Call the API 
+                var response = await _client.Models.GenerateContentAsync(
+                    _modelName,
+                    prompt,
+                    _config
+                );
+
+                //Extract the text and Map to Recipe model
+                string jsonResponse = response.Text;
+                return MapJsonToRecipe(jsonResponse);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Gemini Error: {ex.Message}");
+                return null;
+            }
+        }
+
+        private Recipe MapJsonToRecipe(string jsonResponse)
+        {
+            var dto = JsonSerializer.Deserialize<RecipeResponseDto>(jsonResponse);
+
+            // Extract the IDs from the DTO to pass to our Recipe constructor
+            List<string> ingredientIds = dto.AvailableIngredients.Select(i => i.Id).ToList();
+
+            return new Recipe(
+                dto.Name,
+                dto.Description,
+                dto.Instructions,
+                ingredientIds,
+                dto.MissingIngredients,
+                dto.Type,
+                dto.Time
+            );
         }
         private Schema GetRecipeResponseSchema()
         {
@@ -99,7 +115,7 @@ namespace SmartFridgeTracker.Services
                         "description", new Schema { Type = "string", Title = "Short Description in one or two sentences" }
                     },
                     {
-                        "avaliableIngredients", new Schema 
+                        "availableIngredients", new Schema 
                         {
                            Type = "array",
                                 Items = new Schema
@@ -137,7 +153,7 @@ namespace SmartFridgeTracker.Services
                         "time", new Schema { Type = "integer" , Title = "Cooking Time", Description = "Cooking time in minutes" }
                     }
                 },
-                Required = new List<string> { "name", "description", "avaliableIngredients", "missingIngredients", "instructions", "type", "time" }
+                Required = new List<string> { "name", "description", "availableIngredients", "missingIngredients", "instructions", "type", "time" }
             };
         }
         #endregion
