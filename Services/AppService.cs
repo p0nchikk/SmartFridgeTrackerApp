@@ -203,64 +203,64 @@ namespace SmartFridgeTracker.Services
             return true;
         }
 
-        public async Task<bool> DecrementCountOfItemAsync(Product product)
-        {
-            if (client == null || product == null || loggedInUser == null || string.IsNullOrEmpty(product.Id))
-                return false;
+        //public async Task<bool> DecrementCountOfItemAsync(Product product)
+        //{
+        //    if (client == null || product == null || loggedInUser == null || string.IsNullOrEmpty(product.Id))
+        //        return false;
 
-            string uid = loggedInUser.Id;
+        //    string uid = loggedInUser.Id;
 
-            try
-            {
-                // Get the product directly by its ID
-                var firebaseProductRef = client
-                    .Child("users")
-                    .Child(uid)
-                    .Child("fridge")
-                    .Child("products")
-                    .Child(product.Id);
+        //    try
+        //    {
+        //        // Get the product directly by its ID
+        //        var firebaseProductRef = client
+        //            .Child("users")
+        //            .Child(uid)
+        //            .Child("fridge")
+        //            .Child("products")
+        //            .Child(product.Id);
 
-                // Fetch current value from Firebase
-                var firebaseProduct = await firebaseProductRef.OnceSingleAsync<Product>();
+        //        // Fetch current value from Firebase
+        //        var firebaseProduct = await firebaseProductRef.OnceSingleAsync<Product>();
 
-                if (firebaseProduct == null)
-                    return false; // Product not found in Firebase
+        //        if (firebaseProduct == null)
+        //            return false; // Product not found in Firebase
 
-                // Decrement count
-                if (firebaseProduct.Count > 0)
-                {
-                    firebaseProduct.Count -= 1;
+        //        // Decrement count
+        //        if (firebaseProduct.Count > 0)
+        //        {
+        //            firebaseProduct.Count -= 1;
 
-                    // Update the product in Firebase
-                    if (firebaseProduct.Count == 0)
-                    {
-                        // DELETE from Firebase
-                        await firebaseProductRef.DeleteAsync();
+        //            // Update the product in Firebase
+        //            if (firebaseProduct.Count == 0)
+        //            {
+        //                // DELETE from Firebase
+        //                await firebaseProductRef.DeleteAsync();
 
-                        // DELETE from local memory
-                        loggedInUser?.Fridge?.ProductsList.RemoveAll(p => p.Id == product.Id);
-                    }
-                    else
-                    {                       
-                        await firebaseProductRef.PutAsync(firebaseProduct);
+        //                // DELETE from local memory
+        //                loggedInUser?.Fridge?.ProductsList.RemoveAll(p => p.Id == product.Id);
+        //            }
+        //            else
+        //            {                       
+        //                await firebaseProductRef.PutAsync(firebaseProduct);
 
-                        // Update local memory
-                        Product? localProduct = loggedInUser.Fridge.ProductsList
-                            .FirstOrDefault(p => p.Id == product.Id);
+        //                // Update local memory
+        //                Product? localProduct = loggedInUser.Fridge.ProductsList
+        //                    .FirstOrDefault(p => p.Id == product.Id);
 
-                        if (localProduct != null)
-                            localProduct.Count = firebaseProduct.Count;
-                    }                                      
-                    return true;
-                }
+        //                if (localProduct != null)
+        //                    localProduct.Count = firebaseProduct.Count;
+        //            }                                      
+        //            return true;
+        //        }
 
-                return false; // Count already 0
-            }
-            catch
-            {
-                return false; // Any error
-            }
-        }
+        //        return false; // Count already 0
+        //    }
+        //    catch
+        //    {
+        //        return false; // Any error
+        //    }
+        //}
 
         //Categories
         private async void LoadCategories()

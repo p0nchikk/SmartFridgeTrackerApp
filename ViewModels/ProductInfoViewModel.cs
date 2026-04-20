@@ -56,16 +56,6 @@ namespace SmartFridgeTracker.ViewModels
             }
         }
 
-        //Count
-        private int count;
-        public int Count
-        {
-            get { return count; }
-            set { count = value;
-                OnPropertyChange();
-            }
-        }
-
         //Life Days ( good for )
         private string lifeDays;
         public string LifeDays
@@ -106,7 +96,6 @@ namespace SmartFridgeTracker.ViewModels
                 Emoji = product.Emoji;
                 Name = product.Name;
                 Quantity = product.Quantity;
-                Count = product.Count;
                 LifeDays = $"{product.DaysLeft} days";
             }
         }

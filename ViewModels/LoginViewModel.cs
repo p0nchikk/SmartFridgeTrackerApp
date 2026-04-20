@@ -82,7 +82,7 @@ namespace SmartFridgeTracker.ViewModels
         #region Constructor
         public LoginViewModel()
         {
-            Email = "cherry@gmail.com";
+            Email = "cookie1@gmail.com";
             LoginUserCommand = new Command(async () => await Login());
             GoToRegisterCommand = new Command(GoToRegister);
             ViewPassCommand = new Command(ViewPass);

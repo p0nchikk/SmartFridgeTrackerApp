@@ -77,7 +77,6 @@ namespace SmartFridgeTracker.ViewModels
         #region Commands
         public ICommand? ProfileImageTappedCommand { get; set; }
         public ICommand? GoToAddProductPageCommand { get; set; }
-        public ICommand? DecrementCountOfItemCommand { get; set; }
         public ICommand? RemoveItemCommand { get; set; }
         public ICommand? OnProductTappedCommand { get; }
         public ICommand? GoToFridgeInventoryCommand { get; }
@@ -92,7 +91,6 @@ namespace SmartFridgeTracker.ViewModels
 
             ProfileImageTappedCommand = new Command(ProfileImageTapped);
             GoToAddProductPageCommand = new Command(GoToAddProductPage);
-            DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
             OnProductTappedCommand = new Command(OnProductTapped);
             GoToFridgeInventoryCommand = new Command(GoToFridgeInventory);
         }
@@ -114,21 +112,21 @@ namespace SmartFridgeTracker.ViewModels
                 await Shell.Current.GoToAsync("AddProductPage");
             });
         }
-        private async void DecrementCountOfItem(object objProduct)
-        {
-            Product product = objProduct as Product;
-            if (product != null) 
-            {
-                if (await AppService.GetInstance().DecrementCountOfItemAsync(product))
-                {
-                    await LoadProductsAsync();
-                }
-                else
-                {
-                    // TODO: to throw error
-                }
-            }
-        }
+        //private async void DecrementCountOfItem(object objProduct)
+        //{
+        //    Product product = objProduct as Product;
+        //    if (product != null) 
+        //    {
+        //        if (await AppService.GetInstance().DecrementCountOfItemAsync(product))
+        //        {
+        //            await LoadProductsAsync();
+        //        }
+        //        else
+        //        {
+        //            // TODO: to throw error
+        //        }
+        //    }
+        //}
         private void OnProductTapped(object product)
         {
             if (product == null)

@@ -19,7 +19,7 @@
         <VerticalStackLayout Grid.Column="2" 
                              HorizontalOptions="End">
 
-            <Label Text="{Binding LifeDays}" 
+            <Label Text="{Binding DaysLeft}" 
                    FontSize="22" 
                    FontAttributes="Bold" 
                    Style="{StaticResource LabelPropertyStyle}"

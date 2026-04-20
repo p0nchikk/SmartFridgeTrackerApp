@@ -22,7 +22,7 @@ namespace SmartFridgeTracker.Models
             int count = 0;
             foreach (var product in ProductsList.Where(p => p.LifeDays <= 3))
             {
-                 count += product.Count;
+                 count++;
             }
             return count;
         }
@@ -47,7 +47,7 @@ namespace SmartFridgeTracker.Models
                 // Check if the product is spoiled
                 if (product.LifeDays < 0)
                 {
-                    count += product.Count; // Consider the Count of each product
+                    count++; // Consider the Count of each product
                 }
             }
             return count;
@@ -57,22 +57,7 @@ namespace SmartFridgeTracker.Models
         public void AddProduct(Product product)
         {
             if (product == null) return;
-
-            // Find if a product with the same name already exists
-            var existing = ProductsList.FirstOrDefault(p =>
-                string.Equals(p.Name, product.Name, StringComparison.OrdinalIgnoreCase));
-
-            //StringComparison.OrdinalIgnoreCase → tells it to compare without case sensitivity
-            if (existing != null)
-            {
-                // Product already exists → increase its Count
-                existing.Count += product.Count;
-            }
-            else
-            {
-                // Add as a new product
                 ProductsList.Add(product);
-            }
         }
         public bool RemoveProduct(Product product)
         {

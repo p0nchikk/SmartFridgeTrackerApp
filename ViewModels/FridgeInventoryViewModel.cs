@@ -27,7 +27,6 @@ namespace SmartFridgeTracker.ViewModels
 
         #region Commands
         public ICommand? OnProductTappedCommand { get; }
-        public ICommand? DecrementCountOfItemCommand { get; set; }
         public ICommand? RemoveItemCommand { get; set; }
 
         #endregion
@@ -37,7 +36,6 @@ namespace SmartFridgeTracker.ViewModels
         {
             Products = new ObservableCollection<ProductViewModel>();
             OnProductTappedCommand = new Command(OnProductTapped);
-            DecrementCountOfItemCommand = new Command(DecrementCountOfItem);
         }
         #endregion
 
@@ -73,21 +71,21 @@ namespace SmartFridgeTracker.ViewModels
             });
         }
 
-        private async void DecrementCountOfItem(object objProduct)
-        {
-            Product product = objProduct as Product;
-            if (product != null)
-            {
-                if (await AppService.GetInstance().DecrementCountOfItemAsync(product))
-                {
-                    await LoadProductsAsync();
-                }
-                else
-                {
-                    // TODO: to throw error
-                }
-            }
-        }
+        //private async void DecrementCountOfItem(object objProduct)
+        //{
+        //    Product product = objProduct as Product;
+        //    if (product != null)
+        //    {
+        //        if (await AppService.GetInstance().DecrementCountOfItemAsync(product))
+        //        {
+        //            await LoadProductsAsync();
+        //        }
+        //        else
+        //        {
+        //            // TODO: to throw error
+        //        }
+        //    }
+        //}
 
         #endregion
     }

@@ -190,6 +190,7 @@ namespace SmartFridgeTracker.ViewModels
                     bool successedLogin = await AppService.GetInstance().TryLogin(email, password);  //identicator of login status
                     if (successedLogin)
                     {
+                        ((App)Application.Current).SetAppShell();
                         await Shell.Current.GoToAsync("//MainPage");
                     }
                     else

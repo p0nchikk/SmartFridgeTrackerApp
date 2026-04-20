@@ -44,10 +44,6 @@
             <Label Grid.Row="2" Style="{StaticResource LabelPropertyStyle}" Text="Quantity:" WidthRequest="120"/>
             <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Quantity}" />
             
-            <!-- COUNT -->
-            <Label Grid.Row="3" Style="{StaticResource LabelPropertyStyle}" Text="Count:" />
-            <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding Count}" />
-            
             <!-- LIFE DAYS -->
             <Label Grid.Row="4" Style="{StaticResource LabelPropertyStyle}" Text="Days Left:" WidthRequest="120" />
             <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LabelCharacteristicStyle}" Text="{Binding LifeDays}" />

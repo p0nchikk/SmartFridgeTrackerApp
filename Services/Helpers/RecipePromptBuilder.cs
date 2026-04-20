@@ -28,7 +28,7 @@ namespace SmartFridgeTracker.Services.Helpers
 
         public static string GetSimplifiedProductList(List<Product> availableProducts)
         {
-            var simplified = availableProducts.Select(p => new { id = p.Id, name = p.Name, count = p.Count, quantity = p.Quantity });
+            var simplified = availableProducts.Select(p => new { id = p.Id, name = p.Name, quantity = p.Quantity });
             return JsonSerializer.Serialize(simplified);
         }
     }

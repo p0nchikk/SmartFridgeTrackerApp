@@ -12,6 +12,8 @@ namespace SmartFridgeTracker.Models
         public float TotalAmount { get; set; }
         public string QuantityUnit { get; set; }
 
+        public Quantity() { }
+
         public Quantity(float currentAmount, float totalAmount, string quantityUnit)
         {
             CurrentAmount = currentAmount;

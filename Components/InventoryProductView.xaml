@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartFridgeTracker.Components.InventoryProductView">
-    <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="15" Padding="15, 8">
+    <Grid ColumnDefinitions="Auto, *, 100" ColumnSpacing="15" Padding="15, 8">
         <!-- Emoji -->
         <Border Grid.Column="0" 
             Style="{StaticResource EmojiBorderStyle}" 
@@ -15,11 +15,24 @@
            Text="{Binding Name}" 
            Style="{StaticResource ProductNameStyle}" />
 
-        <!-- Count -->
-        <Label Grid.Column="2" 
-            Text="{Binding Count}" 
-            FontSize="22" 
-            FontAttributes="Bold"
-            Style="{StaticResource LabelPropertyStyle}"/>
+        <!--  Quantity as a Progress Bar -->
+        <Frame
+                Grid.Column="2"
+                BorderColor="{StaticResource Gray600}"
+                CornerRadius="8"
+                Padding="0"
+                HeightRequest="30"
+                WidthRequest="120"
+                HasShadow="False"
+                IsClippedToBounds="True"
+                VerticalOptions="Center"
+                HorizontalOptions="End">
+            <ProgressBar 
+                 Progress="{Binding FillRatio}"
+                 ProgressColor="{Binding ProgressColor}" 
+                 BackgroundColor="#E0E0E0"
+                 VerticalOptions="Center"
+                 ScaleY="10"/>
+        </Frame>
     </Grid>
 </ContentView>

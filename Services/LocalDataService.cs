@@ -84,22 +84,22 @@ namespace SmartFridgeTracker.Services
 
         #region Functions
         //DECREMENT COUNT OF ITEM
-        public async Task<bool> DecrementCountOfItemAsync(Product product)
-        {
-            if (products.Contains(product))
-            {
-                if (product.Count == 1)
-                {
-                    products.Remove(product);
-                }
-                else
-                {
-                    product.Count--;
-                }
-                return true;
-            }
-            return false;
-        }
+        //public async Task<bool> DecrementCountOfItemAsync(Product product)
+        //{
+        //    if (products.Contains(product))
+        //    {
+        //        if (product.Count == 1)
+        //        {
+        //            products.Remove(product);
+        //        }
+        //        else
+        //        {
+        //            product.Count--;
+        //        }
+        //        return true;
+        //    }
+        //    return false;
+        //}
         //ADD PRODUCT 
         public async Task<bool> AddProductAsync(Product newProduct)
         {
